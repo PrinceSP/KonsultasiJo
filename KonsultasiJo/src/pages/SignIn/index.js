@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Button, Gap, TextInput } from '../../components'
-import { Mata, User } from '../../assests'
+import { Mata, User } from '../../assets'
 
 const SignIn = ({navigation}) => {
   return (
@@ -30,7 +30,7 @@ const SignIn = ({navigation}) => {
       <Gap height={18}/>
       <View style={{flexDirection:'row',justifyContent:'center'}}>
         <Text style={{fontSize:15,color:'black',paddingRight:7,}}>Tidak memiliki akun? </Text>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignUp')}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
         <Text style={{fontSize:15,color:'#06659A',fontWeight:'bold'}}>Klik disini </Text>
         </TouchableOpacity>
         

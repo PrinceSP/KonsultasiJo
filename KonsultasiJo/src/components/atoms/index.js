@@ -1,5 +1,5 @@
-import TextInput from './textInput'
-import Button from './button'
+import TextInput from './TextInput'
+import Button from './Button'
 import Gap from './Gap';
 
 
