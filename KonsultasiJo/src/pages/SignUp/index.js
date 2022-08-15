@@ -35,7 +35,7 @@ const SignUp = ({navigation}) => {
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
       <Gap height={116}/>
-      <TouchableOpacity activeOpacity={0.7}>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
       <Button title={'Lanjut'}/>
       </TouchableOpacity>
      <Gap height={70}/>
