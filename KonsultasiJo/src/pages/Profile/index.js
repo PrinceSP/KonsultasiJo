@@ -26,7 +26,7 @@ const Profile = ({navigation}) => {
 
 export default Profile
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({  
   Background: {
     backgroundColor: 'white',
     flex: 1,
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     color: 'black',
     width:365,  
   },
-  Container: {
+  Container: {    
     marginTop: 20,
     backgroundColor: '#F4F4F4',
     paddingTop: 15,
