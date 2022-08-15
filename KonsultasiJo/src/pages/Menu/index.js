@@ -26,7 +26,7 @@ const Menu = ({navigation}) => {
     <Icon name="chatbox-ellipses" size={45} color="white" />
     </View>
     </TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('MenuOprator')}>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
     <View style={styles.pHukum}>
     <Icon name="book" size={45} color="#0E7886" />
     </View>
