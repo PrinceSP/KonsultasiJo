@@ -10,6 +10,7 @@ import Wa from './Wa.svg';
 import Telegram from './Telegram.svg';
 import Operator from './Operator.svg';
 import Send from './Send.svg';
-import Perkawinan from './Perkawinan.svg'
+import Perkawinan from './Perkawinan.svg';
+import Fitur_chat from './Fitur_chat.svg'
 
-export {Chat,Mata,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan};
+export {Fitur_chat,Chat,Mata,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan};

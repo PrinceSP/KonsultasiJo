@@ -24,7 +24,7 @@ const SignIn = ({navigation}) => {
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
       <Gap height={116}/>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Menu')} >
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Maps')} >
       <Button title={'MASUK'}/>
       </TouchableOpacity>
       <Gap height={18}/>
