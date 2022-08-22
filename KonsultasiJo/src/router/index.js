@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Phukum,Statistik,MenuOprator,Kategori,SplashScreen, SignIn, SignUp, Profile, AboutUs, Maps, ChatClient, ListChatClient, ChatOperator,Menu} from '../pages';
+import { Phukum,Statistik,MenuOprator,Kategori,SplashScreen, SignIn, SignUp, Profile, AboutUs, Maps, ChatClient, ListChatClient, ChatOperator, Menu} from '../pages';
 
 
 

@@ -12,5 +12,6 @@ import Operator from './Operator.svg';
 import Send from './Send.svg';
 import Perkawinan from './Perkawinan.svg';
 import Fitur_chat from './Fitur_chat.svg'
+import Foto from './Foto.svg'
 
-export {Fitur_chat,Chat,Mata,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan};
+export {Fitur_chat,Chat,Mata,Foto,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan};

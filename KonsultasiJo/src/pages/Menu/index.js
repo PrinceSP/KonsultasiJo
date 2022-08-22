@@ -2,13 +2,12 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import React from 'react'
 import { Fitur_chat, Foto } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Berita, Gap } from '../../components';
+import { Berita, Gap, Header } from '../../components';
 
-const Menu = ({navigation}) => {
+const Menu = ({navigation}) => {  
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
-      <Text>Menu</Text>
-
+    <Header title="Menu" onBack={() => navigation.goBack()} />              
     <View style={styles.profile}>
     <View>
     <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>

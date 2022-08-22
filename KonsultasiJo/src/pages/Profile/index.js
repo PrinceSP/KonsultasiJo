@@ -3,7 +3,7 @@ import React from 'react'
 import { Header, Gap, TextInput } from '../../components';
 import { ProfilePicture } from '../../assets';
 
-const Profile = ({navigation}) => {
+const Profile = ({navigation}) => { 
   return (
     <View style={styles.Background}>
         <Header title="Profile" onBack={() => navigation.goBack()} />        
