@@ -2,12 +2,12 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import React from 'react'
 import { Fitur_chat, Foto } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Berita, Gap } from '../../components';
+import { Berita, Gap, Header } from '../../components';
 
 const Menu = ({navigation}) => {
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
-      <Text>Menu</Text>
+    <Header title="Menu" onBack={() => navigation.goBack()}/>
 
     <View style={styles.profile}>
     <View>
@@ -26,17 +26,21 @@ const Menu = ({navigation}) => {
     <Icon name="chatbox-ellipses" size={45} color="white" />
     </View>
     </TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Phukum')}>
     <View style={styles.pHukum}>
     <Icon name="book" size={45} color="#0E7886" />
     </View>
     </TouchableOpacity>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Maps')}>
     <View style={styles.lLokasi}>
     <Icon name="map" size={45} color="white" />
     </View>
+    </TouchableOpacity>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('AboutUs')}>
     <View style={styles.tKami}>
     <Icon name="people" size={45} color="white" />
     </View>
+    </TouchableOpacity>
     </View>
     <Gap height={40}/>
     <ScrollView showsVerticalScrollIndicator={false}>

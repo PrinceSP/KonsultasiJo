@@ -11,6 +11,23 @@ import Telegram from './Telegram.svg';
 import Operator from './Operator.svg';
 import Send from './Send.svg';
 import Perkawinan from './Perkawinan.svg';
-import Fitur_chat from './Fitur_chat.svg'
+import Fitur_chat from './Fitur_chat.svg';
+import Foto from './Foto.svg';
+import Kekayaan from './Kekayaan.svg'
+import Kekeluargaan from './Kekeluargaan.svg'
+import Lainnya from './Lainnya.svg'
+import Pembunuhan from './Pembunuhan.svg'
+import Pemerasan from './Pemerasan.svg'
+import Pencurian from './Pencurian.svg'
+import Penganiayaan from './Penganiayaan.svg'
+import Perceraian from './Perceraian.svg'
+import Perikatan from './Perikatan.svg'
+import Perselingkuhan from './Perselingkuhan.svg'
+import PerusakanBarang from './PerusakanBarang.svg'
+import PNamaBaik from './PNamaBaik.svg'
+import Waris from './Waris.svg'
+import Ite from './ITE.svg'
 
-export {Fitur_chat,Chat,Mata,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan};
+
+
+export {Ite,Kekayaan,Waris,Kekeluargaan,Lainnya, PerusakanBarang, PNamaBaik,Pembunuhan,Pemerasan,Pencurian, Penganiayaan,Perceraian, Perikatan, Perselingkuhan,Fitur_chat,Chat,Mata,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan,Foto};

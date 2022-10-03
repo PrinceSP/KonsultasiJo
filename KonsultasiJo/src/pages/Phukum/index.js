@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TextInput as TextInputRN, View } from 'react-native'
 import React from 'react'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-import { Gap } from '../../components';
+import { Gap, Header } from '../../components';
 
-const Phukum = () => {
+const Phukum = ({navigation}) => {
 
  //const state = this.state;
  const data = {
@@ -19,7 +19,7 @@ const Phukum = () => {
     
   return (
     <View style={{backgroundColor:'white',flex:1,}}>
-      <Text>Header</Text>
+      <Header title="Produk Hukum" onBack={() => navigation.goBack()}/>
       <Gap height={30}/>
       <View style={styles.textInput}>
       <TextInputRN placeholder='Cari JDIH' placce style={{fontSize:15, }} />
