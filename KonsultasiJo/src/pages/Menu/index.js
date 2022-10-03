@@ -4,7 +4,7 @@ import { Fitur_chat, Foto } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Berita, Gap, Header } from '../../components';
 
-const Menu = ({navigation}) => {
+const Menu = ({navigation}) => {  
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
     <Header title="Menu" onBack={() => navigation.goBack()}/>

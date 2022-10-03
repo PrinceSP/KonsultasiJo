@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, View, Text } from 'react-native'
+import { StyleSheet, ScrollView, View, Text, TextInput } from 'react-native'
 import React from 'react'
 import { Header, Gap, ReplyClient } from '../../components';
 import ReplyOperator from '../../components/molecules/ReplyOperator';
@@ -22,8 +22,12 @@ const ChatOperator = ({navigation}) => {
         <View style={styles.TypingText}> 
             <View style={styles.BoxText}>             
             <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
-                <Text style={styles.TextBox}>Ketik pesan disini</Text>
-            </ScrollView>                           
+                <View style={styles.TextBox}>
+                    <TextInput placeholder={'Ketik pesan disini'}/>
+                    {/* <TextInput placeholder={'Ketik pesan disini'}/> */}
+                    {/* <Text>Ketik pesan disini</Text>  */}
+                </View>
+            </ScrollView>                            
                 <View style={styles.SendIcon}>
                 <Send height={30} width={30}/>
                 </View>                
@@ -64,8 +68,8 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginLeft: 10,
         backgroundColor: 'white',
-        padding: 10,
-        borderRadius: 10,
-        color: '#8C8888',
+        padding: 1,        
+        borderRadius: 10,                
+        color: '#8C8888',                
     },
 });
