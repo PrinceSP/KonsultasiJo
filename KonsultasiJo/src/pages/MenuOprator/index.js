@@ -2,12 +2,13 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import React from 'react'
 import { Fitur_chat, Foto } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Berita, Gap } from '../../components';
+import { Berita, Gap, Header } from '../../components';
 
 const MenuOprator = ({navigation}) => {
   return (
-    <View style={{flex:1,backgroundColor:'white'}}>
-      <Text>Menu</Text>
+    <View style={{flex:1, backgroundColor:'white'}}>
+       <Header title="Menu Operator" onBack={() => navigation.goBack()}/>
+
 
     <View style={styles.profile}>
     <View>
@@ -21,7 +22,7 @@ const MenuOprator = ({navigation}) => {
 
     </View >
     <View style={{flexDirection:'row',justifyContent:'center'}}>
-    <TouchableOpacity activeOpacity={0.7}>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ListChatClient')}>
     <View style={styles.fChat}>
     <Icon name="chatbox-ellipses" size={45} color="white" />
     </View>

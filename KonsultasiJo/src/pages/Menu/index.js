@@ -7,7 +7,8 @@ import { Berita, Gap, Header } from '../../components';
 const Menu = ({navigation}) => {  
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
-    <Header title="Menu" onBack={() => navigation.goBack()} />              
+    <Header title="Menu" onBack={() => navigation.goBack()}/>
+
     <View style={styles.profile}>
     <View>
     <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
@@ -25,17 +26,21 @@ const Menu = ({navigation}) => {
     <Icon name="chatbox-ellipses" size={45} color="white" />
     </View>
     </TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Phukum')}>
     <View style={styles.pHukum}>
     <Icon name="book" size={45} color="#0E7886" />
     </View>
     </TouchableOpacity>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Maps')}>
     <View style={styles.lLokasi}>
     <Icon name="map" size={45} color="white" />
     </View>
+    </TouchableOpacity>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('AboutUs')}>
     <View style={styles.tKami}>
     <Icon name="people" size={45} color="white" />
     </View>
+    </TouchableOpacity>
     </View>
     <Gap height={40}/>
     <ScrollView showsVerticalScrollIndicator={false}>

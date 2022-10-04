@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import { VictoryBar, VictoryChart, VictoryGroup, VictoryTheme } from "victory-native";
-import { Gap } from '../../components';
+import { Gap, Header } from '../../components';
 
-const Statistik = () => {
+const Statistik = ({navigation}) => {
   const data ={
     
     jenisKelamin: [
@@ -20,9 +20,7 @@ const Statistik = () => {
   return (
 
     <View style={{flex: 1}}>
-     <Text>
-      Header
-     </Text>
+     <Header title="Statistik" onBack={() => navigation.goBack()}/>
      <Gap height={10}/>
     <ScrollView>
     <View style={styles.page}>
