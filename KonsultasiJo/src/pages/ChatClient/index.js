@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, View, Text, TextInput } from 'react-native'
+import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Header, Gap, ReplyClient } from '../../components';
 import ReplyOperator from '../../components/molecules/ReplyOperator';
@@ -9,12 +9,16 @@ const ChatClient = ({navigation}) => {
     <View style={styles.container}>
         <Header title="Konsultasi" onBack={() => navigation.goBack()} />        
         <ScrollView showsVerticalScrollIndicator={false}>                        
+        
                 <ReplyOperator marginright={100} />     
                 <Gap height={30} />                   
+        
                 <ReplyClient />
                 <Gap height={30} />            
+        
                 <ReplyOperator />     
                 <Gap height={30} />            
+        
                 <ReplyClient />
                 <Gap height={10} />   
                 
@@ -26,9 +30,11 @@ const ChatClient = ({navigation}) => {
                     <TextInput placeholder={'Ketik pesan disini'}/>                    
                 </View>                
             </ScrollView>                           
+                <TouchableOpacity>
                 <View style={styles.SendIcon}>
                 <Send height={30} width={30}/>
-                </View>                
+                </View>               
+                </TouchableOpacity>
             </View>          
             
             

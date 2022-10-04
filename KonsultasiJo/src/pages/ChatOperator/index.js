@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, View, Text, TextInput } from 'react-native'
+import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Header, Gap, ReplyClient } from '../../components';
 import ReplyOperator from '../../components/molecules/ReplyOperator';
@@ -9,13 +9,17 @@ const ChatOperator = ({navigation}) => {
     <View style={styles.container}>
         <Header title="Konsultasi" onBack={() => navigation.goBack()} />        
         <ScrollView showsVerticalScrollIndicator={false}>                        
-                <ReplyOperator />     
-                <Gap height={30} />                   
-                <ReplyClient />
+                
+                <ReplyOperator containerMarginLeft={125} containerMarginRight={10} jam='right'/>     
+                <Gap height={30} />                    
+                
+                <ReplyClient containerMarginLeft={20} containerMarginRight={125} jam='left'/>
                 <Gap height={30} />            
-                <ReplyOperator />     
+                
+                <ReplyOperator containerMarginLeft={125} containerMarginRight={10} jam='right'/>     
                 <Gap height={30} />            
-                <ReplyClient />
+                
+                <ReplyClient containerMarginLeft={20} containerMarginRight={125} jam='left'/>
                 <Gap height={10} />   
                 
         </ScrollView>
@@ -25,10 +29,12 @@ const ChatOperator = ({navigation}) => {
                 <View style={styles.TextBox}>
                     <TextInput placeholder={'Ketik pesan disini'}/>                    
                 </View>                
-            </ScrollView>                           
+            </ScrollView>                     
+            <TouchableOpacity>
                 <View style={styles.SendIcon}>
                 <Send height={30} width={30}/>
-                </View>                
+                </View>       
+            </TouchableOpacity>               
             </View>          
             
             

@@ -8,7 +8,8 @@ const Menu = ({navigation}) => {
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
     <Header title="Menu" onBack={() => navigation.goBack()}/>
-
+    
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
     <View style={styles.profile}>
     <View>
     <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
@@ -18,8 +19,9 @@ const Menu = ({navigation}) => {
     <View style={styles.foto}>
       <Foto/>
     </View>
-
     </View >
+    </TouchableOpacity>
+
     <View style={{flexDirection:'row'}}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Kategori')}>
     <View style={styles.fChat}>

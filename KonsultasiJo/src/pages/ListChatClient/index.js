@@ -1,13 +1,14 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Header, Gap } from '../../components';
 import { Operator } from '../../assets';
 
-const ListChatClient = ({navigation}) => {
+const ChatOperator = ({navigation}) => {
   return (
     <View style={styles.container}>
         <Header title="Pesan" onBack={() => navigation.goBack()} />        
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false}>        
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -15,6 +16,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+          </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -22,6 +26,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -29,6 +36,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -36,6 +46,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -43,6 +56,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -50,6 +66,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -57,6 +76,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -64,6 +86,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -71,6 +96,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -78,6 +106,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -85,6 +116,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -92,6 +126,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -99,6 +136,9 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>        
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
           <View style={styles.Wrapper}>
             <Operator style={styles.operator}/> 
             <View style={styles.chatwrapper}>
@@ -106,12 +146,14 @@ const ListChatClient = ({navigation}) => {
               <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
             </View>            
           </View>          
+        </TouchableOpacity>
+
         </ScrollView>
     </View> 
   )
 }
  
-export default ListChatClient
+export default ChatOperator
 
 const styles = StyleSheet.create({
   container: {    
