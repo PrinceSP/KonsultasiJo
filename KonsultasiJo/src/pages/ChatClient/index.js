@@ -9,7 +9,7 @@ const ChatClient = ({navigation}) => {
     <View style={styles.container}>
         <Header title="Konsultasi" onBack={() => navigation.goBack()} />        
         <ScrollView showsVerticalScrollIndicator={false}>                        
-                <ReplyOperator />     
+                <ReplyOperator marginright={100} />     
                 <Gap height={30} />                   
                 <ReplyClient />
                 <Gap height={30} />            
@@ -23,9 +23,7 @@ const ChatClient = ({navigation}) => {
             <View style={styles.BoxText}>             
             <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
                 <View style={styles.TextBox}>
-                    <TextInput placeholder={'Ketik pesan disini'}/>
-                    {/* <TextInput placeholder={'Ketik pesan disini'}/> */}
-                    {/* <Text>Ketik pesan disini</Text>  */}
+                    <TextInput placeholder={'Ketik pesan disini'}/>                    
                 </View>                
             </ScrollView>                           
                 <View style={styles.SendIcon}>

@@ -23,11 +23,9 @@ const ChatOperator = ({navigation}) => {
             <View style={styles.BoxText}>             
             <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
                 <View style={styles.TextBox}>
-                    <TextInput placeholder={'Ketik pesan disini'}/>
-                    {/* <TextInput placeholder={'Ketik pesan disini'}/> */}
-                    {/* <Text>Ketik pesan disini</Text>  */}
-                </View>
-            </ScrollView>                            
+                    <TextInput placeholder={'Ketik pesan disini'}/>                    
+                </View>                
+            </ScrollView>                           
                 <View style={styles.SendIcon}>
                 <Send height={30} width={30}/>
                 </View>                
@@ -68,8 +66,8 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginLeft: 10,
         backgroundColor: 'white',
-        padding: 1,        
-        borderRadius: 10,                
-        color: '#8C8888',                
+        padding: 1,
+        borderRadius: 10,
+        color: '#8C8888',
     },
 });

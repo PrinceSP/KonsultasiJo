@@ -5,7 +5,7 @@ import {Logo} from '../../assets';
 const SplashScreen = ({navigation}) => {
     useEffect(() =>{
         setTimeout(()=> {
-            navigation.replace('ChatClient');
+            navigation.replace('Menu'); 
         }, 1000);
     },[]);
 
