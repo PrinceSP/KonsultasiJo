@@ -10,22 +10,22 @@ const Header = ({title, onBack}) => {
         {onBack && (
           <TouchableOpacity onPress={onBack}>
             <View style={styles.back}>
-              <IconBack />
+              <IconBack/>
             </View>
           </TouchableOpacity>
         )}
         <Gap width={15} />
-        <Text style={styles.text}>{title}</Text>        
-    </View> 
+        <Text style={styles.text}>{title}</Text>
+    </View>
   );
 };
 
 export default Header;
 
 const styles = StyleSheet.create({
-  
+
   container: {
-    backgroundColor: '#D92B2B',
+    backgroundColor: '#fff',
     paddingLeft: 24,
     paddingVertical: 25,
     marginBottom: 24,
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
   },
   back: {
     paddingVertical: 10,
-    paddingHorizontal: 10,    
+    paddingHorizontal: 10,
   },
   text: {
     fontSize: 30,
-    color: 'white',
+    color: '#000',
   },
 
   // container: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   //   paddingVertical: 40,
   //   backgroundColor: '#06659A',
   // },
-  // text: {    
+  // text: {
   //   fontSize: 36,
   //   color: 'white',
   // },

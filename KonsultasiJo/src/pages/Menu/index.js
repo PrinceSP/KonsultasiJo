@@ -1,25 +1,22 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Fitur_chat, Foto } from '../../assets'
+import { Fitur_chat, Foto,TopIllustration } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Berita, Gap, Header } from '../../components';
 
-const Menu = ({navigation}) => {  
+const Menu = ({navigation}) => {
   return (
-    <View style={{flex:1,backgroundColor:'white'}}>
-    <Header title="Menu" onBack={() => navigation.goBack()}/>
-    
+    <View style={{flex:1,backgroundColor:'#fff'}}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
-    <View style={styles.profile}>
-    <View>
-    <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
-    <Text style={styles.tNama}>Nariva Wagey</Text>
-    <Text style={styles.tNik}>1234567890123456</Text>
-    </View>
-    <View style={styles.foto}>
-      <Foto/>
-    </View>
-    </View >
+      <View style={styles.profile}>
+        <TopIllustration style={{position:'absolute',right:0,top:0}}/>
+        <Foto height={70}/>
+        <View>
+          <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
+          <Text style={styles.tNama}>Nariva Wagey</Text>
+          <Text style={styles.tNik}>1234567890123456</Text>
+        </View>
+      </View >
     </TouchableOpacity>
 
     <View style={{flexDirection:'row'}}>
@@ -63,36 +60,30 @@ export default Menu
 const styles = StyleSheet.create({
   profile:{
     backgroundColor:'#D92B2B',
-    marginHorizontal:28,
-    height:135,
-    borderRadius:20,
+    width:"100%",
+    height:157,
     flexDirection:'row',
-    
+    position:'relative',
+    alignItems:'center',
+    paddingLeft:22
   },
   tNama: {
     color:'white',
-    paddingLeft:14,
+    // paddingLeft:14,
     fontSize:16,
 
   },
   tWelcome: {
     color:'white',
-    paddingLeft:14,
-    paddingTop:21,
+    // paddingLeft:14,
+    // paddingTop:21,
     fontSize:16,
 
   },
   tNik:{
-    color:'black',
-    paddingLeft:14,
-    paddingTop:35,
-  },
-  foto:{
-    alignItems:'flex-end',
-    flex:1,
-    justifyContent:'center',
-    paddingRight:16,
-    
+    color:'#fff',
+    // paddingLeft:14,
+    // paddingTop:35,
   },
   fChat:{
     backgroundColor:'#2AB1E0',
@@ -168,5 +159,5 @@ const styles = StyleSheet.create({
     shadowRadius: 5.00,
     elevation: 5,
   }
-  
+
 })
