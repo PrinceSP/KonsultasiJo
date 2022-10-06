@@ -12,7 +12,7 @@ import Operator from './Operator.svg';
 import Send from './Send.svg';
 import Perkawinan from './Perkawinan.svg';
 import Fitur_chat from './Fitur_chat.svg';
-import Foto from './Foto.svg';
+import Foto from './Foto.png';
 import Kekayaan from './Kekayaan.svg'
 import Kekeluargaan from './Kekeluargaan.svg'
 import Lainnya from './Lainnya.svg'

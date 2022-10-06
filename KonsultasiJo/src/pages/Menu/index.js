@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React from 'react'
 import { Fitur_chat, Foto,TopIllustration } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -10,7 +10,7 @@ const Menu = ({navigation}) => {
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
       <View style={styles.profile}>
         <TopIllustration style={{position:'absolute',right:0,top:0}}/>
-        <Foto height={70}/>
+        <Image source={Foto} style={{height:70,width:70,borderRadius:70,marginRight:30}}/>
         <View>
           <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
           <Text style={styles.tNama}>Nariva Wagey</Text>
