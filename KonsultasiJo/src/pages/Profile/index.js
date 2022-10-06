@@ -12,11 +12,11 @@ const Profile = ({navigation}) => {
           <ProfilePicture />
           </View>
             <Text style={styles.Judul}>Nama</Text>
-            <Text style={styles.Isi}>Nariva Doyoq Wagey</Text>                    
+            <Text style={styles.Isi}>Nariva Wagey</Text>                    
             <Text style={styles.Judul}>NIK</Text>                 
             <Text style={styles.Isi}>717109022781</Text>   
             <Text style={styles.Judul}>Email</Text>
-            <Text style={styles.Isi}>Narivawagey@Crytal.com</Text>        
+            <Text style={styles.Isi}>Narivawagey@gmail.com</Text>        
             <Text style={styles.Judul}>Kata Sandi</Text>
             <Text style={styles.Isi}>***********</Text>                  
         </View>
