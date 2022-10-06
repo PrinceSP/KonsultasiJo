@@ -5,11 +5,7 @@ import {LambangKota,Logo} from '../../assets';
 const SplashScreen = ({navigation}) => {
     useEffect(() =>{
         setTimeout(()=> {
-<<<<<<< HEAD
             navigation.replace('SignIn'); 
-=======
-            navigation.replace('MenuOprator');
->>>>>>> 5e7e9d1078ac4074469d5a2d7d8778a6144a018d
         }, 1000);
     },[]);
 
