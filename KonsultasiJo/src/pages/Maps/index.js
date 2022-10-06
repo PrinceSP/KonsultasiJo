@@ -1,28 +1,34 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Header, Gap } from '../../components';
+import { Header, Gap, Button } from '../../components';
 import { CancelSearchMap, ContohMaps, Telegram, Wa } from '../../assets';
+import { Row } from 'react-native-table-component';
+
 
 const Maps = ({navigation}) => {
   return (
     <View>
         <Header title="Lihat Lokasi" onBack={() => navigation.goBack()} />        
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.maps}>
-            <View style={styles.SearchBar}>
-              <Text style={styles.SearchBarText}>Firma hukum bitung</Text>            
-                <View style={styles.IconCancel}>
-                  <CancelSearchMap />            
-                </View>
-            </View>          
-            <ContohMaps />
-          </View>          
-          <View style={styles.Information}>
-            <Text style={styles.TextInfo}>Kantor Pengacara Wempie Mekel, SH dan Rekan</Text>            
-            <Wa style={styles.App} />
-            <Telegram style={styles.App} />
-          </View>                
-        </ScrollView>
+        <View style={{flexDirection:'row'}}>
+          <View style={styles.buttonMap}>
+          <TouchableOpacity>
+          <Button title={'  Firma Hukum  '}/>
+          </TouchableOpacity>
+          </View>
+          <View style={styles.buttonMap}>
+          <TouchableOpacity>
+          <Button title={'  Notaris  '}/>
+          </TouchableOpacity>
+          </View>
+          <View style={styles.buttonMap}>
+          <TouchableOpacity>
+          <Button title={'  Lembaga bantuan Hukum  '}/>
+          </TouchableOpacity>
+
+          </View>
+
+        </View>
+        
     </View>
   )
 }
@@ -73,4 +79,7 @@ const styles = StyleSheet.create({
   TextInfo:{
     fontSize: 15,
   },
+  buttonMap:{
+    paddingHorizontal:8,
+  }
 });

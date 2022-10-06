@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Button, Gap, TextInput } from '../../components'
-import { Mata, User } from '../../assets'
+import { Button, Gap, TextInput } from '../components'
+import { Mata, User } from '../assets'
 
-const SignIn = ({navigation}) => {
+const SignInOperator = ({navigation}) => {
   return (
     <View style={{backgroundColor:'white',flex:1}}>
        <Gap height={43}/> 
@@ -13,7 +13,7 @@ const SignIn = ({navigation}) => {
 
         </TouchableOpacity>
       <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignInOperator')}>
-      <Text style={{color:'black',fontWeight:'900',paddingRight:28,fontSize:16}}>Operator</Text>
+      <Text style={{color:'#D92B2B',fontWeight:'900',paddingRight:28,fontSize:16}}>Operator</Text>
       </TouchableOpacity>
       </View>
       <Gap height={61}/>
@@ -23,7 +23,7 @@ const SignIn = ({navigation}) => {
      </View>
      <View style={styles.contentWrapper}>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'NIK'}/>
+     <TextInput placeholder={'Username'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>
      <Gap height={43}/>
@@ -36,13 +36,7 @@ const SignIn = ({navigation}) => {
       <Button title={'MASUK'}/>
       </TouchableOpacity>
       <Gap height={18}/>
-      <View style={{flexDirection:'row',justifyContent:'center'}}>
-        <Text style={{fontSize:15,color:'black',paddingRight:7,}}>Tidak memiliki akun? </Text>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignUp')}>
-        <Text style={{fontSize:15,color:'#D92B2B',fontWeight:'bold'}}>Klik disini </Text>
-        </TouchableOpacity>
-        
-     </View>
+      
      </View>
      
 
@@ -51,12 +45,12 @@ const SignIn = ({navigation}) => {
   )
 }
 
-export default SignIn
+export default SignInOperator
 
 const styles = StyleSheet.create({
     textJudul:{
         fontWeight:'900',
-        color:'#D92B2B',
+        color:'black',
         fontSize:16,
         paddingRight:5,
         alignItems:'center'

@@ -12,9 +12,10 @@ import Statistik from "./Statistik";
 import MenuOprator from "./MenuOprator";
 import Kategori from "./Kategori"
 import Menu from './Menu';
+import SignInOpertor from './SignInOperator';
 
 
-export {Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClient,Menu};
+export {Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClient,Menu,SignInOpertor};
 
 
 

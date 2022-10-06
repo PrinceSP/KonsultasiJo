@@ -41,7 +41,7 @@ export default Phukum
 
 const styles = StyleSheet.create({
     head:{
-        backgroundColor:'#06659A',
+        backgroundColor:'#D92B2B',
         
     },
     text:{
