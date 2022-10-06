@@ -1,14 +1,14 @@
 import { ScrollView, StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Header, Gap, Button } from '../../components';
+import { Header, Gap, Button, MapFinder } from '../../components';
 import { CancelSearchMap, ContohMaps, Telegram, Wa } from '../../assets';
 import { Row } from 'react-native-table-component';
 
 
 const Maps = ({navigation}) => {
   return (
-    <View>
-        <Header title="Lihat Lokasi" onBack={() => navigation.goBack()} />        
+    <>
+        <Header title="Lihat Lokasi" onBack={() => navigation.goBack()} />
         <View style={{flexDirection:'row'}}>
           <View style={styles.buttonMap}>
           <TouchableOpacity>
@@ -28,48 +28,48 @@ const Maps = ({navigation}) => {
           </View>
 
         </View>
-        
-    </View>
+        <MapFinder/>
+    </>
   )
 }
 
 export default Maps
 
 const styles = StyleSheet.create({
-  maps:{        
-    alignItems: 'center',    
-  },       
-  SearchBarText: {    
+  maps:{
+    alignItems: 'center',
+  },
+  SearchBarText: {
     paddingHorizontal: 15,
     fontSize: 16,
     color: '#000000',
   },
-  SearchBar: {    
+  SearchBar: {
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor:'black',    
-    paddingVertical:6,    
+    borderColor:'black',
+    paddingVertical:6,
     width:365,
-    borderRadius: 10,    
+    borderRadius: 10,
   },
-  IconCancel:{     
-    marginRight: 10,   
+  IconCancel:{
+    marginRight: 10,
     flex: 1,
     alignItems: 'flex-end',
   },
-  Information: {    
-    flexWrap: 'wrap',  
+  Information: {
+    flexWrap: 'wrap',
     flexDirection: 'row',
-    marginBottom: 100,  
+    marginBottom: 100,
     backgroundColor: 'white',
     paddingTop: 15,
-    paddingBottom: 50,    
+    paddingBottom: 50,
     borderRadius: 20,
-    color: 'red',    
+    color: 'red',
     justifyContent: 'center',
-    
+
   },
-  App:{  
+  App:{
     borderRadius: 40,
     paddingLeft: 20,
     paddingRight: 20,

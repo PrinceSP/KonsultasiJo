@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput as TextInputRN, View } from 'react-native'
+import { StyleSheet, Text, TextInput,  View } from 'react-native'
 import React from 'react'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { Gap, Header } from '../../components';
@@ -13,21 +13,21 @@ const Phukum = ({navigation}) => {
       ['2', '2002', '1', 'Tes Judul Untuk JDIH kota bitung yang akan digunakan untuk skripsi kami','PERWA'],
       ['3', '2003', '3', 'Tes Judul Untuk JDIH kota bitung yang akan digunakan untuk skripsi kami','PERWA'],
       ['4', '2004', '8', 'Tes Judul Untuk JDIH kota bitung yang akan digunakan untuk skripsi kami','PERDA'],
-      
+
     ]
   }
-    
+
   return (
     <View style={{backgroundColor:'white',flex:1,}}>
       <Header title="Produk Hukum" onBack={() => navigation.goBack()}/>
       <Gap height={30}/>
       <View style={styles.textInput}>
-      <TextInputRN placeholder='Cari JDIH' placce style={{fontSize:15, }} />
+      <TextInput placeholder='Cari JDIH' placce style={{fontSize:15, }} />
       </View>
       <Gap height={9}/>
       <Text style={{textAlign:'center',}}>Hasil Pencarian</Text>
       <View style={{marginTop:9}}>
-      <Table borderStyle={{borderWidth: 2, borderColor: 'white'}}>
+        <Table borderStyle={{borderWidth: 2, borderColor: 'white'}}>
           <Row data={data.tableHead} style={styles.head } textStyle={styles.text}/>
           <Rows data={data.tableData} style={styles.body }/>
         </Table>
@@ -41,18 +41,13 @@ export default Phukum
 
 const styles = StyleSheet.create({
     head:{
-        backgroundColor:'#D92B2B',
-        
+      backgroundColor:'#D92B2B',
     },
     text:{
-        alignItems:'center',
-        color:'white',
-        justifyContent:'center',
-        textAlign:'center'
-        
+      textAlign: 'center'
     },
     body:{
-        backgroundColor:'#EAEAEA'
+      backgroundColor:'#EAEAEA'
     },
     textInput:{
         borderColor:'#696868',
