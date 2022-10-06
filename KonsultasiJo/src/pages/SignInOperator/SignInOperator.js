@@ -6,7 +6,7 @@ import { Mata, User } from '../../assets'
 const SignInOperator = ({navigation}) => {
   return (
     <View style={{backgroundColor:'white',flex:1}}>
-       <Gap height={43}/> 
+       <Gap height={43}/>
       <View style={{flexDirection:'row',alignItems:'flex-end',justifyContent:'flex-end'}}>
         <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
       <Text style={styles.textJudul}>Client</Text>
@@ -32,15 +32,15 @@ const SignInOperator = ({navigation}) => {
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
       <Gap height={116}/>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Menu')} >
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('MenuOprator')} >
       <Button title={'MASUK'}/>
       </TouchableOpacity>
       <Gap height={18}/>
-      
-     </View>
-     
 
-      
+     </View>
+
+
+
     </View>
   )
 }
