@@ -62,7 +62,7 @@ export default Menu
 
 const styles = StyleSheet.create({
   profile:{
-    backgroundColor:'#06659A',
+    backgroundColor:'#D92B2B',
     marginHorizontal:28,
     height:135,
     borderRadius:20,

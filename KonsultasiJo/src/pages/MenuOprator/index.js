@@ -36,7 +36,7 @@ const MenuOprator = ({navigation}) => {
    
     <View style={styles.exit}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
-    <Icon name="exit" size={45} color="#06659A" />
+    <Icon name="exit" size={45} color="#D92B2B" />
     <Text style={{color:'black'}}>Keluar</Text>
     </TouchableOpacity>
     </View>
@@ -53,7 +53,7 @@ export default MenuOprator
 
 const styles = StyleSheet.create({
     profile:{
-        backgroundColor:'#06659A',
+        backgroundColor:'#D92B2B',
         marginHorizontal:28,
         height:135,
         borderRadius:20,

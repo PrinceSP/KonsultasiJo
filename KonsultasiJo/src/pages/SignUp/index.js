@@ -53,7 +53,7 @@ export default SignUp
 const styles = StyleSheet.create({
     textJudul:{
         fontWeight:'900',
-        color:'#06659A',
+        color:'#D92B2B',
         fontSize:30,
         paddingLeft:14,
     },

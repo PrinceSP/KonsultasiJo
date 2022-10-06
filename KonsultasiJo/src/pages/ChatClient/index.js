@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         padding: 5,
         borderRadius: 40,
-        backgroundColor: '#06659A',        
+        backgroundColor: '#D92B2B',        
     },
     TextBox: {                
         fontSize: 14,
