@@ -10,12 +10,12 @@ import ListChatClient from './ListChatClient';
 import Phukum from "./Phukum";
 import Statistik from "./Statistik";
 import MenuOprator from "./MenuOprator";
-import Kategori from "./Kategori"
+import Kategori from "./Kategori";
 import Menu from './Menu';
-import SignInOpertor from './SignInOperator';
+import SignInOperator from './SignInOperator/SignInOperator';
 
 
-export {Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClient,Menu,SignInOpertor};
+export {Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClient,Menu, SignInOperator};
 
 
 

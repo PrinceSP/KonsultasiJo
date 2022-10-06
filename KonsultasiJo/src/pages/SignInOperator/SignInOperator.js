@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Button, Gap, TextInput } from '../components'
-import { Mata, User } from '../assets'
+import { Button, Gap, TextInput } from '../../components'
+import { Mata, User } from '../../assets'
 
 const SignInOperator = ({navigation}) => {
   return (
@@ -45,7 +45,7 @@ const SignInOperator = ({navigation}) => {
   )
 }
 
-export default SignInOperator
+export default SignInOperator;
 
 const styles = StyleSheet.create({
     textJudul:{

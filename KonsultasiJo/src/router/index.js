@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Phukum,Statistik,MenuOprator,Kategori,SplashScreen, SignIn, SignUp, Profile, AboutUs, Maps, ChatClient, ListChatClient, ChatOperator, Menu,SignInOpertor} from '../pages';
+import { Phukum,Statistik,MenuOprator,Kategori,SplashScreen, SignIn, SignUp, Profile, AboutUs, Maps, ChatClient, ListChatClient, ChatOperator, Menu,SignInOperator} from '../pages';
 
 
 
@@ -26,7 +26,7 @@ const Router = () => {
         <Stack.Screen name="Statistik" component={Statistik}options={{headerShown: false}}/>
         <Stack.Screen name="MenuOprator" component={MenuOprator}options={{headerShown: false}}/>
         <Stack.Screen name="Kategori" component={Kategori}options={{headerShown: false}}/>
-        <Stack.Screen name="SignInOperator" component={SignInOpertor}options={{headerShown: false}}/>
+        <Stack.Screen name="SignInOperator" component={SignInOperator}options={{headerShown: false}}/>
 
 
 
