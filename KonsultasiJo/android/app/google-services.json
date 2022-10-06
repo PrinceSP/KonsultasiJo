@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "897840076376",
+    "project_id": "konsultasijo-53061",
+    "storage_bucket": "konsultasijo-53061.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897840076376:android:22323fd92bcb5eef6fdc2d",
+        "android_client_info": {
+          "package_name": "com.konsultasijo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897840076376-hdn1k3id742va6v0us02qratoqiltlum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.konsultasijo",
+            "certificate_hash": "2cb3fbb246986f47d8d180d70901159759feda54"
+          }
+        },
+        {
+          "client_id": "897840076376-0980ns7vitcbedtuhj0mddrugv0t3p5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkIWdsnIALkeG_qS_Pmm8WBWBwyyZG2hI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897840076376-0980ns7vitcbedtuhj0mddrugv0t3p5f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
