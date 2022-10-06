@@ -1,17 +1,17 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import {Logo} from '../../assets';
+import {LambangKota,Logo} from '../../assets';
 
 const SplashScreen = ({navigation}) => {
     useEffect(() =>{
         setTimeout(()=> {
-            navigation.replace('MenuOprator'); 
+            navigation.replace('MenuOprator');
         }, 1000);
     },[]);
 
     return (
     <View style={styles.page}>
-        <Logo />
+        <LambangKota />
         <Text style={styles.konsultasijo}>KonsultasiJo</Text>
     </View>
     );
@@ -21,14 +21,14 @@ export default SplashScreen;
 
 const styles = StyleSheet.create({
     page: {
-        backgroundColor: '#D92B2B',
+        backgroundColor: '#fff',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
     konsultasijo: {
         fontSize: 36,
-        color: 'white',
+        color: '#000',
         fontWeight: 'bold',
     }
 
