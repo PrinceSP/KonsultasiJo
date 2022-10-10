@@ -1,9 +1,43 @@
+import React, {useState} from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
 import { Button, Gap, TextInput } from '../../components'
 import { Mata, User } from '../../assets'
+import database from '@react-native-firebase/database';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/reducer/user';
+import Auth from '../../configs/auth';
 
 const SignIn = ({navigation}) => {
+
+  const dispatch = useDispatch();
+
+  const [email, setemail] = useState('');
+  const [pass, setpass] = useState('');
+
+  const loginUser = async () => {
+    database()
+      .ref('users/')
+      .orderByChild("emailId")
+      .equalTo(email)
+      .once('value')
+      .then( async snapshot => {
+        if (snapshot.val() == null) {
+           console.log("Invalid Email Id!");
+           return false;
+        }
+        let userData = Object.values(snapshot.val())[0];
+        if (userData?.password != pass) {
+           console.log("Invalid Password!");
+           return false;
+        }
+
+        console.log('User data: ', userData);
+        dispatch(setUser(userData));
+        await Auth.setAccount(userData);
+        console.log("Login Successfully!");
+      })
+    }
+
   return (
     <View style={{backgroundColor:'white',flex:1}}>
        <Gap height={43}/>
