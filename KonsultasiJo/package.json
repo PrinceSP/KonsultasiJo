@@ -30,6 +30,7 @@
     "react-native-table-component": "^1.2.2",
     "react-native-uuid": "^2.0.1",
     "react-native-vector-icons": "^9.2.0",
+    "react-redux": "^8.0.4",
     "victory-native": "^36.5.3"
   },
   "devDependencies": {
