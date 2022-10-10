@@ -4,7 +4,7 @@ import { Header, Gap } from '../../components';
 
 const AboutUs = ({navigation}) => {
   return (
-    <View>
+    <View style={{backgroundColor:'white',flex:1}}>
         <Header title="About Us" onBack={() => navigation.goBack()} />        
         <Text style={styles.text}>Ester Blg jgn dlu isi apa apa</Text>
     </View>

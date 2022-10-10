@@ -21,23 +21,37 @@ const Menu = ({navigation}) => {
 
     <View style={{flexDirection:'row'}}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Kategori')}>
+    <View >
     <View style={styles.fChat}>
     <Icon name="chatbox-ellipses" size={45} color="white" />
+    </View>
+    <View style={{alignItems:'center',paddingLeft:25}}>
+    <Text>Konsultasi</Text>
+    </View>
     </View>
     </TouchableOpacity>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Phukum')}>
     <View style={styles.pHukum}>
     <Icon name="book" size={45} color="#0E7886" />
     </View>
+    <View style={{marginLeft:30}}>
+    <Text style={{fontFamily:'Poppins-medium'}}>Produk{'\n'}Hukum</Text>
+    </View>
     </TouchableOpacity>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Maps')}>
     <View style={styles.lLokasi}>
     <Icon name="map" size={45} color="white" />
     </View>
+    <View style={{marginLeft:35}}>
+    <Text> Lihat{'\n'}Lokasi</Text>
+    </View>
     </TouchableOpacity>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('AboutUs')}>
     <View style={styles.tKami}>
     <Icon name="people" size={45} color="white" />
+    </View>
+    <View style={{marginLeft:30}}>
+    <Text>Tentang{'\n'}  Kami</Text>
     </View>
     </TouchableOpacity>
     </View>
