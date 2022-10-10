@@ -6,7 +6,7 @@ import { Mata, User } from '../../assets'
 const SignIn = ({navigation}) => {
   return (
     <View style={{backgroundColor:'white',flex:1}}>
-       <Gap height={43}/> 
+       <Gap height={43}/>
       <View style={{flexDirection:'row',alignItems:'flex-end',justifyContent:'flex-end'}}>
         <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
       <Text style={styles.textJudul}>Client</Text>
@@ -32,21 +32,19 @@ const SignIn = ({navigation}) => {
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
       <Gap height={116}/>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Menu')} >
-      <Button title={'MASUK'}/>
-      </TouchableOpacity>
+      <Button title={'MASUK'} onPress={()=>navigation.navigate('Menu')}/>
       <Gap height={18}/>
       <View style={{flexDirection:'row',justifyContent:'center'}}>
         <Text style={{fontSize:15,color:'black',paddingRight:7,}}>Tidak memiliki akun? </Text>
         <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignUp')}>
         <Text style={{fontSize:15,color:'#D92B2B',fontWeight:'bold'}}>Klik disini </Text>
         </TouchableOpacity>
-        
-     </View>
-     </View>
-     
 
-      
+     </View>
+     </View>
+
+
+
     </View>
   )
 }
