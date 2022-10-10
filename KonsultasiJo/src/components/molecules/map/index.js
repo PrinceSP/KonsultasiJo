@@ -2,7 +2,7 @@ import React, {useState,useRef,useEffect} from "react"
 import {StyleSheet, Text, View, TextInput, TouchableOpacity} from "react-native"
 import MapView, { Callout, Circle, Marker, PROVIDER_GOOGLE } from "react-native-maps"
 
-const MapFinder = ()=>{
+const MapFinder = ({index})=>{
 	const [ region, setRegion ] = useState({
 		latitude: 1.4459986785784036,
 		longitude: 125.18399810400312,
@@ -10,7 +10,7 @@ const MapFinder = ()=>{
 		longitudeDelta: 0.0421,
 	})
   const [desc,setDetails] = useState(null)
-  
+
   const datas = {region,desc}
 	// console.log(regions);
   const mapRef = useRef(region)
