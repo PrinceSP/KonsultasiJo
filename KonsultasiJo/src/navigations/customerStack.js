@@ -1,6 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Phukum,Statistik,Kategori,SplashScreen, SignIn, SignUp, Profile, AboutUs, Maps, Menu,ChatClient} from '../pages';
+import AuthCustomerStack from './authStackCustomer';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const CustomerStack = () => {
       <Stack.Screen name="Kategori" component={Kategori}options={{headerShown: false}}/>
       <Stack.Screen name="Statistik" component={Statistik} options={{headerShown: false}}/>
       <Stack.Screen name="ChatClient" component={ChatClient} options={{headerShown: false}}/>
+      <Stack.Screen name="AuthCustomerStack" component={AuthCustomerStack} options={{headerShown: false}}/>
     </Stack.Navigator>
   )
 }

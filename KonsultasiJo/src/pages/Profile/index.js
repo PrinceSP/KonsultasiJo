@@ -2,9 +2,19 @@ import { StyleSheet, Text, View,TouchableOpacity, ScrollView } from 'react-nativ
 import React from 'react'
 import { Header, Gap, TextInput } from '../../components';
 import { ProfilePicture } from '../../assets';
+import {useSelector} from 'react-redux'
 import Icon from 'react-native-vector-icons/Ionicons';
+import Auth from '../../configs/auth';
 
 const Profile = ({navigation}) => {
+  const {userData} = useSelector(state=>state.User)
+
+  const logout=async()=>{
+     await Auth.removeAccount()
+     navigation.navigate("AuthCustomerStack",{screen:"SignIn"})
+     // console.log(navigation.navigate("AuthCustomerStack"));
+  }
+
   return (
     <View style={styles.Background}>
         <Header title="Profile" onBack={() => navigation.goBack()} />
@@ -15,17 +25,15 @@ const Profile = ({navigation}) => {
         <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.Container}>
           <Text style={styles.Judul}>Nama</Text>
-          <Text style={styles.Isi}>Nariva Wagey</Text>
+          <Text style={styles.Isi}>{userData.name}</Text>
           <Text style={styles.Judul}>NIK</Text>
-          <Text style={styles.Isi}>717109022781</Text>
+          <Text style={styles.Isi}>{userData.nik}</Text>
           <Text style={styles.Judul}>Email</Text>
-          <Text style={styles.Isi}>Narivawagey@gmail.com</Text>
-          <Text style={styles.Judul}>Kata Sandi</Text>
-          <Text style={styles.Isi}>***********</Text>
+          <Text style={styles.Isi}>{userData.email}</Text>
         </View>
       <View style={styles.exit}>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
-      <Icon name="exit" size={45} color="#D92B2B" />
+      <TouchableOpacity activeOpacity={0.7} onPress={logout}>
+        <Icon name="exit" size={45} color="#D92B2B" />
       <Text style={{color:'#696868'}}>Keluar</Text>
       </TouchableOpacity>
       </View>
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: '#F4F4F4',
     paddingTop: 15,
-    paddingBottom: 50,
+    paddingBottom: 20,
     marginHorizontal: 10,
     borderRadius: 20,
     shadowColor: "#000",

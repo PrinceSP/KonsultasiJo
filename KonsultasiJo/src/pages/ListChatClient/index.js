@@ -1,169 +1,60 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, StatusBar,FlatList } from 'react-native'
 import React from 'react'
 import { Header, Gap } from '../../components';
 import { Operator } from '../../assets';
 
-const ChatOperator = ({navigation}) => {
+const ListChatClients = ({navigation}) => {
+
+  const list = [
+    {
+      name: 'Amy Farha',
+      subtitle: 'Hey there, how are you?',
+    },
+    {
+      name: 'Chris Jackson',
+      subtitle: 'Where are you?',
+    },
+  ]
+
+  const ListChat = ({item})=>{
+    return(
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator',{data:item})}>
+        <View style={styles.Wrapper}>
+          <Operator style={styles.operator}/>
+          <View style={styles.chatwrapper}>
+            <Text style={styles.Nama}>{item.name}</Text>
+            <Text style={styles.Topic}>{item.subtitle}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+
   return (
     <View style={styles.container}>
-        <Header title="Pesan" onBack={() => navigation.goBack()} />        
-        <ScrollView showsVerticalScrollIndicator={false}>        
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-          </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>        
-        </TouchableOpacity>
-
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator')}>
-          <View style={styles.Wrapper}>
-            <Operator style={styles.operator}/> 
-            <View style={styles.chatwrapper}>
-              <Text style={styles.Nama}>Nariva</Text>        
-              <Text style={styles.Topic}>Konsultasi Hukum Kekayaan</Text>              
-            </View>            
-          </View>          
-        </TouchableOpacity>
-
-        </ScrollView>
-    </View> 
+      <StatusBar barStyle="dark-content" backgroundColor='#fff' />
+      <Header title="Pesan" onBack={() => navigation.goBack()} />
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item, index) => index.toString()}
+        data={list}
+        renderItem={ListChat}
+        />
+    </View>
   )
 }
- 
-export default ChatOperator
+
+export default ListChatClients
 
 const styles = StyleSheet.create({
-  container: {    
-    flex: 1,  
-    backgroundColor: 'white',         
-  },    
-  operator:{           
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  operator:{
     marginRight: 15,
     width: 50,
-    height: 50,           
+    height: 50,
   },
   Wrapper:{
     flexDirection: 'row',
@@ -171,7 +62,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderTopWidth: 1,
     paddingHorizontal: 10,
-    paddingVertical: 6,    
+    paddingVertical: 6,
   },
   chatwrapper:{
     flexDirection: 'column',
@@ -186,9 +77,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 5,
   }},
-  Topic: {    
+  Topic: {
     color: 'black',
-    fontSize: 14,    
-    marginBottom: 8,    
+    fontSize: 14,
+    marginBottom: 8,
 },
 });

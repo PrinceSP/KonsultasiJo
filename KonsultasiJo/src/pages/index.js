@@ -6,7 +6,7 @@ import Profile from './Profile';
 import Maps from './Maps';
 import ChatClient from './ChatClient';
 import ChatOperator from './ChatOperator'
-import ListChatClient from './ListChatClient';
+import ListChatClients from './ListChatClient';
 import Phukum from "./Phukum";
 import Statistik from "./Statistik";
 import MenuOprator from "./MenuOprator";
@@ -15,7 +15,4 @@ import Menu from './Menu';
 import SignInOperator from './SignInOperator/SignInOperator';
 
 
-export {Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClient,Menu, SignInOperator};
-
-
-
+export {Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClients,Menu, SignInOperator};

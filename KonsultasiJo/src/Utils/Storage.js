@@ -23,7 +23,13 @@ const set = async(key, value)=>{
   }
   // return success;
 }
-const remove = async(key) =>{}
+const remove = async(key) =>{
+  try {
+    return await AsyncStorage.removeItem(key)
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 const clear = async()=> {
   try {

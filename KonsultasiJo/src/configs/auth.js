@@ -10,13 +10,13 @@ const setAccount = async(data)=>{
 }
 
 
-const logout = async()=>{
-  return await Storage.set('account', null);
+const removeAccount = async()=>{
+  return await Storage.remove('account');
 }
 
 
 export default {
-  logout,
+  removeAccount,
   getAccount,
   setAccount
 };

@@ -15,11 +15,11 @@ const MenuOprator = ({navigation}) => {
     <Text style={styles.tNama}>Nariva Wagey</Text>
     <Text style={styles.tNik}>1234567890123456</Text>
     </View>
-   
+
 
     </View >
     <View style={{flexDirection:'row',justifyContent:'center'}}>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ListChatClient')}>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ListChatClients')}>
     <View style={styles.fChat}>
     <Icon name="chatbox-ellipses" size={45} color="white" />
     </View>
@@ -30,16 +30,16 @@ const MenuOprator = ({navigation}) => {
     </View>
     </TouchableOpacity>
     </View>
-   
+
     <View style={styles.exit}>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
+    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignInOperator')}>
     <Icon name="exit" size={45} color="#D92B2B" />
     <Text style={{color:'#696868'}}>Keluar</Text>
     </TouchableOpacity>
     </View>
-    
-    
-    
+
+
+
 
 
     </View>
@@ -55,20 +55,20 @@ const styles = StyleSheet.create({
         height:135,
         borderRadius:20,
         flexDirection:'row',
-        
+
       },
       tNama: {
         color:'white',
         paddingLeft:14,
         fontSize:16,
-    
+
       },
       tWelcome: {
         color:'white',
         paddingLeft:14,
         paddingTop:21,
         fontSize:16,
-    
+
       },
       tNik:{
         color:'black',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         paddingRight:16,
-        
+
       },
       fChat:{
         backgroundColor:'#2AB1E0',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.20,
         shadowRadius: 5.00,
         elevation: 5,
-    
+
       },
       pHukum:{
         backgroundColor:'#5DDDD3',
@@ -119,15 +119,15 @@ const styles = StyleSheet.create({
         shadowRadius: 5.00,
         elevation: 5,
       },
-      exit:{   
+      exit:{
         flex:1,
-        justifyContent:'flex-end',     
+        justifyContent:'flex-end',
         alignItems:'flex-end',
         marginRight:18,
         marginBottom:42,
 
-        
+
       }
-      
+
 
 })
