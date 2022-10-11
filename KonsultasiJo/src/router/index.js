@@ -1,28 +1,47 @@
+import React,{useState,useEffect} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Phukum,Statistik,MenuOprator,Kategori,SplashScreen, SignIn, SignUp, Profile, AboutUs, Maps, ChatClient, ListChatClient, ChatOperator, Menu,SignInOperator} from '../pages';
-
+import { useDispatch, useSelector } from 'react-redux';
+import Auth from '../configs/auth';
+import { setUser } from '../redux/reducer/user';
+import CustomerStack from '../navigations/customerStack';
+import AuthCustomerStack from '../navigations/authStackCustomer';
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
+  const dispatch = useDispatch();
+
+  const { userData, login } = useSelector(state => state.User);
+
+  const [loginChk, setloginChk] = useState(true);
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = async () => {
+     let data = await Auth.getAccount();
+     if (data != null) {
+        dispatch(setUser(data));
+        setloginChk(false)
+     }else{
+        setloginChk(false)
+     }
+  }
+
+  if (loginChk) {
+    return null;
+  }
+  console.log(userData);
   return (
     <Stack.Navigator detachInactiveScreens={false} headerMode="none">
-      <Stack.Screen name="SplashScreen" component={SplashScreen}options={{headerShown: false}}/>
-      <Stack.Screen name="SignIn" component={SignIn}options={{headerShown: false}}/>
-      <Stack.Screen name="SignUp" component={SignUp}options={{headerShown: false}}/>
-      <Stack.Screen name="Profile" component={Profile}options={{headerShown: false}}/>
-      <Stack.Screen name="AboutUs" component={AboutUs}options={{headerShown: false}}/>
-      <Stack.Screen name="Maps" component={Maps}options={{headerShown: false}}/>
-      <Stack.Screen name="ChatClient" component={ChatClient}options={{headerShown: false}}/>
-      <Stack.Screen name="ListChatClient" component={ListChatClient}options={{headerShown: false}}/>
-      <Stack.Screen name="ChatOperator" component={ChatOperator}options={{headerShown: false}}/>
-      <Stack.Screen name="Menu" component={Menu}options={{headerShown: false}}/>
-      <Stack.Screen name="Phukum" component={Phukum}options={{headerShown: false}}/>
-      <Stack.Screen name="Statistik" component={Statistik}options={{headerShown: false}}/>
-      <Stack.Screen name="MenuOprator" component={MenuOprator}options={{headerShown: false}}/>
-      <Stack.Screen name="Kategori" component={Kategori}options={{headerShown: false}}/>
-      <Stack.Screen name="SignInOperator" component={SignInOperator}options={{headerShown: false}}/>
+
+      {!login ?
+        <Stack.Screen name="AuthCustomerStack" component={AuthCustomerStack} options={{headerShown: false}}/>
+        :
+        <Stack.Screen name="CustomerStack" component={CustomerStack} options={{headerShown: false}}/>
+      }
+
     </Stack.Navigator>
   )
 }
