@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Button, Gap, TextInput } from '../../components'
+import { Button, Gap, Input } from '../../components'
 import { Mata, User } from '../../assets'
 
 const SignInOperator = ({navigation}) => {
@@ -9,8 +9,7 @@ const SignInOperator = ({navigation}) => {
        <Gap height={43}/>
       <View style={{flexDirection:'row',alignItems:'flex-end',justifyContent:'flex-end'}}>
         <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
-      <Text style={styles.textJudul}>Client</Text>
-
+          <Text style={styles.textJudul}>Client</Text>
         </TouchableOpacity>
       <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignInOperator')}>
       <Text style={{color:'#D92B2B',fontWeight:'900',paddingRight:28,fontSize:16}}>Operator</Text>
@@ -23,24 +22,19 @@ const SignInOperator = ({navigation}) => {
      </View>
      <View style={styles.contentWrapper}>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'Username'}/>
+     <Input placeholder={'Username'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>
      <Gap height={43}/>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'Password'}/>
+     <Input placeholder={'Password'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
       <Gap height={116}/>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignUp')} >
-      <Button title={'MASUK'}/>
-      </TouchableOpacity>
+      <Button title={'MASUK'} onPress={()=>navigation.navigate("OperatorStack",{screen:'MenuOprator'})}/>
       <Gap height={18}/>
 
      </View>
-
-
-
     </View>
   )
 }

@@ -43,12 +43,11 @@ const SignIn = ({navigation}) => {
     <View style={{backgroundColor:'white',flex:1}}>
        <Gap height={43}/>
       <View style={{flexDirection:'row',alignItems:'flex-end',justifyContent:'flex-end'}}>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
-      <Text style={styles.textJudul}>Client</Text>
-
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate("SignIn")}>
+          <Text style={styles.textJudul}>Client</Text>
         </TouchableOpacity>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignInOperator')}>
-      <Text style={{color:'black',fontWeight:'900',paddingRight:28,fontSize:16}}>Operator</Text>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate("AuthOperatorStack",{screen:"SignInOperator"})}>
+        <Text style={{color:'black',fontWeight:'900',paddingRight:28,fontSize:16}}>Operator</Text>
       </TouchableOpacity>
       </View>
       <Gap height={61}/>

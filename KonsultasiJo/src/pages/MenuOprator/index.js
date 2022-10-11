@@ -1,13 +1,12 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { Fitur_chat, Foto } from '../../assets'
+import { Foto } from '../../assets';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Berita, Gap, Header } from '../../components';
-
+import { Header } from '../../components';
 const MenuOprator = ({navigation}) => {
   return (
     <View style={{flex:1, backgroundColor:'white'}}>
-       <Header title="Menu Operator" onBack={() => navigation.goBack()}/>
+       <Header title="MenuOperator" onBack={() => navigation.goBack()}/>
 
 
     <View style={styles.profile}>
@@ -16,9 +15,7 @@ const MenuOprator = ({navigation}) => {
     <Text style={styles.tNama}>Nariva Wagey</Text>
     <Text style={styles.tNik}>1234567890123456</Text>
     </View>
-    <View style={styles.foto}>
-      <Foto/>
-    </View>
+   
 
     </View >
     <View style={{flexDirection:'row',justifyContent:'center'}}>
@@ -37,7 +34,7 @@ const MenuOprator = ({navigation}) => {
     <View style={styles.exit}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
     <Icon name="exit" size={45} color="#D92B2B" />
-    <Text style={{color:'black'}}>Keluar</Text>
+    <Text style={{color:'#696868'}}>Keluar</Text>
     </TouchableOpacity>
     </View>
     

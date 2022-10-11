@@ -1,9 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Phukum,Statistik,Kategori,SplashScreen, SignIn, SignUp, Profile, AboutUs, Maps, Menu} from '../pages';
-import { useDispatch, useSelector } from 'react-redux';
-import Auth from '../configs/auth';
-import { setUser } from '../redux/reducer/user';
+import { SplashScreen, ChatClient, MenuOprator,ListChatClient,ChatOperator} from '../pages';
+import AuthOperatorStack from '../navigations/authStackOperator';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +14,7 @@ const OperatorStack = () => {
       <Stack.Screen name="ListChatClient" component={ListChatClient}options={{headerShown: false}}/>
       <Stack.Screen name="ChatOperator" component={ChatOperator}options={{headerShown: false}}/>
       <Stack.Screen name="MenuOprator" component={MenuOprator}options={{headerShown: false}}/>
+      <Stack.Screen name="AuthOperatorStack" component={AuthOperatorStack}options={{headerShown: false}}/>
     </Stack.Navigator>
   )
 }

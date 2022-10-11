@@ -6,6 +6,7 @@ import Auth from '../configs/auth';
 import { setUser } from '../redux/reducer/user';
 import CustomerStack from '../navigations/customerStack';
 import AuthCustomerStack from '../navigations/authStackCustomer';
+import AuthOperatorStack from '../navigations/authStackOperator';
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -41,6 +42,7 @@ const Router = () => {
         :
         <Stack.Screen name="CustomerStack" component={CustomerStack} options={{headerShown: false}}/>
       }
+      <Stack.Screen name="AuthOperatorStack" component={AuthOperatorStack} options={{headerShown: false}}/>
 
     </Stack.Navigator>
   )
