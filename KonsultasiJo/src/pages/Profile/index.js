@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import { Header, Gap, TextInput } from '../../components';
 import { ProfilePicture } from '../../assets';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Profile = ({navigation}) => {
   return (
@@ -10,6 +11,8 @@ const Profile = ({navigation}) => {
         <View style={styles.PictureWrapper}>
           <ProfilePicture />
         </View>
+
+        <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.Container}>
             <Text style={styles.Judul}>Nama</Text>
             <Text style={styles.Isi}>Nariva Wagey</Text>
@@ -20,6 +23,13 @@ const Profile = ({navigation}) => {
             <Text style={styles.Judul}>Kata Sandi</Text>
             <Text style={styles.Isi}>***********</Text>
         </View>
+      <View style={styles.exit}>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
+      <Icon name="exit" size={45} color="#D92B2B" />
+      <Text style={{color:'#696868'}}>Keluar</Text>
+      </TouchableOpacity>
+      </View>
+        </ScrollView>
     </View>
   )
 }
@@ -67,5 +77,12 @@ const styles = StyleSheet.create({
   },
   PictureWrapper: {
     alignItems: 'center',
+  },
+  exit:{
+    justifyContent:'flex-end',
+    alignItems:'flex-end',
+    marginRight:10,
+    marginBottom:15,
+    marginTop:10,
   },
 });
