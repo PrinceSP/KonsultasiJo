@@ -1,55 +1,105 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
+import TimeDelivery from '../Time'
 
-const ReplyOperator = ({containerMarginRight=125, containerMarginLeft=10, jam='left',item}) => {
-  // console.log(JSON.stringify(item));
+const ReplyOperator = ({sender, message, item, sendTime}) => {
+  // console.log(message);
   return (
-    <View style={styles.container(containerMarginLeft, containerMarginRight)}>
-        {/* <Operator style={styles.operator}/> */}
-        {/* <ChatOperator/> */}
-        <View style={styles.chatwrapper}>
-        <Text style={styles.time(jam)}>05 Jun 2022 - 09:51</Text>
-        <Text style={styles.text}>{item}</Text>
+    <Pressable
+        style={{ marginVertical: 0 }}
+    >
+        <View
+            style={[styles.TriangleShapeCSS,
+            sender ?
+                styles.right
+                :
+                [styles.left]
+            ]}
+        />
+        <View
+            style={[styles.masBox, {
+                alignSelf: sender ? 'flex-end' : 'flex-start',
+                // borderWidth:1,
+                backgroundColor: sender ? "#27AE60" : "#EAEAEA",
+                elevation:4
+            }]}
+        >
+
+            <Text style={{ paddingLeft: 5, color:  sender ? "#fff" : "#000",fontFamily:"Poppins-Regular",fontSize:15.5 }}>
+              {message}
+            </Text>
+
+            <TimeDelivery
+                sender={sender}
+                item={item}
+            />
+
         </View>
-    </View>
+    </Pressable>
   )
 }
 
 export default ReplyOperator
 
 const styles = StyleSheet.create({
-    text:{
-      borderRadius: 10,
-      fontSize: 16,
-      shadowColor: "#000",
-      shadowOffset: {
-  	    width: 0,
-  	    height: 5,
-      },
-      shadowOpacity: 0.20,
-      shadowRadius: 5.00,
-      elevation: 5,
-      padding: 10,
-      backgroundColor: '#EAEAEA',
-      color:"#000"
-    },
-    container: (containerMarginLeft, containerMarginRight) => ({
-    paddingHorizontal: 10,
-    marginLeft: containerMarginLeft,
-    marginRight: containerMarginRight,
-    flexDirection: 'row',
-    }),
-    // operator:{
-    //     marginRight: 15,
-    //     width: 50,
-    //     height: 50,
-    // },
-    chatwrapper:{
-        flexDirection: 'column',
-    },
-    time: (jam) => ({
-        textAlign: jam,
-        fontSize: 12,
-        marginBottom: 8,
-    }),
+  masBox: {
+      alignSelf: 'flex-end',
+      marginHorizontal: 10,
+      minWidth: 80,
+      maxWidth: '80%',
+      paddingHorizontal: 10,
+      marginVertical: 5,
+      paddingTop: 5,
+      borderRadius: 8
+  },
+  timeText: {
+      fontFamily: 'AveriaSerifLibre-Light',
+      fontSize: 10
+  },
+  dayview: {
+      alignSelf: 'center',
+      height: 30,
+      width: 100,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // backgroundColor: "#fff",
+      borderRadius: 30,
+      marginTop: 10
+  },
+  iconView: {
+      width: 42,
+      height: 42,
+      borderRadius: 21,
+      alignItems: 'center',
+      justifyContent: 'center',
+      // backgroundColor: COLORS.themecolor,
+  },
+  TriangleShapeCSS: {
+      position: 'absolute',
+      // top: -3,
+      width: 0,
+      height: 0,
+      // borderBottomLeftRadius:5,
+      backgroundColor: 'transparent',
+      borderStyle: 'solid',
+      borderLeftWidth: 15,
+      borderRightWidth: 5,
+      borderBottomWidth: 20,
+      borderLeftColor: 'transparent',
+      borderRightColor: 'transparent',
+      // borderBottomColor: '#757474'
+  },
+  left: {
+      borderBottomColor: "#fff",
+      left: 2,
+      bottom: 10,
+      transform: [{ rotate: '0deg' }]
+  },
+  right: {
+      borderBottomColor: "#",
+      right: 2,
+      // top:0,
+      bottom: 5,
+      transform: [{ rotate: '103deg' }]
+  },
 });
