@@ -1,4 +1,4 @@
-
+import { NativeBaseProvider } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react'
 import Router from './router';
@@ -7,7 +7,9 @@ import Router from './router';
 const App = () => {
   return (
     <NavigationContainer>
-      <Router/>
+      <NativeBaseProvider>
+        <Router/>
+      </NativeBaseProvider>
     </NavigationContainer>
   )
 }
