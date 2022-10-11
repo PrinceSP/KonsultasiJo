@@ -29,6 +29,6 @@ import Waris from './Waris.svg'
 import Ite from './ITE.svg'
 import LambangKota from "./lambangKota.svg"
 import TopIllustration from "./topIllustration.svg"
+import People from "./people.svg"
 
-
-export {Ite,Kekayaan,LambangKota,Waris,Kekeluargaan,Lainnya, PerusakanBarang, PNamaBaik,Pembunuhan,Pemerasan,Pencurian, Penganiayaan,Perceraian, Perikatan, Perselingkuhan,Fitur_chat,Chat,Mata,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan,Foto,TopIllustration};
+export {Ite,Kekayaan,LambangKota,Waris,Kekeluargaan,Lainnya, PerusakanBarang, PNamaBaik,Pembunuhan,Pemerasan,Pencurian, Penganiayaan,Perceraian, Perikatan, Perselingkuhan,Fitur_chat,Chat,Mata,User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram, Operator, Send,Perkawinan,Foto,TopIllustration,People};
