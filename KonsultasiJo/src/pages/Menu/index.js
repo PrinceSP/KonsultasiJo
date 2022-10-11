@@ -1,10 +1,16 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import { Fitur_chat, Foto,TopIllustration } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Berita, Gap, Header } from '../../components';
+import { useSelector } from 'react-redux';
+
 
 const Menu = ({navigation}) => {
+
+  const { userData } = useSelector(state => state.User);
+
+  console.log(userData);
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
@@ -13,8 +19,8 @@ const Menu = ({navigation}) => {
         <Image source={Foto} style={{height:70,width:70,borderRadius:70,marginRight:30}}/>
         <View>
           <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
-          <Text style={styles.tNama}>Nariva Wagey</Text>
-          <Text style={styles.tNik}>1234567890123456</Text>
+          <Text style={styles.tNama}>{userData.email}</Text>
+          <Text style={styles.tNik}>{userData.nik}</Text>
         </View>
       </View >
     </TouchableOpacity>
