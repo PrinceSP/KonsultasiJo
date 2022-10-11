@@ -1,10 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import { AsyncStorage } from 'react-native';
 
 const get = async(key, defaultValue = null)=>{
   try {
     let value = await AsyncStorage.getItem(key);
-
+    // console.log("current user data is: ", value);
     if (value !== null) {
       value = JSON.parse(value);
     }

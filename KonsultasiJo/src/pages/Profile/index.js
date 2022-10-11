@@ -14,14 +14,14 @@ const Profile = ({navigation}) => {
 
         <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.Container}>
-            <Text style={styles.Judul}>Nama</Text>
-            <Text style={styles.Isi}>Nariva Wagey</Text>
-            <Text style={styles.Judul}>NIK</Text>
-            <Text style={styles.Isi}>717109022781</Text>
-            <Text style={styles.Judul}>Email</Text>
-            <Text style={styles.Isi}>Narivawagey@gmail.com</Text>
-            <Text style={styles.Judul}>Kata Sandi</Text>
-            <Text style={styles.Isi}>***********</Text>
+          <Text style={styles.Judul}>Nama</Text>
+          <Text style={styles.Isi}>Nariva Wagey</Text>
+          <Text style={styles.Judul}>NIK</Text>
+          <Text style={styles.Isi}>717109022781</Text>
+          <Text style={styles.Judul}>Email</Text>
+          <Text style={styles.Isi}>Narivawagey@gmail.com</Text>
+          <Text style={styles.Judul}>Kata Sandi</Text>
+          <Text style={styles.Isi}>***********</Text>
         </View>
       <View style={styles.exit}>
       <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
