@@ -2,8 +2,10 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Header, Gap, TextInput } from '../../components';
 import { ProfilePicture } from '../../assets';
+import {useSelector} from 'react-redux'
 
 const Profile = ({navigation}) => {
+  const {userData} = useSelector(state=>state.User)
   return (
     <View style={styles.Background}>
         <Header title="Profile" onBack={() => navigation.goBack()} />
@@ -14,11 +16,9 @@ const Profile = ({navigation}) => {
           <Text style={styles.Judul}>Nama</Text>
           <Text style={styles.Isi}>Nariva Wagey</Text>
           <Text style={styles.Judul}>NIK</Text>
-          <Text style={styles.Isi}>717109022781</Text>
+          <Text style={styles.Isi}>{userData.nik}</Text>
           <Text style={styles.Judul}>Email</Text>
-          <Text style={styles.Isi}>Narivawagey@gmail.com</Text>
-          <Text style={styles.Judul}>Kata Sandi</Text>
-          <Text style={styles.Isi}>***********</Text>
+          <Text style={styles.Isi}>{userData.email}</Text>
         </View>
     </View>
   )
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: '#F4F4F4',
     paddingTop: 15,
-    paddingBottom: 50,
+    paddingBottom: 20,
     marginHorizontal: 10,
     borderRadius: 20,
     shadowColor: "#000",
