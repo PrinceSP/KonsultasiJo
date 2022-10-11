@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { Button, Gap, TextInput } from '../../components'
+import { Button, Gap, Input } from '../../components'
 import { Mata, User } from '../../assets'
-import database from '@react-native-firebase/database';
+import { firebase } from '@react-native-firebase/database';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/reducer/user';
 import Auth from '../../configs/auth';
@@ -15,28 +15,28 @@ const SignIn = ({navigation}) => {
   const [pass, setpass] = useState('');
 
   const loginUser = async () => {
-    database()
-      .ref('users/')
-      .orderByChild("emailId")
-      .equalTo(email)
-      .once('value')
-      .then( async snapshot => {
-        if (snapshot.val() == null) {
-           console.log("Invalid Email Id!");
-           return false;
-        }
-        let userData = Object.values(snapshot.val())[0];
-        if (userData?.password != pass) {
-           console.log("Invalid Password!");
-           return false;
-        }
+    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    .ref('/users')
+    .orderByChild("email")
+    .equalTo(email)
+    .once('value')
+    .then( async snapshot => {
+      if (snapshot.val() == null) {
+         console.log("Invalid Email Id!");
+         return false;
+      }
+      let userData = Object.values(snapshot.val())[0];
+      if (userData?.password != pass) {
+         console.log("Invalid Password!");
+         return false;
+      }
 
-        console.log('User data: ', userData);
-        dispatch(setUser(userData));
-        await Auth.setAccount(userData);
-        console.log("Login Successfully!");
-      })
-    }
+      console.log('User data: ', userData);
+      dispatch(setUser(userData));
+      await Auth.setAccount(userData);
+      console.log("Login Successfully!");
+    })
+  }
 
   return (
     <View style={{backgroundColor:'white',flex:1}}>
@@ -57,28 +57,24 @@ const SignIn = ({navigation}) => {
      </View>
      <View style={styles.contentWrapper}>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'NIK'}/>
+     <Input placeholder={'NIK'} defaultValue={email} onChangeText={(value)=>setemail(value)}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>
      <Gap height={43}/>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'Password'}/>
+     <Input placeholder={'Password'} defaultValue={pass} onChangeText={(value)=>setpass(value)}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
       <Gap height={116}/>
-      <Button title={'MASUK'} onPress={()=>navigation.navigate('Menu')}/>
+      <Button title={'MASUK'} onPress={loginUser}/>
       <Gap height={18}/>
       <View style={{flexDirection:'row',justifyContent:'center'}}>
-        <Text style={{fontSize:15,color:'black',paddingRight:7,}}>Tidak memiliki akun? </Text>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignUp')}>
+       <Text style={{fontSize:15,color:'black',paddingRight:7,}}>Tidak memiliki akun? </Text>
+       <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignUp')}>
         <Text style={{fontSize:15,color:'#D92B2B',fontWeight:'bold'}}>Klik disini </Text>
-        </TouchableOpacity>
-
+       </TouchableOpacity>
+      </View>
      </View>
-     </View>
-
-
-
     </View>
   )
 }
