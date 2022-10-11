@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, StatusBar,FlatList } from 'react-native'
 import React from 'react'
 import { Header, Gap } from '../../components';
-import { Operator } from '../../assets';
+import { Operator,People } from '../../assets';
 
 const ListChatClients = ({navigation}) => {
 
@@ -40,6 +40,11 @@ const ListChatClients = ({navigation}) => {
         data={list}
         renderItem={ListChat}
         />
+      <TouchableOpacity
+       style={styles.but}
+       onPress={()=>navigation.navigate('AllUser')}>
+         <People height={30}/>
+     </TouchableOpacity>
     </View>
   )
 }
@@ -81,5 +86,16 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 14,
     marginBottom: 8,
-},
+},but: {
+    position: 'absolute',
+    bottom: 15,
+    right: 15,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#27AE60",
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
+  },
 });
