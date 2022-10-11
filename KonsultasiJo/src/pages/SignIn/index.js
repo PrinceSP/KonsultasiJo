@@ -11,14 +11,14 @@ const SignIn = ({navigation}) => {
 
   const dispatch = useDispatch();
 
-  const [email, setemail] = useState('');
+  const [nik, setnik] = useState('');
   const [pass, setpass] = useState('');
 
   const loginUser = async () => {
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/users')
-    .orderByChild("email")
-    .equalTo(email)
+    .orderByChild("nik")
+    .equalTo(nik)
     .once('value')
     .then( async snapshot => {
       if (snapshot.val() == null) {
@@ -35,7 +35,7 @@ const SignIn = ({navigation}) => {
       dispatch(setUser(userData));
       await Auth.setAccount(userData);
       console.log("Login Successfully!");
-      navigation.navigate("CustomerStack",{screen:"Menu"})
+      navigation.navigate("Menu")
     })
   }
 
@@ -57,7 +57,7 @@ const SignIn = ({navigation}) => {
      </View>
      <View style={styles.contentWrapper}>
      <View style={{flexDirection:'row'}}>
-     <Input placeholder={'NIK'} defaultValue={email} onChangeText={(value)=>setemail(value)}/>
+     <Input placeholder={'NIK'} defaultValue={nik} onChangeText={(value)=>setnik(value)}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>
      <Gap height={43}/>
