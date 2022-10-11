@@ -1,12 +1,40 @@
+import React, {useState} from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Button, Gap, TextInput } from '../../components'
+import { Button, Gap, Input } from '../../components'
 import { Chat, Mata, User } from '../../assets'
+import uuid from 'react-native-uuid'
+import { firebase } from '@react-native-firebase/database';
 
 const SignUp = ({navigation}) => {
+  const [userInfos,setUserInfos] = useState({
+    nik:'',
+    email:'',
+    password:'',
+    passwordConfirm:'',
+  })
+
+  const {nik,email,password,passwordConfirm} = userInfos
+
+  const datas = {
+    id:uuid.v4(),
+    nik,
+    email,
+    password,
+  }
+
+  const registerUser = async()=>{
+    await firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    .ref('/users/'+datas.id)
+    .set(datas)
+    .then(()=>{
+      setUserInfos({...userInfos,nik:'',email:'',password:'',passwordConfirm:''})
+    })
+    navigation.navigate("SignIn")
+  }
+
   return (
     <View style={{backgroundColor:'white',flex:1}}>
-       <Gap height={43}/> 
+       <Gap height={43}/>
       <Text style={styles.textJudul}>KonsultasiJo</Text>
       <Gap height={61}/>
      <View style={{alignItems:'center',justifyContent:'center'}}>
@@ -16,34 +44,32 @@ const SignUp = ({navigation}) => {
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.contentWrapper}>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'Nama'}/>
+     <Input defaultValue={nik} onChangeText={(value)=>setUserInfos({...userInfos,nik:value})} placeholder={'NIK'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>
      <Gap height={42}/>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'Email'}/>
+     <Input defaultValue={email} onChangeText={(value)=>setUserInfos({...userInfos,email:value})} placeholder={'Email'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Chat/></View>
      </View>
      <Gap height={42}/>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'Kata Sandi'}/>
+     <Input defaultValue={password} onChangeText={(value)=>setUserInfos({...userInfos,password:value})} placeholder={'Kata Sandi'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
      <Gap height={42}/>
      <View style={{flexDirection:'row'}}>
-     <TextInput placeholder={'Ulangi Kata Sandi'}/>
+     <Input defaultValue={passwordConfirm} onChangeText={(value)=>setUserInfos({...userInfos,passwordConfirm:value})} placeholder={'Ulangi Kata Sandi'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
-      <Gap height={116}/>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignIn')}>
-      <Button title={'Lanjut'}/>
-      </TouchableOpacity>
+     <Gap height={116}/>
+     <Button title={'Lanjut'} onPress={registerUser}/>
      <Gap height={70}/>
      </View>
     </ScrollView>
-     
 
-      
+
+
     </View>
   )
 }
