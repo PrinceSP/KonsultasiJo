@@ -11,8 +11,8 @@ const Profile = ({navigation}) => {
 
   const logout=async()=>{
      await Auth.removeAccount()
-     // navigation.navigate("AuthCustomerStack",{screen:"SignIn"})
-     console.log(navigation.navigate("AuthCustomerStack"));
+     navigation.navigate("AuthCustomerStack",{screen:"SignIn"})
+     // console.log(navigation.navigate("AuthCustomerStack"));
   }
 
   return (
@@ -25,7 +25,7 @@ const Profile = ({navigation}) => {
         <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.Container}>
           <Text style={styles.Judul}>Nama</Text>
-          <Text style={styles.Isi}>Nariva Wagey</Text>
+          <Text style={styles.Isi}>{userData.name}</Text>
           <Text style={styles.Judul}>NIK</Text>
           <Text style={styles.Isi}>{userData.nik}</Text>
           <Text style={styles.Judul}>Email</Text>
