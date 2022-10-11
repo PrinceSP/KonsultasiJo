@@ -10,16 +10,18 @@ const SignUp = ({navigation}) => {
     nik:'',
     email:'',
     password:'',
-    passwordConfirm:'',
+    name:'',
   })
 
-  const {nik,email,password,passwordConfirm} = userInfos
+  const {nik,email,password,name} = userInfos
 
   const datas = {
     id:uuid.v4(),
+    name,
     nik,
     email,
     password,
+    role:"customer"
   }
 
   const registerUser = async()=>{
@@ -27,7 +29,7 @@ const SignUp = ({navigation}) => {
     .ref('/users/'+datas.id)
     .set(datas)
     .then(()=>{
-      setUserInfos({...userInfos,nik:'',email:'',password:'',passwordConfirm:''})
+      setUserInfos({...userInfos,nik:'',email:'',password:'',name:''})
     })
     navigation.navigate("SignIn")
   }
@@ -49,17 +51,17 @@ const SignUp = ({navigation}) => {
      </View>
      <Gap height={42}/>
      <View style={{flexDirection:'row'}}>
+     <Input defaultValue={name} onChangeText={(value)=>setUserInfos({...userInfos,name:value})} placeholder={'Name'}/>
+     <View style={{justifyContent:'center',alignItems:'flex-end',}}><Chat/></View>
+     </View>
+     <Gap height={42}/>
+     <View style={{flexDirection:'row'}}>
      <Input defaultValue={email} onChangeText={(value)=>setUserInfos({...userInfos,email:value})} placeholder={'Email'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Chat/></View>
      </View>
      <Gap height={42}/>
      <View style={{flexDirection:'row'}}>
-     <Input defaultValue={password} onChangeText={(value)=>setUserInfos({...userInfos,password:value})} placeholder={'Kata Sandi'}/>
-     <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
-     </View>
-     <Gap height={42}/>
-     <View style={{flexDirection:'row'}}>
-     <Input defaultValue={passwordConfirm} onChangeText={(value)=>setUserInfos({...userInfos,passwordConfirm:value})} placeholder={'Ulangi Kata Sandi'}/>
+     <Input defaultValue={password} onChangeText={(value)=>setUserInfos({...userInfos,password:value})} placeholder={'Password'}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
      <Gap height={116}/>
