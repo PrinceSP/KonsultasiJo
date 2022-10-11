@@ -31,7 +31,7 @@ const ChatOperator = ({route,navigation}) => {
               style={{
                   backgroundColor: "#fff",
                   width:'80%',
-                  borderRadius:25,
+                  borderRadius:10,
                   borderWidth:0.5,
                   borderColor: "#fff",
                   paddingHorizontal: 15,
