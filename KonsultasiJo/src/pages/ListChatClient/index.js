@@ -4,7 +4,6 @@ import { Header, Gap } from '../../components';
 import { Operator,People } from '../../assets';
 
 const ListChatClients = ({navigation}) => {
-
   const list = [
     {
       name: 'Amy Farha',
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
   Wrapper:{
     flexDirection: 'row',
     paddingRight: 100,
-    borderColor: 'black',
+    borderColor: '#bfbfbf',
     borderTopWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 6,
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: "#27AE60",
+    backgroundColor: "#EAEAEA",
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 5,
