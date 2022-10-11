@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const CustomerStack = () => {
 
   return (
-    <Stack.Navigator initialRouteName="Menu" headerMode="none">
+    <Stack.Navigator headerMode="none">
       <Stack.Screen name="SplashScreen" component={SplashScreen} options={{headerShown: false}}/>
       <Stack.Screen name="Menu" component={Menu} options={{headerShown: false}}/>
       <Stack.Screen name="Profile" component={Profile}options={{headerShown: false}}/>
