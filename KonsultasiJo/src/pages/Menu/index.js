@@ -10,7 +10,7 @@ const Menu = ({navigation}) => {
 
   const { userData } = useSelector(state => state.User);
 
-  console.log(userData);
+  console.log(userData.id);
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
