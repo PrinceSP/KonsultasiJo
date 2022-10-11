@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 const Router = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator detachInactiveScreens={false} headerMode="none">
       <Stack.Screen name="SplashScreen" component={SplashScreen}options={{headerShown: false}}/>
       <Stack.Screen name="SignIn" component={SignIn}options={{headerShown: false}}/>
       <Stack.Screen name="SignUp" component={SignUp}options={{headerShown: false}}/>
