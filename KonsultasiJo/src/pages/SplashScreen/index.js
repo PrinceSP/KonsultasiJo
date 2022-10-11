@@ -7,9 +7,9 @@ const SplashScreen = ({navigation}) => {
   const { userData } = useSelector(state => state.User);
 
     useEffect(() =>{
-        setTimeout(()=> {
-            navigation.replace(userData !== null && userData.role == 'customer' ? 'Menu' : 'MenuOprator');
-        }, 1000);
+      setTimeout(()=> {
+        navigation.replace(userData !== null && userData.role == 'customer' ? 'Menu' : 'MenuOprator');
+      }, 1000);
     },[]);
 
     return (
