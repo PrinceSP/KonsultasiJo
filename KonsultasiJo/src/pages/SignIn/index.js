@@ -35,6 +35,7 @@ const SignIn = ({navigation}) => {
       dispatch(setUser(userData));
       await Auth.setAccount(userData);
       console.log("Login Successfully!");
+      navigation.navigate("CustomerStack",{screen:"Menu"})
     })
   }
 
