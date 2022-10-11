@@ -7,50 +7,54 @@ import { Send } from '../../assets';
 const ChatOperator = ({route,navigation}) => {
 
   const Data = [
-            {
-                message: 'Yes Ofcourse..',
-                type: 'sender'
-            },
-            {
-                message: 'How are You ?',
-                type: 'sender'
-            },
-            {
-                message: 'How Your Opinion about the one done app ?',
-                type: 'sender'
-            },
-            {
-                message: 'Well i am not satisfied with this design plzz make design better ',
-                type: 'receiver'
-            },
-            {
-                message: 'could you plz change the design...',
-                type: 'receiver'
-            },
-            {
-                message: 'How are You ?',
-                type: 'sender'
-            },
-            {
-                message: 'How Your Opinion about the one done app ?',
-                type: 'sender'
-            },
-            {
-                message: 'Well i am not satisfied with this design plzz make design better ',
-                type: 'receiver'
-            },
-            {
-                message: 'could you plz change the design...',
-                type: 'receiver'
-            },
-            {
-                message: 'How are You ?',
-                type: 'sender'
-            },
-            {
-                message: 'How Your Opinion about the one done app ?',
-                type: 'sender'
-            }
+    {
+        message: 'Hey Nariva',
+        type: 'sender'
+    },
+    {
+        message: 'Yes Ofcourse..',
+        type: 'sender'
+    },
+    {
+        message: 'How are You ?',
+        type: 'sender'
+    },
+    {
+        message: 'How Your Opinion about the one done app ?',
+        type: 'sender'
+    },
+    {
+        message: 'Well i am not satisfied with this design plzz make design better ',
+        type: 'receiver'
+    },
+    {
+        message: 'could you plz change the design...',
+        type: 'receiver'
+    },
+    {
+        message: 'How are You ?',
+        type: 'sender'
+    },
+    {
+        message: 'How Your Opinion about the one done app ?',
+        type: 'sender'
+    },
+    {
+        message: 'Well i am not satisfied with this design plzz make design better ',
+        type: 'receiver'
+    },
+    {
+        message: 'could you plz change the design...',
+        type: 'receiver'
+    },
+    {
+        message: 'How are You ?',
+        type: 'sender'
+    },
+    {
+        message: 'How Your Opinion about the one done app ?',
+        type: 'sender'
+    }
 ]
   return (
     <View style={styles.container}>
