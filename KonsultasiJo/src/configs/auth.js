@@ -11,7 +11,7 @@ const setAccount = async(data)=>{
 
 
 const removeAccount = async()=>{
-  return await Storage.remove('account', null);
+  return await Storage.remove('account');
 }
 
 
