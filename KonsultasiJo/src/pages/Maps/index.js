@@ -1,32 +1,25 @@
 import { ScrollView, StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import { Header, Gap, Button, MapFinder } from '../../components';
 import { CancelSearchMap, ContohMaps, Telegram, Wa } from '../../assets';
 import { Row } from 'react-native-table-component';
 
 
 const Maps = ({navigation}) => {
+  const [index,setIndex] = useState(0)
   return (
     <>
         <Header title="Lihat Lokasi" onBack={() => navigation.goBack()} />
         <View style={{flexDirection:'row'}}>
           <View style={styles.buttonMap}>
-          <TouchableOpacity>
-          <Button title={'  Firma Hukum  '}/>
-          </TouchableOpacity>
+            <Button title={'  Firma Hukum  '} onPress={()=>setIndex(0)}/>
           </View>
           <View style={styles.buttonMap}>
-          <TouchableOpacity>
-          <Button title={'  Notaris  '}/>
-          </TouchableOpacity>
+            <Button title={'  Notaris  '} onPress={()=>setIndex(1)}/>
           </View>
           <View style={styles.buttonMap}>
-          <TouchableOpacity>
-          <Button title={'  Lembaga bantuan Hukum  '}/>
-          </TouchableOpacity>
-
+            <Button title={'  Lembaga bantuan Hukum  '} onPress={()=>setIndex(2)}/>
           </View>
-
         </View>
         <MapFinder/>
     </>

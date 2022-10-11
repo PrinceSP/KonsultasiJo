@@ -1,24 +1,21 @@
-import { StyleSheet, Text, View, TextInput as TextInputRN} from 'react-native'
+import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React from 'react'
 
-const TextInput = ({placeholder}) => {
+const Input = ({placeholder,...rest}) => {
   return (
-    <View>
-      <TextInputRN style={styles.textInput} placeholder={placeholder} placeholderTextColor={'#696868'}/>
-    </View>
+    <TextInput style={styles.textInput} placeholder={placeholder} placeholderTextColor={'#696868'} {...rest}/>
   )
 }
 
-export default TextInput
+export default Input
 
 const styles = StyleSheet.create({
-
     textInput:{
         borderWidth:1,
         borderColor:'white',
         borderBottomColor:'#696868',
         paddingVertical:6,
         fontSize:16,
-        width:279,        
+        width:279,
     },
 })
