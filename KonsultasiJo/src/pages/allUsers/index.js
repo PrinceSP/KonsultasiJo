@@ -4,7 +4,7 @@ import { Header, Gap } from '../../components';
 import { Operator,People } from '../../assets';
 import { firebase } from '@react-native-firebase/database';
 
-const ListChatClients = ({navigation}) => {
+const AllUsers = ({navigation}) => {
   const [allUsers, setAllUsers] = useState([])
   const list = [
     {
@@ -17,19 +17,19 @@ const ListChatClients = ({navigation}) => {
     },
   ]
 
-  const ListChat = ({item})=>{
-    return(
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator',{data:item})}>
-        <View style={styles.Wrapper}>
-          <Operator style={styles.operator}/>
-          <View style={styles.chatwrapper}>
-            <Text style={styles.Nama}>{item.name}</Text>
-            <Text style={styles.Topic}>{item.subtitle}</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    )
-  }
+  // const ListChat = ({item})=>{
+  //   return(
+  //     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator',{data:item})}>
+  //       <View style={styles.Wrapper}>
+  //         <Operator style={styles.operator}/>
+  //         <View style={styles.chatwrapper}>
+  //           <Text style={styles.Nama}>{item.name}</Text>
+  //           <Text style={styles.Topic}>{item.subtitle}</Text>
+  //         </View>
+  //       </View>
+  //     </TouchableOpacity>
+  //   )
+  // }
 
   // const getAllUsers=()=>{
   //  firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
@@ -48,23 +48,12 @@ const ListChatClients = ({navigation}) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor='#fff' />
-      <Header title="Pesan" onBack={() => navigation.goBack()} />
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item, index) => index.toString()}
-        data={list}
-        renderItem={ListChat}
-        />
-      <TouchableOpacity
-       style={styles.but}
-       onPress={()=>navigation.navigate('AllUser')}>
-         <People height={30}/>
-     </TouchableOpacity>
+      <Header title="Daftar Pengguna" onBack={() => navigation.goBack()} />
     </View>
   )
 }
 
-export default ListChatClients
+export default AllUsers
 
 const styles = StyleSheet.create({
   container: {

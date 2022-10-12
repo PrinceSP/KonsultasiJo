@@ -19,7 +19,7 @@ const Menu = ({navigation}) => {
         <Image source={Foto} style={{height:70,width:70,borderRadius:70,marginRight:30}}/>
         <View>
           <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
-          <Text style={styles.tNama}>{userData.email}</Text>
+          <Text style={styles.tNama}>{userData.name}</Text>
           <Text style={styles.tNik}>{userData.nik}</Text>
         </View>
       </View >

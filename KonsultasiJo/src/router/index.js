@@ -32,7 +32,7 @@ const Router = () => {
   if (loginChk) {
     return null;
   }
-  console.log(userData);
+  // console.log(userData);
   return (
     <Stack.Navigator detachInactiveScreens={false} headerMode="none">
 
