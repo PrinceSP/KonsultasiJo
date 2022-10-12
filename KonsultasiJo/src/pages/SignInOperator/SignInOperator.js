@@ -1,9 +1,41 @@
+import React, {useState} from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
 import { Button, Gap, Input } from '../../components'
 import { Mata, User } from '../../assets'
+import { firebase } from '@react-native-firebase/database';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/reducer/user';
+import Auth from '../../configs/auth';
 
 const SignInOperator = ({navigation}) => {
+  const dispatch = useDispatch();
+  const [nik, setnik] = useState('');
+  const [password, setpassword] = useState('');
+
+  const loginUser = async () => {
+    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    .ref('/users')
+    .orderByChild("nik")
+    .equalTo(nik)
+    .once('value')
+    .then( async snapshot => {
+      if (snapshot.val() == null) {
+         console.log("Invalid NIK!");
+         return false;
+      }
+      let userData = Object.values(snapshot.val())[0];
+      if (userData?.password != password) {
+         console.log("Invalid Password!");
+         return false;
+      }
+
+      console.log('User data: ', userData);
+      dispatch(setUser(userData));
+      await Auth.setAccount(userData);
+      console.log("Login Successfully!");
+      navigation.navigate("MenuOprator")
+    })
+  }
   return (
     <View style={{backgroundColor:'white',flex:1}}>
        <Gap height={43}/>
@@ -22,16 +54,16 @@ const SignInOperator = ({navigation}) => {
      </View>
      <View style={styles.contentWrapper}>
      <View style={{flexDirection:'row'}}>
-     <Input placeholder={'Username'}/>
+     <Input placeholder={'Username'} defaultValue={nik} onChangeText={value=>setnik(value)}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>
      <Gap height={43}/>
      <View style={{flexDirection:'row'}}>
-     <Input placeholder={'Password'}/>
+     <Input placeholder={'Password'} defaultValue={password} onChangeText={value=>setpassword(value)}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
       <Gap height={116}/>
-      <Button title={'MASUK'} onPress={()=>navigation.navigate("OperatorStack",{screen:'MenuOprator'})}/>
+      <Button title={'MASUK'} onPress={loginUser}/>
       <Gap height={18}/>
 
      </View>

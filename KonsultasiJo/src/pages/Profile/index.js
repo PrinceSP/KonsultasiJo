@@ -11,7 +11,7 @@ const Profile = ({navigation}) => {
 
   const logout=async()=>{
      await Auth.removeAccount()
-     navigation.navigate("AuthCustomerStack",{screen:"SignIn"})
+     navigation.navigate("AuthStack",{screen:"SignIn"})
      // console.log(navigation.navigate("AuthCustomerStack"));
   }
 
