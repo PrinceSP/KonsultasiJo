@@ -2,8 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import TimeDelivery from '../Time'
 
-const ReplyOperator = ({sender, message, item, sendTime}) => {
-  // console.log(message);
+const ReplyOperator = ({sender, item}) => {
+  // console.log(item);
   return (
     <Pressable
         style={{ marginVertical: 0 }}
@@ -26,7 +26,7 @@ const ReplyOperator = ({sender, message, item, sendTime}) => {
         >
 
             <Text style={{ paddingLeft: 5, color:  sender ? "#fff" : "#000",fontFamily:"Poppins-Regular",fontSize:15.5 }}>
-              {message}
+              {item.message}
             </Text>
 
             <TimeDelivery
