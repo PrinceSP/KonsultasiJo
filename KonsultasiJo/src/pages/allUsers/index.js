@@ -6,49 +6,47 @@ import { firebase } from '@react-native-firebase/database';
 
 const AllUsers = ({navigation}) => {
   const [allUsers, setAllUsers] = useState([])
-  const list = [
-    {
-      name: 'Rivo',
-      subtitle: 'woyyy',
-    },
-    {
-      name: 'Ester',
-      subtitle: 'kyp?',
-    },
-  ]
 
-  // const ListChat = ({item})=>{
-  //   return(
-  //     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator',{data:item})}>
-  //       <View style={styles.Wrapper}>
-  //         <Operator style={styles.operator}/>
-  //         <View style={styles.chatwrapper}>
-  //           <Text style={styles.Nama}>{item.name}</Text>
-  //           <Text style={styles.Topic}>{item.subtitle}</Text>
-  //         </View>
-  //       </View>
-  //     </TouchableOpacity>
-  //   )
-  // }
+  const getAllUsers=()=>{
+   firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    .ref('/users')
+    .on('value', snapshot => {
+      setAllUsers(Object.values(snapshot.val()))
+    });
+  }
 
-  // const getAllUsers=()=>{
-  //  firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-  //   .ref('/users')
-  //   .on('value', snapshot => {
-  //     setAllUsers(snapshot.val())
-  //   });
-  // }
-  //
-  // useEffect(()=>{
-  //   getAllUsers()
-  // },[])
-  //
-  // console.log(allUsers);
+  const ListChat = ({item})=>{
+    // console.log(item);
+    return(
+      item.role=="customer" ?
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator',{data:item})}>
+        <View style={styles.Wrapper}>
+          <Operator style={styles.operator}/>
+          <View style={styles.chatwrapper}>
+            <Text style={styles.Nama}>{item.name}</Text>
+            <Text style={styles.Topic}>{item.nik}</Text>
+          </View>
+        </View>
+      </TouchableOpacity> : null
+    )
+  }
+
+  useEffect(()=>{
+    getAllUsers()
+  },[])
+
+  // console.log(typeof allUsers);
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor='#fff' />
       <Header title="Daftar Pengguna" onBack={() => navigation.goBack()} />
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item, index) => index.toString()}
+        data={allUsers}
+        renderItem={ListChat}
+        />
     </View>
   )
 }
