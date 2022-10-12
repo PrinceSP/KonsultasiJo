@@ -22,7 +22,7 @@ const SignIn = ({navigation}) => {
     .once('value')
     .then( async snapshot => {
       if (snapshot.val() == null) {
-         console.log("Invalid Email Id!");
+         console.log("Invalid NIK!");
          return false;
       }
       let userData = Object.values(snapshot.val())[0];
@@ -46,7 +46,7 @@ const SignIn = ({navigation}) => {
         <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate("SignIn")}>
           <Text style={styles.textJudul}>Client</Text>
         </TouchableOpacity>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate("AuthOperatorStack",{screen:"SignInOperator"})}>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate("SignInOperator")}>
         <Text style={{color:'black',fontWeight:'900',paddingRight:28,fontSize:16}}>Operator</Text>
       </TouchableOpacity>
       </View>

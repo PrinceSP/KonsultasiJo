@@ -1,19 +1,77 @@
-import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity,ImageBackground } from 'react-native'
 import React from 'react'
+import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity,ImageBackground, FlatList } from 'react-native'
 import { Header, Gap, ReplyClient } from '../../components';
-import ReplyOperator from '../../components/molecules/ReplyOperator';
+import {ReplyOperator} from '../../components';
 import { Send } from '../../assets';
-import moment from 'moment';
 
 const ChatOperator = ({route,navigation}) => {
-  // console.log(route.params.data);
+
+  const Data = [
+    {
+        message: 'Hey Nariva',
+        type: 'sender'
+    },
+    {
+        message: 'Yes Ofcourse..',
+        type: 'sender'
+    },
+    {
+        message: 'How are You ?',
+        type: 'sender'
+    },
+    {
+        message: 'How Your Opinion about the one done app ?',
+        type: 'sender'
+    },
+    {
+        message: 'Well i am not satisfied with this design plzz make design better ',
+        type: 'receiver'
+    },
+    {
+        message: 'could you plz change the design...',
+        type: 'receiver'
+    },
+    {
+        message: 'How are You ?',
+        type: 'sender'
+    },
+    {
+        message: 'How Your Opinion about the one done app ?',
+        type: 'sender'
+    },
+    {
+        message: 'Well i am not satisfied with this design plzz make design better ',
+        type: 'receiver'
+    },
+    {
+        message: 'could you plz change the design...',
+        type: 'receiver'
+    },
+    {
+        message: 'How are You ?',
+        type: 'sender'
+    },
+    {
+        message: 'How Your Opinion about the one done app ?',
+        type: 'sender'
+    }
+]
   return (
     <View style={styles.container}>
         <ImageBackground
           source = {require('../../assets/images/backgroundChat.jpeg')}
           style={{flex: 1}}>
           <Header title="Konsultasi" onBack={() => navigation.goBack()} />
-          <ReplyOperator containerMarginLeft={125} containerMarginRight={10} jam='right' item={route.params.data.name}/>
+          <FlatList style={{ flex: 1}}
+          data={Data}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item, index) => index}
+          inverted
+          renderItem={({ item }) => {
+              return (
+                  <ReplyOperator item={item} sender={item.type=="sender"} message={item.message}/>
+              )
+          }}/>
           <Gap height={30} />
         </ImageBackground>
         <View
@@ -38,7 +96,7 @@ const ChatOperator = ({route,navigation}) => {
                   color: "#000",
               }}
               placeholder = "type a message"
-              placeholderTextColor = "#000"
+              placeholderTextColor = "#aaa"
               multiline = {true}
               // value={msg}
               // onChangeText={(val)=>setMsg(val)}
@@ -59,7 +117,7 @@ export default ChatOperator
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: 'white',
+        backgroundColor: '#fff',
         flex: 1,
     },
     text:{
@@ -77,7 +135,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         padding: 5,
         borderRadius: 40,
-        backgroundColor: '#D92B2B',
+        backgroundColor: '#696868',
     },
     TextBox: {
       elevation: 5,

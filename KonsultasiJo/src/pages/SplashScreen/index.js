@@ -9,7 +9,7 @@ const SplashScreen = ({navigation}) => {
     useEffect(() =>{
       setTimeout(()=> {
         navigation.replace(userData !== null && userData.role == 'customer' ? 'Menu' : 'MenuOprator');
-      }, 1000);
+      }, 2000);
     },[]);
 
     return (

@@ -3,12 +3,17 @@ import React from 'react'
 import { Foto } from '../../assets';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Header } from '../../components';
+import Auth from '../../configs/auth';
+
 const MenuOprator = ({navigation}) => {
+  const logout=async()=>{
+     await Auth.removeAccount()
+     navigation.navigate("AuthStack",{screen:"SignInOperator"})
+     // console.log(navigation.navigate("AuthCustomerStack"));
+  }
   return (
     <View style={{flex:1, backgroundColor:'white'}}>
-       <Header title="MenuOperator" onBack={() => navigation.goBack()}/>
-
-
+      <Header title="MenuOperator" onBack={() => navigation.goBack()}/>
     <View style={styles.profile}>
     <View>
     <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
@@ -32,7 +37,7 @@ const MenuOprator = ({navigation}) => {
     </View>
 
     <View style={styles.exit}>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('SignInOperator')}>
+    <TouchableOpacity activeOpacity={0.7} onPress={logout}>
     <Icon name="exit" size={45} color="#D92B2B" />
     <Text style={{color:'#696868'}}>Keluar</Text>
     </TouchableOpacity>
