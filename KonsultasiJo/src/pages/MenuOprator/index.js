@@ -4,8 +4,10 @@ import { Foto } from '../../assets';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Header } from '../../components';
 import Auth from '../../configs/auth';
+import {useSelector} from "react-redux"
 
 const MenuOprator = ({navigation}) => {
+  const {userData} = useSelector(state=>state.User)
   const logout=async()=>{
      await Auth.removeAccount()
      navigation.navigate("AuthStack",{screen:"SignInOperator"})
@@ -17,8 +19,8 @@ const MenuOprator = ({navigation}) => {
     <View style={styles.profile}>
     <View>
     <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
-    <Text style={styles.tNama}>Nariva Wagey</Text>
-    <Text style={styles.tNik}>1234567890123456</Text>
+    <Text style={styles.tNama}>{userData.name}</Text>
+    <Text style={styles.tNik}>{userData.nik}</Text>
     </View>
 
 

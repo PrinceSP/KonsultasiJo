@@ -12,7 +12,8 @@ import Statistik from "./Statistik";
 import MenuOprator from "./MenuOprator";
 import Kategori from "./Kategori";
 import Menu from './Menu';
-import SignInOperator from './SignInOperator/SignInOperator';
+import SignInOperator from './SignInOperator';
+import AllUser from './allUsers';
 
 
-export {Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClients,Menu, SignInOperator};
+export {AllUser,Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, ChatClient, ChatOperator, ListChatClients,Menu, SignInOperator};

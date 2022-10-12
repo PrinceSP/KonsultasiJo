@@ -35,6 +35,8 @@ const SignIn = ({navigation}) => {
       dispatch(setUser(userData));
       await Auth.setAccount(userData);
       console.log("Login Successfully!");
+      setnik('')
+      setpass('')
       navigation.navigate("Menu")
     })
   }
