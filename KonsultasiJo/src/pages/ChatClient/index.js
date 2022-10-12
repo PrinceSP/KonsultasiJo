@@ -1,6 +1,6 @@
 import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, ImageBackground, FlatList } from 'react-native'
 import React from 'react'
-import { Header, Gap, ReplyOperator } from '../../components';
+import { Header, Gap, ReplyOperator, Button } from '../../components';
 import { Send } from '../../assets';
 
 const ChatClient = ({navigation}) => {
@@ -56,6 +56,9 @@ const ChatClient = ({navigation}) => {
           source = {require('../../assets/images/backgroundChat.jpeg')}
           style={{flex: 1}}>
           <Header title="Konsultasi" onBack={() => navigation.goBack()} />
+          <View style={{marginLeft:300,marginRight:8}}>
+          <Button title={'Selesai'}/>
+          </View>
           <FlatList style={{ flex: 1}}
           data={Data}
           showsVerticalScrollIndicator={false}
@@ -66,7 +69,7 @@ const ChatClient = ({navigation}) => {
                   <ReplyOperator item={item} sender={item.type=="sender"} message={item.message}/>
               )
           }}/>
-          <Gap height={30} />
+          
         </ImageBackground>
         <View
           style={{
