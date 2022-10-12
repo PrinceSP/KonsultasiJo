@@ -31,20 +31,6 @@ const ListChatClients = ({navigation}) => {
     )
   }
 
-  // const getAllUsers=()=>{
-  //  firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-  //   .ref('/users')
-  //   .on('value', snapshot => {
-  //     setAllUsers(snapshot.val())
-  //   });
-  // }
-  //
-  // useEffect(()=>{
-  //   getAllUsers()
-  // },[])
-  //
-  // console.log(allUsers);
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor='#fff' />
