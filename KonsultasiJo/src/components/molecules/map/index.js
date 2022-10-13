@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TextInput, TouchableOpacity} from "react-native"
 import MapView, { Callout, Circle, Marker, PROVIDER_GOOGLE } from "react-native-maps"
 
 const MapFinder = ({index})=>{
+	// console.log(index);
 	const [ region, setRegion ] = useState({
 		latitude: 1.4459986785784036,
 		longitude: 125.18399810400312,
@@ -33,10 +34,23 @@ const MapFinder = ({index})=>{
 				provider={PROVIDER_GOOGLE}
 				userLocationUpdateInterval={700}
 			>
-				<Marker coordinate={region}
+				{/**<Marker coordinate={region}
 				title="I'm Here"
 				description={desc}
 				/>
+			<Marker coordinate={regionTwo}
+				title="I'm Here"
+				description={desc}
+				/>**/}
+			{
+				index !== null ? index?.map((item,index)=>(
+					<Marker coordinate={item} key={index}
+						title="I'm Here"
+						description={desc}
+						/>
+				))
+				: null
+			}
 			</MapView>
 		</View>
 	)

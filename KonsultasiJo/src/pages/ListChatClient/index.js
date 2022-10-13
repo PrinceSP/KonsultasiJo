@@ -51,11 +51,6 @@ const ListChatClients = ({navigation}) => {
         data={chatList}
         renderItem={ListChat}
         />
-      {/**<TouchableOpacity
-       style={styles.but}
-       onPress={()=>navigation.navigate('AllUser')}>
-         <People height={30}/>
-     </TouchableOpacity>**/}
     </View>
   )
 }
