@@ -10,7 +10,7 @@ const Menu = ({navigation}) => {
 
   const { userData } = useSelector(state => state.User);
 
-  console.log(userData.id);
+  // console.log(userData.id);
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
@@ -29,7 +29,7 @@ const Menu = ({navigation}) => {
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Kategori')}>
     <View >
     <View style={styles.fChat}>
-    <Icon name="chatbox-ellipses" size={45} color="white" />
+    <Icon name="chatbox-ellipses" size={45} color="#fff" />
     </View>
     <View style={{alignItems:'center',paddingLeft:25}}>
     <Text>Konsultasi</Text>
@@ -46,7 +46,7 @@ const Menu = ({navigation}) => {
     </TouchableOpacity>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Maps')}>
     <View style={styles.lLokasi}>
-    <Icon name="map" size={45} color="white" />
+    <Icon name="map" size={45} color="#fff" />
     </View>
     <View style={{marginLeft:35}}>
     <Text> Lihat{'\n'}Lokasi</Text>
@@ -54,7 +54,7 @@ const Menu = ({navigation}) => {
     </TouchableOpacity>
     <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('AboutUs')}>
     <View style={styles.tKami}>
-    <Icon name="people" size={45} color="white" />
+    <Icon name="people" size={45} color="#fff" />
     </View>
     <View style={{marginLeft:30}}>
     <Text>Tentang{'\n'}  Kami</Text>
@@ -88,22 +88,25 @@ const styles = StyleSheet.create({
     paddingLeft:22
   },
   tNama: {
-    color:'white',
+    color:'#fff',
     // paddingLeft:14,
     fontSize:16,
+    fontFamily:"Poppins-Bold"
 
   },
   tWelcome: {
-    color:'white',
+    color:'#fff',
     // paddingLeft:14,
     // paddingTop:21,
     fontSize:16,
+    fontFamily:"Poppins-Bold"
 
   },
   tNik:{
     color:'#fff',
     // paddingLeft:14,
     // paddingTop:35,
+    fontFamily:"Poppins-Regular"
   },
   fChat:{
     backgroundColor:'#2AB1E0',
