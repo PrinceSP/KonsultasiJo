@@ -53,10 +53,10 @@ const Kategori = ({navigation}) => {
             .ref('/chatlist/' + userData.id + '/' + data?.id)
             .update(data)
             .then(() => console.log('Data updated.'));
-            
-          navigation.navigate('ChatClient',{receiverData:data})
+
+          navigation.navigate('Chat',{receiverData:data})
         } else {
-          navigation.navigate('ChatClient', {receiverData: snapshot.val()});
+          navigation.navigate('Chat', {receiverData: snapshot.val()});
         }
       });
   };

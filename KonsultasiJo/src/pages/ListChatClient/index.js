@@ -3,28 +3,38 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, StatusBar,FlatLis
 import { Header, Gap } from '../../components';
 import { Operator,People } from '../../assets';
 import { firebase } from '@react-native-firebase/database';
+import {useSelector} from 'react-redux'
 
 const ListChatClients = ({navigation}) => {
-  const [allUsers, setAllUsers] = useState([])
-  const list = [
-    {
-      name: 'Rivo',
-      subtitle: 'woyyy',
-    },
-    {
-      name: 'Ester',
-      subtitle: 'kyp?',
-    },
-  ]
+  const {userData} = useSelector(state => state.User);
+
+  const [chatList, setchatList] = useState([]);
+  // console.log(chatList);
+
+  useEffect(() => {
+    getChatlist();
+  }, []);
+
+  const getChatlist = async () => {
+    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    .ref('/chatlist/'+userData?.id)
+    .on('value', snapshot => {
+      // console.log('User data: ', Object.values(snapshot.val()));
+      if (snapshot.val() != null) {
+        setchatList(Object.values(snapshot.val()))
+      }
+    });
+
+  }
 
   const ListChat = ({item})=>{
     return(
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ChatOperator',{data:item})}>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Chat',{receiverData:item})}>
         <View style={styles.Wrapper}>
           <Operator style={styles.operator}/>
           <View style={styles.chatwrapper}>
             <Text style={styles.Nama}>{item.name}</Text>
-            <Text style={styles.Topic}>{item.subtitle}</Text>
+            <Text style={styles.Topic}>{item.lastMsg}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -38,14 +48,14 @@ const ListChatClients = ({navigation}) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
-        data={list}
+        data={chatList}
         renderItem={ListChat}
         />
-      <TouchableOpacity
+      {/**<TouchableOpacity
        style={styles.but}
        onPress={()=>navigation.navigate('AllUser')}>
          <People height={30}/>
-     </TouchableOpacity>
+     </TouchableOpacity>**/}
     </View>
   )
 }

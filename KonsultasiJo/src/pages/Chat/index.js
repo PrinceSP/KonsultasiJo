@@ -6,7 +6,7 @@ import {firebase} from '@react-native-firebase/database'
 import moment from 'moment';
 import {useSelector} from 'react-redux'
 
-const ChatClient = ({navigation,route}) => {
+const Chat = ({navigation,route}) => {
   const [messages, setMessages] = useState('')
   const [allChat, setallChat] = useState([]);
   const {userData} = useSelector(state=>state.User)
@@ -57,13 +57,15 @@ const ChatClient = ({navigation,route}) => {
     });
   };
 
+  const onChildAdd = ()=> firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    .ref(`/messages/${route.params.receiverData.roomId}`)
+    .on('child_added', snapshot => {
+      // console.log('A new node has been added', snapshot.val());
+      setallChat((state) => [snapshot.val(),...state]);
+    });
+
   useEffect(()=>{
-    const onChildAdd = firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-      .ref('/messages/'+ route.params.receiverData.roomId)
-      .on('child_added', snapshot => {
-        // console.log('A new node has been added', snapshot.val());
-        setallChat((state) => [snapshot.val(),...state]);
-      });
+    onChildAdd()
     // Stop listening for updates when no longer required
     return () => firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/").ref('/messages'+ route.params.receiverData.roomId).off('child_added', onChildAdd);
   },[route.params.receiverData.roomId])
@@ -127,7 +129,7 @@ const ChatClient = ({navigation,route}) => {
   )
 }
 
-export default ChatClient
+export default Chat
 
 const styles = StyleSheet.create({
     container:{
