@@ -15,30 +15,34 @@ const SignIn = ({navigation}) => {
   const [pass, setpass] = useState('');
 
   const loginUser = async () => {
-    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-    .ref('/users')
-    .orderByChild("nik")
-    .equalTo(nik)
-    .once('value')
-    .then( async snapshot => {
-      if (snapshot.val() == null) {
-         console.log("Invalid NIK!");
-         return false;
-      }
-      let userData = Object.values(snapshot.val())[0];
-      if (userData?.password != pass) {
-         console.log("Invalid Password!");
-         return false;
-      }
+    try {
+      firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+      .ref('/users/')
+      .orderByChild("nik")
+      .equalTo(nik)
+      .once('value')
+      .then( async snapshot => {
+        if (snapshot.val() == null) {
+           console.log("Invalid NIK!");
+           return false;
+        }
+        let userData = Object.values(snapshot.val())[0];
+        if (userData?.password != pass) {
+           console.log("Invalid Password!");
+           return false;
+        }
 
-      console.log('User data: ', userData);
-      dispatch(setUser(userData));
-      await Auth.setAccount(userData);
-      console.log("Login Successfully!");
-      setnik('')
-      setpass('')
-      navigation.navigate("Menu")
-    })
+        console.log('User data: ', userData);
+        dispatch(setUser(userData));
+        await Auth.setAccount(userData);
+        console.log("Login Successfully!");
+        setnik('')
+        setpass('')
+        navigation.navigate("Menu")
+      })
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (

@@ -17,7 +17,7 @@ const TimeDelivery = ({ sender, item }) => {
                 fontSize: 10,
                 color: sender ? "#fff" : "#9a9a9a"
             }}>
-                {moment(item.send_time).format('LLL')}
+                {moment(item.sendTime).format('LLL')}
             </Text>
 
                 <Icon
