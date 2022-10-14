@@ -6,6 +6,7 @@ import { firebase } from '@react-native-firebase/database';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/reducer/user';
 import Auth from '../../configs/auth';
+import Toast from 'react-native-toast-message'
 
 const SignIn = ({navigation}) => {
 
@@ -24,11 +25,21 @@ const SignIn = ({navigation}) => {
       .then( async snapshot => {
         if (snapshot.val() == null) {
            console.log("Invalid NIK!");
+           Toast.show({
+             type: 'error',
+             text1: 'Nope!',
+             text2: 'Invalid NIK!'
+           });
            return false;
         }
         let userData = Object.values(snapshot.val())[0];
         if (userData?.password != pass) {
            console.log("Invalid Password!");
+           Toast.show({
+             type: 'error',
+             text1: 'Nope!',
+             text2: 'Invalid Password!'
+           });
            return false;
         }
 
@@ -36,9 +47,16 @@ const SignIn = ({navigation}) => {
         dispatch(setUser(userData));
         await Auth.setAccount(userData);
         console.log("Login Successfully!");
+        Toast.show({
+          type: 'success',
+          text1: 'Yeay 👋!',
+          text2: 'Login Successfully!'
+        });
         setnik('')
         setpass('')
-        navigation.navigate("Menu")
+        setTimeout(()=>{
+          navigation.navigate("Menu")
+        },3000)
       })
     } catch (e) {
       console.log(e);
@@ -81,6 +99,7 @@ const SignIn = ({navigation}) => {
        </TouchableOpacity>
       </View>
      </View>
+     <Toast autoHide={true} visibilityTime={2000}/>
     </View>
   )
 }

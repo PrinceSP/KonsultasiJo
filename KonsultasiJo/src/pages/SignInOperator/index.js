@@ -6,6 +6,7 @@ import { firebase } from '@react-native-firebase/database';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/reducer/user';
 import Auth from '../../configs/auth';
+import Toast from 'react-native-toast-message'
 
 const SignInOperator = ({navigation}) => {
   const dispatch = useDispatch();
@@ -21,11 +22,21 @@ const SignInOperator = ({navigation}) => {
     .then( async snapshot => {
       if (snapshot.val() == null) {
          console.log("Invalid NIK!");
+         Toast.show({
+           type: 'error',
+           text1: 'Nope!',
+           text2: 'Invalid NIK!'
+         });
          return false;
       }
       let userData = Object.values(snapshot.val())[0];
       if (userData?.password != password) {
          console.log("Invalid Password!");
+         Toast.show({
+           type: 'error',
+           text1: 'Nope!',
+           text2: 'Invalid Password!'
+         });
          return false;
       }
 
@@ -33,9 +44,16 @@ const SignInOperator = ({navigation}) => {
       dispatch(setUser(userData));
       await Auth.setAccount(userData);
       console.log("Login Successfully!");
+      Toast.show({
+        type: 'success',
+        text1: 'Yeay 👋!',
+        text2: 'Login Successfully!'
+      });
       setnik('')
       setpassword('')
-      navigation.navigate("MenuOprator")
+      setTimeout(()=>{
+        navigation.navigate("MenuOprator")
+      },3000)
     })
   }
   return (
@@ -67,8 +85,8 @@ const SignInOperator = ({navigation}) => {
       <Gap height={116}/>
       <Button title={'MASUK'} onPress={loginUser}/>
       <Gap height={18}/>
-
      </View>
+     <Toast autoHide={true} visibilityTime={2000}/>
     </View>
   )
 }
