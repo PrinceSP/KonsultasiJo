@@ -12,7 +12,7 @@ const Chat = ({navigation,route}) => {
   const {userData} = useSelector(state=>state.User)
   const [disabled, setdisabled] = useState(false);
 
-  console.log(route.params.receiverData);
+  // console.log(route.params.receiverData);
 
   const msgvalid = txt => txt && txt.replace(/\s/g, '').length;
 
@@ -58,14 +58,13 @@ const Chat = ({navigation,route}) => {
   };
 
 
-
+  const onChildAdd = ()=> firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+  .ref(`/messages/${route.params.receiverData.roomId}`)
+  .on('child_added', snapshot => {
+    // console.log('A new node has been added', snapshot.val());
+    setallChat((state) => [snapshot.val(),...state]);
+  });
   useEffect(()=>{
-    const onChildAdd = async()=> await firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-      .ref(`/messages/${route.params.receiverData.roomId}`)
-      .on('child_added', snapshot => {
-        // console.log('A new node has been added', snapshot.val());
-        setallChat((state) => [snapshot.val(),...state]);
-      });
       onChildAdd()
     // Stop listening for updates when no longer required
     return () => firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/").ref('/messages'+ route.params.receiverData.roomId).off('child_added', onChildAdd);

@@ -16,7 +16,7 @@ const ListChatClients = ({navigation}) => {
   }, []);
 
   const getChatlist = async () => {
-    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    await firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/chatlist/'+userData?.id)
     .on('value', snapshot => {
       // console.log('User data: ', Object.values(snapshot.val()));
