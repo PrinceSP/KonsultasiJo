@@ -2,8 +2,6 @@ import { ScrollView, StyleSheet, Text, View,TouchableOpacity } from 'react-nativ
 import React,{useState} from 'react'
 import { Header, Gap, Button, MapFinder } from '../../components';
 import { CancelSearchMap, ContohMaps, Telegram, Wa } from '../../assets';
-import { Row } from 'react-native-table-component';
-
 
 const Maps = ({navigation}) => {
   const [index,setIndex] = useState(null)

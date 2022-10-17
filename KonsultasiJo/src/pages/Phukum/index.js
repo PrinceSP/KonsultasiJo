@@ -1,13 +1,13 @@
-import { StyleSheet, Text, TextInput,  View } from 'react-native'
 import React from 'react'
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import { StyleSheet, Text, TextInput,  View, FlatList } from 'react-native'
 import { Gap, Header } from '../../components';
+import { Download } from '../../assets';
 
 const Phukum = ({navigation}) => {
 
  //const state = this.state;
  const data = {
-    tableHead: ['No', 'Tahun','Nomor', 'Judul','Jenis'],
+    tableHead: ['No', 'Tahun','Nomor', 'Judul','Jenis','PDF'],
     tableData: [
       ['1', '2001', '3', 'Tes Judul Untuk JDIH kota bitung yang akan digunakan untuk skripsi kami','PERDA'],
       ['2', '2002', '1', 'Tes Judul Untuk JDIH kota bitung yang akan digunakan untuk skripsi kami','PERWA'],
@@ -15,6 +15,13 @@ const Phukum = ({navigation}) => {
       ['4', '2004', '8', 'Tes Judul Untuk JDIH kota bitung yang akan digunakan untuk skripsi kami','PERDA'],
 
     ]
+  }
+
+  const searchItem = (value,query)=>{
+    const keys = ['No', 'Tahun','Nomor', 'Judul','Jenis']
+    return value?.filter(item=>
+      keys.some(key=>item[key].toLowerCase().includes(query))
+    )
   }
 
   return (
@@ -26,13 +33,6 @@ const Phukum = ({navigation}) => {
       </View>
       <Gap height={9}/>
       <Text style={{textAlign:'center',}}>Hasil Pencarian</Text>
-      <View style={{marginTop:9}}>
-        <Table borderStyle={{borderWidth: 2, borderColor: 'white'}}>
-          <Row data={data.tableHead} style={styles.head } textStyle={styles.text}/>
-          <Rows data={data.tableData} style={styles.body }/>
-        </Table>
-      </View>
-
     </View>
   )
 }
@@ -44,10 +44,16 @@ const styles = StyleSheet.create({
       backgroundColor:'#D92B2B',
     },
     text:{
-      textAlign: 'center'
+      textAlign: 'center',
+      color:"#fff"
+    },
+    text2:{
+      textAlign: 'center',
+      color:"#000"
     },
     body:{
-      backgroundColor:'#EAEAEA'
+      backgroundColor:'#EAEAEA',
+      // justifyContent:'center'
     },
     textInput:{
         borderColor:'#696868',
@@ -56,5 +62,6 @@ const styles = StyleSheet.create({
         marginTop:15,
         marginHorizontal:13,
         height:38
-    }
+    },
+    wrapper: { flexDirection: 'row' },
 })

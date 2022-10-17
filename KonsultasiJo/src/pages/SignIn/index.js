@@ -52,8 +52,6 @@ const SignIn = ({navigation}) => {
           text1: 'Yeay 👋!',
           text2: 'Login Successfully!'
         });
-        setnik('')
-        setpass('')
         setTimeout(()=>{
           navigation.navigate("Menu")
         },3000)
@@ -61,6 +59,8 @@ const SignIn = ({navigation}) => {
     } catch (e) {
       console.log(e);
     }
+    setnik('')
+    setpass('')
   }
 
   return (
