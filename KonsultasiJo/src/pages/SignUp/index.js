@@ -4,6 +4,7 @@ import { Button, Gap, Input } from '../../components'
 import { Chat, Mata, User } from '../../assets'
 import uuid from 'react-native-uuid'
 import { firebase } from '@react-native-firebase/database';
+import Toast from 'react-native-toast-message'
 
 const SignUp = ({navigation}) => {
   const [userInfos,setUserInfos] = useState({
@@ -29,6 +30,11 @@ const SignUp = ({navigation}) => {
     .ref('/users/'+datas.id)
     .set(datas)
     .then(()=>{
+      Toast.show({
+        type: 'success',
+        text1: 'Yeay!',
+        text2: 'Your account is registered!'
+      });
       setUserInfos({...userInfos,nik:'',email:'',password:'',name:''})
     })
     navigation.navigate("SignIn")
@@ -67,6 +73,7 @@ const SignUp = ({navigation}) => {
      <Gap height={116}/>
      <Button title={'Lanjut'} onPress={registerUser}/>
      <Gap height={70}/>
+      <Toast autoHide={true} visibilityTime={2000}/>
      </View>
     </ScrollView>
 
