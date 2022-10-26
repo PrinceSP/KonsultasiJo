@@ -1,16 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, View,Image } from 'react-native'
 
-const Berita = ({title}) => {
+const Berita = ({item}) => {
   return (
     <View style={styles.berita}>
         <View style={{flexDirection:'row'}}>
             <View style={{paddingLeft:8,justifyContent:'center',marginTop:20,marginRight:80}}>
-                <Text>{title}</Text>
+                <Text>{item.judul}</Text>
             </View>
-            <View style={styles.foto}>
-                <Text>foto</Text>
-            </View>
+            <Image source={{uri:item.image}} style={styles.foto}/>
         </View>
     </View>
   )
@@ -26,7 +24,7 @@ const styles = StyleSheet.create({
         borderRadius:7,
         elevation:10,
         marginBottom:40,
-        
+
     },
     foto:{
         position:'absolute',

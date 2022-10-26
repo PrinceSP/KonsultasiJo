@@ -21,7 +21,7 @@ const SignInOperator = ({navigation}) => {
     .once('value')
     .then( async snapshot => {
       if (snapshot.val() == null) {
-         console.log("Invalid NIK!");
+         console.log("Invalid name!");
          Toast.show({
            type: 'error',
            text1: 'Nope!',
@@ -39,7 +39,15 @@ const SignInOperator = ({navigation}) => {
          });
          return false;
       }
-
+      if (userData?.role!=='operator') {
+        console.log("Not an operator!");
+        Toast.show({
+          type: 'error',
+          text1: 'Nope!',
+          text2: 'Not an operator!'
+        });
+        return false;
+      }
       console.log('User data: ', userData);
       dispatch(setUser(userData));
       await Auth.setAccount(userData);
