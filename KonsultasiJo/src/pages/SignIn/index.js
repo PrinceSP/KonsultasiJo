@@ -42,7 +42,15 @@ const SignIn = ({navigation}) => {
            });
            return false;
         }
-
+        if (userData?.role!=='customer') {
+          console.log("Not a customer!");
+          Toast.show({
+            type: 'error',
+            text1: 'Nope!',
+            text2: 'Not a customer!'
+          });
+          return false;
+        }
         console.log('User data: ', userData);
         dispatch(setUser(userData));
         await Auth.setAccount(userData);
@@ -99,7 +107,7 @@ const SignIn = ({navigation}) => {
        </TouchableOpacity>
       </View>
      </View>
-     <Toast autoHide={true} visibilityTime={2000}/>
+     <Toast autoHide={true} visibilityTime={3000}/>
     </View>
   )
 }

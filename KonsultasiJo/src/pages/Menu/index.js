@@ -1,15 +1,26 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React, {useEffect,useState} from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View,Image,FlatList } from 'react-native'
 import { Fitur_chat, Foto,TopIllustration } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Berita, Gap, Header } from '../../components';
 import { useSelector } from 'react-redux';
-
+import {firebase} from '@react-native-firebase/database'
 
 const Menu = ({navigation}) => {
+  const [news,setNews] = useState([])
 
   const { userData } = useSelector(state => state.User);
+  const getAllUsers=()=>{
+   firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    .ref('/news')
+    .on('value', snapshot => {
+      setNews(Object.values(snapshot.val()))
+    });
+  }
 
+  useEffect(()=>{
+    getAllUsers()
+  },[])
   // console.log(userData.id);
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
@@ -61,16 +72,16 @@ const Menu = ({navigation}) => {
     </View>
     </TouchableOpacity>
     </View>
-    <Gap height={40}/>
-    <ScrollView showsVerticalScrollIndicator={false}>
-    <Berita title={'Judul Berita Yang di Imput Admin dari Web'}/>
-    <Berita title={'test 2'}/>
-    <Berita title={'test 2'}/>
-    <Berita title={'test 2'}/>
-
-    </ScrollView>
-
-
+    <FlatList
+      data={news}
+      showsVerticalScrollIndicator={false}
+      keyExtractor={(item, index) => index}
+      inverted
+      renderItem={({ item }) => {
+        return (
+          <Berita item={item}/>
+        )
+    }}/>
     </View>
   )
 }
