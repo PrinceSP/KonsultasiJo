@@ -16,7 +16,7 @@ const SignInOperator = ({navigation}) => {
   const loginUser = async () => {
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/users')
-    .orderByChild("nik")
+    .orderByChild("username")
     .equalTo(nik)
     .once('value')
     .then( async snapshot => {
@@ -25,7 +25,7 @@ const SignInOperator = ({navigation}) => {
          Toast.show({
            type: 'error',
            text1: 'Nope!',
-           text2: 'Invalid NIK!'
+           text2: 'Invalid Name!'
          });
          return false;
       }
