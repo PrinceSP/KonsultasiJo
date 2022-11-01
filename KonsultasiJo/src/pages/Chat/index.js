@@ -45,7 +45,7 @@ const Chat = ({navigation,route}) => {
         .ref('/chatlist/' + route.params.receiverData?.id + '/' + userData?.id)
         .update(chatListupdate)
         .then(() => console.log('Data updated.'));
-      console.log("'/chatlist/' + userData?.id + '/' + data?.id",route.params.receiverData)
+      // console.log("'/chatlist/' + userData?.id + '/' + data?.id",route.params.receiverData)
 
       firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
         .ref('/chatlist/' + userData?.id + '/' + route.params.receiverData?.id)
@@ -64,11 +64,13 @@ const Chat = ({navigation,route}) => {
     // console.log('A new node has been added', snapshot.val());
     setallChat((state) => [snapshot.val(),...state]);
   });
+
   useEffect(()=>{
       onChildAdd()
     // Stop listening for updates when no longer required
     return () => firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/").ref('/messages'+ route.params.receiverData.roomId).off('child_added', onChildAdd);
   },[route.params.receiverData.roomId])
+
   return (
     <View style={styles.container}>
       <ImageBackground

@@ -8,6 +8,7 @@ import {useSelector} from "react-redux"
 
 const MenuOprator = ({navigation}) => {
   const {userData} = useSelector(state=>state.User)
+  console.log(userData);
   const logout=async()=>{
      await Auth.removeAccount()
      navigation.navigate("AuthStack",{screen:"SignInOperator"})
@@ -18,37 +19,31 @@ const MenuOprator = ({navigation}) => {
       <Header title="MenuOperator" onBack={() => navigation.goBack()}/>
     <View style={styles.profile}>
     <View>
-    <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
-    <Text style={styles.tNama}>{userData.name}</Text>
-    <Text style={styles.tNik}>{userData.nik}</Text>
+      <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
+      <Text style={styles.tNama}>{userData.fullname}</Text>
     </View>
 
 
     </View >
     <View style={{flexDirection:'row',justifyContent:'center'}}>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ListChatClients')}>
-    <View style={styles.fChat}>
-    <Icon name="chatbox-ellipses" size={45} color="white" />
-    </View>
-    </TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Statistik')}>
-    <View style={styles.pHukum}>
-    <Icon name="stats-chart-sharp" size={35} color="white" />
-    </View>
-    </TouchableOpacity>
-    </View>
-
-    <View style={styles.exit}>
-    <TouchableOpacity activeOpacity={0.7} onPress={logout}>
-    <Icon name="exit" size={45} color="#D92B2B" />
-    <Text style={{color:'#696868'}}>Keluar</Text>
-    </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ListChatClients')}>
+      <View style={styles.fChat}>
+        <Icon name="chatbox-ellipses" size={45} color="white" />
+      </View>
+      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Statistik')}>
+        <View style={styles.pHukum}>
+          <Icon name="stats-chart-sharp" size={35} color="white" />
+        </View>
+      </TouchableOpacity>
     </View>
 
-
-
-
-
+      <View style={styles.exit}>
+        <TouchableOpacity activeOpacity={0.7} onPress={logout}>
+          <Icon name="exit" size={45} color="#D92B2B" />
+          <Text style={{color:'#696868'}}>Keluar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -67,8 +62,8 @@ const styles = StyleSheet.create({
       tNama: {
         color:'white',
         paddingLeft:14,
-        fontSize:16,
-
+        fontSize:24,
+        fontFamily:"Poppins-Bold"
       },
       tWelcome: {
         color:'white',
@@ -78,7 +73,7 @@ const styles = StyleSheet.create({
 
       },
       tNik:{
-        color:'black',
+        color:'#ddd',
         paddingLeft:14,
         paddingTop:35,
       },

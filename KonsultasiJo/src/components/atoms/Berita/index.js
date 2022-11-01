@@ -1,16 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View,Image } from 'react-native'
+import { StyleSheet, Text, View,Image,TouchableOpacity,Linking } from 'react-native'
 
 const Berita = ({item}) => {
   return (
-    <View style={styles.berita}>
+    <TouchableOpacity style={styles.berita} onPress={()=>Linking.openURL(item.link).catch(err => console.error("Couldn't load page", err))}>
         <View style={{flexDirection:'row'}}>
             <View style={{paddingLeft:8,justifyContent:'center',marginTop:20,marginRight:80}}>
                 <Text>{item.judul}</Text>
             </View>
             <Image source={{uri:item.image}} style={styles.foto}/>
         </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
         height:84,
         borderRadius:7,
         elevation:10,
-        marginBottom:40,
-
+        marginTop:40,
+        marginBottom:20,
     },
     foto:{
         position:'absolute',

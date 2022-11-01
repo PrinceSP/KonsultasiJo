@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, StatusBar,FlatLis
 import { Header, Gap } from '../../components';
 import { Operator,People } from '../../assets';
 import { firebase } from '@react-native-firebase/database';
+import moment from 'moment-timezone';
 import {useSelector} from 'react-redux'
 
 const ListChatClients = ({navigation}) => {
@@ -11,21 +12,23 @@ const ListChatClients = ({navigation}) => {
   const [chatList, setchatList] = useState([]);
   // console.log(chatList);
 
-  useEffect(() => {
-    getChatlist();
-  }, []);
+  // const getChatlist = async () => {
+  //   await
+  // }
 
-  const getChatlist = async () => {
-    await firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+  useEffect(() => {
+    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/chatlist/'+userData?.id)
     .on('value', snapshot => {
       // console.log('User data: ', Object.values(snapshot.val()));
       if (snapshot.val() != null) {
-        setchatList(Object.values(snapshot.val()))
+        const data = Object.values(snapshot.val())
+
+        // console.log();
+        setchatList(data.sort((a,b)=> b.sendTime < a.sendTime ? -1 : 1))
       }
     });
-
-  }
+  }, []);
 
   const ListChat = ({item})=>{
     return(
@@ -33,8 +36,11 @@ const ListChatClients = ({navigation}) => {
         <View style={styles.Wrapper}>
           <Operator style={styles.operator}/>
           <View style={styles.chatwrapper}>
-            <Text style={styles.Nama}>{item.name}</Text>
-            <Text style={styles.Topic}>{item.lastMsg}</Text>
+            <View>
+              <Text style={styles.Nama}>{item.name}</Text>
+              <Text style={styles.Topic}>{item.lastMsg}</Text>
+            </View>
+            <Text style={styles.Topic}>{moment(item.sendTime).format('HH:mm')}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -74,9 +80,14 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 6,
+    width:'100%',
+    // backgroundColor:'red'
   },
   chatwrapper:{
-    flexDirection: 'column',
+    width:'100%',
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    alignItems:'center'
   },
   Nama:{
     fontWeight: 'bold',

@@ -1,11 +1,12 @@
 //import liraries
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { Icon } from 'native-base';
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
 const TimeDelivery = ({ sender, item }) => {
+  // console.log(moment().tz("Asia/Makassar").format());
     return (
         <View
             style={[styles.mainView, {
