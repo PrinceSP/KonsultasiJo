@@ -5,37 +5,48 @@ import {firebase} from '@react-native-firebase/database'
 
 const Phukum = ({navigation}) => {
   const [phukum,setPHukum] = useState([])
+  const [emptyState,setEmptyState] = useState('')
+  const [search,setSearch] = useState('')
   const windowWidth = Dimensions.get('window').width;
 
   const searchItem = (value,query)=>{
-    const keys = ['No', 'Tahun','Nomor', 'Judul','Jenis']
+    const keys = ['tahun','nomor', 'judul','jenis']
     return value?.filter(item=>
       keys.some(key=>item[key].toLowerCase().includes(query))
     )
   }
 
-  const getAllUsers=()=>{
+  const searchData = searchItem(phukum,search)
+
+  const getPHukum=()=>{
    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/phukum')
     .on('value', snapshot => {
+    if (snapshot.val() == null) {
+      setEmptyState('no data')
+      // return false
+      console.log(emptyState);
+      return false
+    }
       setPHukum(Object.values(snapshot.val()))
     });
   }
 
   useEffect(()=>{
-    getAllUsers()
+    getPHukum()
   },[])
-  
+
   return (
     <View style={{backgroundColor:'white',flex:1,alignItems:'center'}}>
       <Header title="Produk Hukum" onBack={() => navigation.goBack()}/>
       <Gap height={30}/>
       <View style={styles.textInput}>
-      <TextInput placeholder='Cari JDIH' style={{fontSize:15, width:windowWidth/1.1}} />
+      <TextInput placeholder='Cari JDIH' style={{fontSize:15, width:windowWidth/1.1}} defaultValue={search} onChangeText={value=>setSearch(value)}/>
       </View>
       <Gap height={9}/>
-        <FlatList
-          data={phukum}
+        {phukum==[] ? <Text style={{color:"#000"}}>{emptyState}</Text>
+        : <FlatList
+          data={searchData}
           showsVerticalScrollIndicator={false}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => {
@@ -43,6 +54,7 @@ const Phukum = ({navigation}) => {
               <PHukumCard item={item}/>
             )
         }}/>
+        }
     </View>
   )
 }
