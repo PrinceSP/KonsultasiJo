@@ -14,7 +14,9 @@ const Menu = ({navigation}) => {
    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/news')
     .on('value', snapshot => {
-      setNews(Object.values(snapshot.val()))
+      if (snapshot.val() != null) {
+        setNews(Object.values(snapshot.val()))
+      }
     });
   }
 
@@ -24,64 +26,63 @@ const Menu = ({navigation}) => {
   // console.log(userData.id);
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
-      <View style={styles.profile}>
-        <TopIllustration style={{position:'absolute',right:0,top:0}}/>
-        <Image source={Foto} style={{height:70,width:70,borderRadius:70,marginRight:30}}/>
-        <View>
-          <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
-          <Text style={styles.tNama}>{userData.name}</Text>
-          <Text style={styles.tNik}>{userData.nik}</Text>
-        </View>
-      </View >
-    </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
+        <View style={styles.profile}>
+          <TopIllustration style={{position:'absolute',right:0,top:0}}/>
+          <Image source={Foto} style={{height:70,width:70,borderRadius:70,marginRight:30}}/>
+          <View>
+            <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
+            <Text style={styles.tNama}>{userData.name}</Text>
+            <Text style={styles.tNik}>{userData.nik}</Text>
+          </View>
+        </View >
+      </TouchableOpacity>
 
-    <View style={{flexDirection:'row'}}>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Kategori')}>
-    <View >
-    <View style={styles.fChat}>
-    <Icon name="chatbox-ellipses" size={45} color="#fff" />
-    </View>
-    <View style={{alignItems:'center',paddingLeft:25}}>
-    <Text>Konsultasi</Text>
-    </View>
-    </View>
-    </TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Phukum')}>
-    <View style={styles.pHukum}>
-    <Icon name="book" size={45} color="#0E7886" />
-    </View>
-    <View style={{marginLeft:30}}>
-    <Text style={{fontFamily:'Poppins-medium'}}>Produk{'\n'}Hukum</Text>
-    </View>
-    </TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Maps')}>
-    <View style={styles.lLokasi}>
-    <Icon name="map" size={45} color="#fff" />
-    </View>
-    <View style={{marginLeft:35}}>
-    <Text> Lihat{'\n'}Lokasi</Text>
-    </View>
-    </TouchableOpacity>
-    <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('AboutUs')}>
-    <View style={styles.tKami}>
-    <Icon name="people" size={45} color="#fff" />
-    </View>
-    <View style={{marginLeft:30}}>
-    <Text>Tentang{'\n'}  Kami</Text>
-    </View>
-    </TouchableOpacity>
-    </View>
-    <FlatList
-      data={news}
-      showsVerticalScrollIndicator={false}
-      keyExtractor={(item, index) => index}
-      inverted
-      renderItem={({ item }) => {
-        return (
-          <Berita item={item}/>
-        )
-    }}/>
+      <View style={{flexDirection:'row'}}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Kategori')}>
+          <View >
+            <View style={styles.fChat}>
+              <Icon name="chatbox-ellipses" size={45} color="#fff" />
+            </View>
+            <View style={{alignItems:'center',paddingLeft:25}}>
+              <Text>Konsultasi</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Phukum')}>
+          <View style={styles.pHukum}>
+            <Icon name="book" size={45} color="#0E7886" />
+          </View>
+          <View style={{marginLeft:30}}>
+            <Text style={{fontFamily:'Poppins-medium'}}>Produk{'\n'}Hukum</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Maps')}>
+          <View style={styles.lLokasi}>
+            <Icon name="map" size={45} color="#fff" />
+          </View>
+          <View style={{marginLeft:35}}>
+            <Text> Lihat{'\n'}Lokasi</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('AboutUs')}>
+          <View style={styles.tKami}>
+            <Icon name="people" size={45} color="#fff" />
+          </View>
+          <View style={{marginLeft:30}}>
+            <Text>Tentang{'\n'}  Kami</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        data={news}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item, index) => index}
+        renderItem={({ item }) => {
+          return (
+            <Berita item={item}/>
+          )
+      }}/>
     </View>
   )
 }
