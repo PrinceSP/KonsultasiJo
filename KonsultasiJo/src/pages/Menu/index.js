@@ -8,15 +8,20 @@ import {firebase} from '@react-native-firebase/database'
 
 const Menu = ({navigation}) => {
   const [news,setNews] = useState([])
+  const [emptyState,setEmptyState] = useState('')
 
   const { userData } = useSelector(state => state.User);
   const getAllUsers=()=>{
    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/news')
     .on('value', snapshot => {
-      if (snapshot.val() != null) {
-        setNews(Object.values(snapshot.val()))
+      if (snapshot.val() == null) {
+        setEmptyState('no data')
+        // return false
+        console.log(emptyState);
+        return false
       }
+      setNews(Object.values(snapshot.val()))
     });
   }
 
@@ -74,7 +79,7 @@ const Menu = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-      <FlatList
+      {news==[] ?  <Text style={{color:"#000"}}>{emptyState}</Text> : <FlatList
         data={news}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index}
@@ -82,7 +87,7 @@ const Menu = ({navigation}) => {
           return (
             <Berita item={item}/>
           )
-      }}/>
+      }}/>}
     </View>
   )
 }
