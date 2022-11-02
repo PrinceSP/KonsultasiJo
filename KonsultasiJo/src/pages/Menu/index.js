@@ -21,6 +21,11 @@ const Menu = ({navigation}) => {
         console.log(emptyState);
         return false
       }
+      const data = snapshot.val()
+      console.log(data);
+
+      // setchatList(data.sort((a,b)=> b.sendTime < a.sendTime ? -1 : 1))
+
       setNews(Object.values(snapshot.val()))
     });
   }
