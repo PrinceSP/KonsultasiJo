@@ -13,6 +13,7 @@ import Kategori from "./Kategori";
 import Menu from './Menu';
 import SignInOperator from './SignInOperator';
 import AllUser from './allUsers';
+import ForgotPassword from './ForgotPassword';
 
 
-export {AllUser,Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, Chat, ListChatClients,Menu, SignInOperator};
+export {AllUser,ForgotPassword,Phukum,Statistik,MenuOprator,Kategori,SplashScreen,SignIn,SignUp, Profile ,AboutUs, Maps, Chat, ListChatClients,Menu, SignInOperator};
