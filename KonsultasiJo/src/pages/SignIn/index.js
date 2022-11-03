@@ -97,7 +97,11 @@ const SignIn = ({navigation}) => {
      <Input placeholder={'Password'} defaultValue={pass} onChangeText={(value)=>setpass(value)}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
      </View>
-      <Gap height={116}/>
+     <Gap height={18}/>
+     <TouchableOpacity onPress={()=>navigation.navigate('ForgotPassword')}>
+       <Text style={{color:"#000",textAlign:'right'}}>Lupa sandi?</Text>
+     </TouchableOpacity>
+      <Gap height={80}/>
       <Button title={'MASUK'} onPress={loginUser}/>
       <Gap height={18}/>
       <View style={{flexDirection:'row',justifyContent:'center'}}>
