@@ -17,16 +17,11 @@ const Menu = ({navigation}) => {
     .on('value', snapshot => {
       if (snapshot.val() == null) {
         setEmptyState('no data')
-        // return false
-        console.log(emptyState);
         return false
       }
       const data = snapshot.val()
-      console.log(data);
 
-      // setchatList(data.sort((a,b)=> b.sendTime < a.sendTime ? -1 : 1))
-
-      setNews(Object.values(snapshot.val()))
+      setNews(Object.values(data.sort((a,b)=> b.timeStamps < a.timeStamps ? -1 : 1)))
     });
   }
 
