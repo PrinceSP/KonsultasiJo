@@ -10,21 +10,14 @@ const ListChatClients = ({navigation}) => {
   const {userData} = useSelector(state => state.User);
 
   const [chatList, setchatList] = useState([]);
-  // console.log(chatList);
-
-  // const getChatlist = async () => {
-  //   await
-  // }
 
   useEffect(() => {
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/chatlist/'+userData?.id)
     .on('value', snapshot => {
-      // console.log('User data: ', Object.values(snapshot.val()));
       if (snapshot.val() != null) {
         const data = Object.values(snapshot.val())
-
-        // console.log();
+        
         setchatList(data.sort((a,b)=> b.sendTime < a.sendTime ? -1 : 1))
       }
     });
