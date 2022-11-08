@@ -22,13 +22,13 @@ const Phukum = ({navigation}) => {
    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/phukum')
     .on('value', snapshot => {
-    if (snapshot.val() == null) {
-      setEmptyState('no data')
-      // return false
-      console.log(emptyState);
-      return false
-    }
-      setPHukum(Object.values(snapshot.val()))
+      if (snapshot.val() === (null||undefined||[])) {
+        setEmptyState('no data')
+        return false
+      } else{
+        const data = Object.values(snapshot.val()!== null ? snapshot.val() : '')
+        setPHukum(data.length>0 ? data.sort((a,b)=> b.timeStamps < a.timeStamps ? -1 : 1) : [])
+      }
     });
   }
 
