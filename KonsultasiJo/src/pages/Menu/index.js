@@ -4,31 +4,44 @@ import { Fitur_chat, Foto,TopIllustration } from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Berita, Gap, Header } from '../../components';
 import { useSelector } from 'react-redux';
-import {firebase} from '@react-native-firebase/database'
+import database from '@react-native-firebase/database'
 
 const Menu = ({navigation}) => {
   const [news,setNews] = useState([])
   const [emptyState,setEmptyState] = useState('')
 
   const { userData } = useSelector(state => state.User);
-  const getAllUsers=()=>{
-   firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+
+  const getAllNews=()=>{
+    database()
     .ref('/news')
     .on('value', snapshot => {
-      if (snapshot.val() == null) {
+      // console.log(snapshot.val());
+      if (snapshot.val() === (null||undefined||[])) {
         setEmptyState('no data')
         return false
+      } else{
+        const data = Object.values(snapshot.val()!== null ? snapshot.val() : '')
+        // console.log(data.length);
+        // console.log(data);
+        setNews(data.length>0 ? data.sort((a,b)=> b.timeStamps < a.timeStamps ? -1 : 1) : [])
       }
-      const data = snapshot.val()
 
-      setNews(Object.values(data.sort((a,b)=> b.timeStamps < a.timeStamps ? -1 : 1)))
     });
   }
 
   useEffect(()=>{
-    getAllUsers()
+    // let mounted = true
+    // if (mounted) {
+      getAllNews()
+    // }
+    // return ()=>
+
+    // return () => mounted=false
   },[])
-  // console.log(userData.id);
+
+  // console.log(news);
+
   return (
     <View style={{flex:1,backgroundColor:'#fff'}}>
       <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Profile')}>
@@ -79,10 +92,10 @@ const Menu = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-      {news==[] ?  <Text style={{color:"#000"}}>{emptyState}</Text> : <FlatList
+      {!news ?  <Text style={{color:"#000"}}>{emptyState}</Text> : <FlatList
         data={news}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
           return (
             <Berita item={item}/>
