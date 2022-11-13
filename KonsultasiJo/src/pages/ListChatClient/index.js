@@ -17,7 +17,7 @@ const ListChatClients = ({navigation}) => {
     .on('value', snapshot => {
       if (snapshot.val() != null) {
         const data = Object.values(snapshot.val())
-        
+
         setchatList(data.sort((a,b)=> b.sendTime < a.sendTime ? -1 : 1))
       }
     });
