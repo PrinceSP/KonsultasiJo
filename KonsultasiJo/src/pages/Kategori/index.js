@@ -5,6 +5,7 @@ import { AKategori, Header } from '../../components'
 import { firebase } from '@react-native-firebase/database';
 import uuid from "react-native-uuid"
 import {useSelector} from 'react-redux'
+import moment from 'moment';
 
 const Kategori = ({navigation}) => {
   const {userData} = useSelector(state=>state.User)
@@ -62,7 +63,7 @@ const Kategori = ({navigation}) => {
       });
   };
 
-  const getAllUsers=()=>{
+  const getCategories=()=>{
    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/categoriesDatas')
     .on('value', snapshot => {
@@ -74,12 +75,14 @@ const Kategori = ({navigation}) => {
 
   // console.log(categories.PNamaBaik);
   const createCategories = (category)=>{
-    const filteredItems = Object.keys(categories)==category
-    console.log(filteredItems);
-    // const newReference =
+    const values=categories[`${category}`] != null||undefined ? categories[`${category}`].value+1 : 1
+    console.log(values);
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/categoriesDatas/'+category)
-    .set({value:1})
+    .set({
+      value:values ,
+      time:moment().format('')
+    })
     .then(()=>{
       console.log(true);
     })
@@ -87,7 +90,7 @@ const Kategori = ({navigation}) => {
 
   useEffect(()=>{
     getOperator()
-    getAllUsers()
+    getCategories()
   },[])
 
   return (

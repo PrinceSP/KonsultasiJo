@@ -1,46 +1,57 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
-import { VictoryBar, VictoryChart, VictoryGroup, VictoryTheme } from "victory-native";
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native'
+import {BarChart} from "react-native-chart-kit";
 import { Gap, Header } from '../../components';
 
 const Statistik = ({navigation}) => {
-  const data ={
-    
-    jenisKelamin: [
-      {x: 'Laki-Laki', y: 10},
-      {x: 'Perempuan', y: 5},
-
-    ],
-    jemaat: [
-      {x: 'Jemaat GMIM Tabita', y: 3},
-      {x: 'Jemaat Luar', y: 7},
-
-    ],
-  };
+  const datas = {
+  labels: ["Jan", "Feb", "Mar", "Apr"],
+  datasets: [
+    {
+      data: [20, 45, 28, 80]
+    }
+  ]
+};
   return (
 
-    <View style={{flex: 1}}>
+    <View style={{flex: 1,backgroundColor:"#fff"}}>
      <Header title="Statistik" onBack={() => navigation.goBack()}/>
      <Gap height={10}/>
-    <ScrollView>
-    <View style={styles.page}>
-    <Gap height={10}/>
-      <Text style={{color:'black',fontSize:16,marginTop:10,marginLeft:10,fontWeight:'bold'}}>Statistik Pengguna aplikasi</Text>
-    <VictoryChart domainPadding={{ x: 100 }} theme={VictoryTheme.material} >
-      
-      <VictoryBar data={data.jenisKelamin} style={{ data: { fill: "#c43a31" } }} />
-      
-    </VictoryChart>
-    <VictoryChart domainPadding={{ x: 100 }} theme={VictoryTheme.material}>
-    
-      <VictoryBar data={data.jemaat} style={{ data: { fill: "blue" } }}/>
-    
-  
-   </VictoryChart>
+      <ScrollView contentContainerStyle={{alignItems:'center'}}>
+        <View style={styles.page}>
+        <Gap height={10}/>
+          <Text style={{color:'black',fontSize:16,marginTop:10,marginLeft:10,fontWeight:'bold'}}>Statistik Pengguna aplikasi</Text>
+        </View>
+        <BarChart
+            style={{
+              marginVertical: 8,
+              borderRadius: 16
+            }}
+            data={datas}
+            width={Dimensions.get("window").width-10}
+            height={220}
+            chartConfig={{
+              backgroundColor: "#e26a00",
+              backgroundGradientFrom: "#fb8c00",
+              backgroundGradientTo: "#ffa726",
+              decimalPlaces: 0, // optional, defaults to 2dp
+              color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+              labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+              style: {
+                borderRadius: 16,
+                // padding:0,
+                // margin:0
+              },
+              propsForDots: {
+                r: "2",
+                strokeWidth: "2",
+                stroke: "#ffa726"
+              }
+            }}
+            bezier
+          />
+      </ScrollView>
     </View>
-    </ScrollView>
-
-  </View>
 
   )
 }
