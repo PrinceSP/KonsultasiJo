@@ -31,9 +31,10 @@ import LambangKota from "./lambangKota.svg"
 import TopIllustration from "./topIllustration.svg"
 import People from "./people.svg"
 import Download from "./download.svg"
+import Bitung from "./Bitung.svg"
 
 export {Ite,Kekayaan,Download,LambangKota,Waris,Kekeluargaan,Lainnya,
   PerusakanBarang, PNamaBaik,Pembunuhan,Pemerasan,Pencurian,
   Penganiayaan,Perceraian, Perikatan, Perselingkuhan,Fitur_chat,Chat,Mata,
   User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram,
-  Operator, Send,Perkawinan,Foto,TopIllustration,People};
+  Operator, Send,Perkawinan,Foto,TopIllustration,People,Bitung};

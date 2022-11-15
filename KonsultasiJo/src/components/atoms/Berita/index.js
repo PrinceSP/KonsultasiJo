@@ -6,7 +6,7 @@ const Berita = ({item}) => {
     <TouchableOpacity style={styles.berita} onPress={()=>Linking.openURL(item.link).catch(err => console.error("Couldn't load page", err))}>
         <View style={{flexDirection:'row'}}>
             <View style={{paddingLeft:8,justifyContent:'center',marginTop:20,marginRight:80}}>
-                <Text>{item.judul}</Text>
+                <Text style={{color:'black'}}>{item.judul}</Text>
             </View>
             <Image source={{uri:item.image}} style={styles.foto}/>
         </View>

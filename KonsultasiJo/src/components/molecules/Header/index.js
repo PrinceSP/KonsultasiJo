@@ -7,6 +7,7 @@ const Header = ({title, onBack}) => {
   return (
 
     <View style={styles.container}>
+        <View >
         {onBack && (
           <TouchableOpacity onPress={onBack}>
             <View style={styles.back}>
@@ -14,8 +15,11 @@ const Header = ({title, onBack}) => {
             </View>
           </TouchableOpacity>
         )}
-        <Gap width={15} />
+        </View>
+        
+        <View style={{alignItems:'center',flex:1, marginRight:35}}>
         <Text style={styles.text}>{title}</Text>
+        </View>
     </View>
   );
 };
@@ -25,16 +29,16 @@ export default Header;
 const styles = StyleSheet.create({
 
   container: {
-    backgroundColor: '#fff',
-    paddingLeft: 24,
-    paddingBottom: 25,
+    backgroundColor:'white',   
+    paddingVertical: 25,
     // marginBottom: 24,
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
   back: {
     paddingVertical: 10,
-    paddingHorizontal: 10,
+    //paddingHorizontal: 10,
   },
   text: {
     fontSize: 30,
