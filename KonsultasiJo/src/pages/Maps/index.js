@@ -143,6 +143,7 @@ const Maps = ({navigation}) => {
   return (
     <>
         <Header title="Lihat Lokasi" onBack={() => navigation.goBack()} />
+        
         <MapFinder index={locationDatas[index]}/>
         <View style={{flexDirection:'row',position:'absolute',top:100}}>
           <View style={styles.buttonMap}>
