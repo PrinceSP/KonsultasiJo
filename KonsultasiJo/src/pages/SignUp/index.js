@@ -7,6 +7,10 @@ import { firebase } from '@react-native-firebase/database';
 import Toast from 'react-native-toast-message'
 
 const SignUp = ({navigation}) => {
+
+  // visibility
+  const [isSecureEntry,setIsSecureEntry] = useState(true);
+
   const [userInfos,setUserInfos] = useState({
     nik:'',
     email:'',
@@ -98,24 +102,28 @@ const SignUp = ({navigation}) => {
      <Toast autoHide={true} visibilityTime={2000}/>
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.contentWrapper}>
-         <View style={{flexDirection:'row'}}>
+         <View style={{flexDirection:'row',borderBottomWidth:1}}>
          <Input defaultValue={nik} onChangeText={(value)=>setUserInfos({...userInfos,nik:value})} placeholder={'NIK'}/>
          <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
          </View>
          <Gap height={42}/>
-         <View style={{flexDirection:'row'}}>
+         <View style={{flexDirection:'row',borderBottomWidth:1}}>
          <Input defaultValue={name} onChangeText={(value)=>setUserInfos({...userInfos,name:value})} placeholder={'Name'}/>
          <View style={{justifyContent:'center',alignItems:'flex-end',}}><Chat/></View>
          </View>
          <Gap height={42}/>
-         <View style={{flexDirection:'row'}}>
+         <View style={{flexDirection:'row',borderBottomWidth:1}}>
          <Input defaultValue={email} onChangeText={(value)=>setUserInfos({...userInfos,email:value})} placeholder={'Email'}/>
          <View style={{justifyContent:'center',alignItems:'flex-end',}}><Chat/></View>
          </View>
          <Gap height={42}/>
-         <View style={{flexDirection:'row'}}>
-         <Input defaultValue={password} onChangeText={(value)=>setUserInfos({...userInfos,password:value})} placeholder={'Password'}/>
-         <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
+         <View style={{flexDirection:'row',borderBottomWidth:1}}>
+         <Input defaultValue={password} onChangeText={(value)=>setUserInfos({...userInfos,password:value})} placeholder={'Password'} secureTextEntry={isSecureEntry}/>         
+         <TouchableOpacity onPress={() => {
+            setIsSecureEntry((prev) => !prev)
+            }} >
+            <Mata style={{marginTop:6}}/>
+          </TouchableOpacity>         
          </View>
          <Gap height={116}/>
          <Button title={'Lanjut'} onPress={registerUser}/>

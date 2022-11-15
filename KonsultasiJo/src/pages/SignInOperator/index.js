@@ -9,6 +9,10 @@ import Auth from '../../configs/auth';
 import Toast from 'react-native-toast-message'
 
 const SignInOperator = ({navigation}) => {
+
+  // visibility
+  const [isSecureEntry,setIsSecureEntry] = useState(true);
+
   const dispatch = useDispatch();
   const [nik, setnik] = useState('');
   const [password, setpassword] = useState('');
@@ -81,14 +85,18 @@ const SignInOperator = ({navigation}) => {
       <Gap height={102}/>
      </View>
      <View style={styles.contentWrapper}>
-     <View style={{flexDirection:'row'}}>
+     <View style={{flexDirection:'row',borderBottomWidth:1}}>
      <Input placeholder={'Username'} defaultValue={nik} onChangeText={value=>setnik(value)}/>
      <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>
      <Gap height={43}/>
-     <View style={{flexDirection:'row'}}>
-     <Input placeholder={'Password'} defaultValue={password} onChangeText={value=>setpassword(value)}/>
-     <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
+     <View style={{flexDirection:'row',borderBottomWidth:1}}>
+     <Input placeholder={'Password'} defaultValue={password} onChangeText={value=>setpassword(value)} secureTextEntry={isSecureEntry}/>
+     <TouchableOpacity onPress={() => {
+            setIsSecureEntry((prev) => !prev)
+            }} >
+            <Mata style={{marginTop:6}}/>
+          </TouchableOpacity> 
      </View>
       <Gap height={116}/>
       <Button title={'MASUK'} onPress={loginUser}/>

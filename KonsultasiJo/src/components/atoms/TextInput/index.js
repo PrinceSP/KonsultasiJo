@@ -10,10 +10,7 @@ const Input = ({placeholder,...rest}) => {
 export default Input
 
 const styles = StyleSheet.create({
-    textInput:{
-        borderWidth:1,
-        borderColor:'white',
-        borderBottomColor:'#696868',
+    textInput:{        
         paddingVertical:6,
         fontSize:16,
         width:279,

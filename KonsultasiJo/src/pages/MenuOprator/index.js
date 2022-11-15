@@ -26,17 +26,20 @@ const MenuOprator = ({navigation}) => {
 
     </View >
     <View style={{flexDirection:'row',justifyContent:'center'}}>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ListChatClients')}>
-      <View style={styles.fChat}>
-        <Icon name="chatbox-ellipses" size={45} color="white" />
-      </View>
-      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('ListChatClients')}>      
+        <View style={styles.fChat}>
+          <Icon name="chatbox-ellipses" size={45} color="white" />                  
+        </View>      
+        <Text style={{width:100, textAlign:'center'}}>Konsultasi</Text>
+      </TouchableOpacity>      
+
       <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Statistik')}>
         <View style={styles.pHukum}>
-          <Icon name="stats-chart-sharp" size={35} color="white" />
+          <Icon name="stats-chart-sharp" size={35} color="white" />          
         </View>
+        <Text style={{width:100,marginLeft:20, textAlign:'center'}}>Statistik</Text>
       </TouchableOpacity>
-    </View>
+    </View>    
 
       <View style={styles.exit}>
         <TouchableOpacity activeOpacity={0.7} onPress={logout}>
