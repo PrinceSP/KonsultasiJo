@@ -7,7 +7,7 @@ import {Bitung} from '../../assets';
 const AboutUs = ({navigation}) => {
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
-      <Header title="About Us" onBack={() => navigation.goBack()} />
+      <Header title="Tentang Kami" onBack={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.textWrapper}>
           <Gap height={19} />
