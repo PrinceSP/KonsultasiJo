@@ -28,7 +28,7 @@ const Kategori = ({navigation}) => {
   // console.log(userData);
   const createChatList = (data,operator,category) => {
     // console.log(data?.id);
-    createCategories(category)
+    createCategories(category,categories)
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
       .ref('/chatlist/' + userData.id + '/' + data?.id)
       .once('value')
@@ -74,11 +74,15 @@ const Kategori = ({navigation}) => {
   }
 
   // console.log(categories.PNamaBaik);
-  const createCategories = (category)=>{
-    const values=categories[`${category}`] != null||undefined ? categories[`${category}`].value+1 : 1
-    console.log(values);
+  const createCategories = (category,categories)=>{
+    const currentYear = new Date().getFullYear()
+    const currentMonth = new Date().toLocaleString('en-US', {month: 'long'})
+    const getDataYear = categories[`${currentYear}`]
+    const getDataMonth = getDataYear[`${currentMonth}`]
+    const values=getDataMonth[`${category}`] != null||undefined ? getDataMonth[`${category}`].value+1 : 1
+
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-    .ref('/categoriesDatas/'+category)
+    .ref('/categoriesDatas/'+currentYear+"/"+currentMonth+"/"+category)
     .set({
       value:values ,
       time:moment().format('')
