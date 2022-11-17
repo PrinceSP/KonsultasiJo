@@ -67,29 +67,43 @@ const Kategori = ({navigation}) => {
    firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref('/categoriesDatas')
     .on('value', snapshot => {
-      if (snapshot.val() != null) {
+      if (snapshot.val() !== null || snapshot.val() !== undefined) {
+        // console.log(snapshot.val());
         setCategories(snapshot.val())
+      } else{
+        setCategories([])
       }
+
     });
   }
 
-  // console.log(categories.PNamaBaik);
-  const createCategories = (category,categories)=>{
-    const currentYear = new Date().getFullYear()
-    const currentMonth = new Date().toLocaleString('en-US', {month: 'long'})
-    const getDataYear = categories[`${currentYear}`]
-    const getDataMonth = getDataYear[`${currentMonth}`]
-    const values=getDataMonth[`${category}`] != null||undefined ? getDataMonth[`${category}`].value+1 : 1
-
+  const firebaseConfig = (currentYear,currentMonth,category,value)=>{
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-    .ref('/categoriesDatas/'+currentYear+"/"+currentMonth+"/"+category)
+    .ref('/categoriesDatas/'+'years/'+currentYear+"/months/"+currentMonth+"/"+category)
     .set({
-      value:values ,
+      value ,
       time:moment().format('')
     })
     .then(()=>{
-      console.log(true);
+      console.log('sdfsdf');
     })
+  }
+
+  const createCategories = (category,categories)=>{
+    const currentYear = new Date().getFullYear()
+    const currentMonth = new Date().toLocaleString('en-US', {month: 'long'})
+    const test = categories?.years[currentYear]
+    const test2 = test?.months[currentMonth]
+    // const test3 = test2[category]
+    const getYear = categories !== null && test2[category]!==undefined||null ? categories.years : firebaseConfig(currentYear,currentMonth,category,1)
+    const getDataYear = getYear === undefined ? test : getYear[currentYear]
+    // console.log(getYear);
+    const getMonth =  getDataYear?.months
+    const getDataMonth = getMonth === undefined ? test2 : getMonth[currentMonth]
+    const getCategory = getDataMonth===undefined ? getMonth : getDataMonth[`${category}`]
+    // console.log(getCategory);
+    const values= getDataMonth === undefined ? 1 : getCategory === undefined ? 1 : getCategory.value+1
+    firebaseConfig(currentYear,currentMonth,category,values)
   }
 
   useEffect(()=>{
