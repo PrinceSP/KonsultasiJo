@@ -11,7 +11,7 @@ const Kategori = ({navigation}) => {
   const {userData} = useSelector(state=>state.User)
   const [allUser,setAllUser] = useState([])
   const [categories,setCategories] = useState([])
-  // console.log(allUser)
+
   const getOperator = async()=>{
     await firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
     .ref("/users/")
@@ -27,7 +27,7 @@ const Kategori = ({navigation}) => {
   }
   // console.log(userData);
   const createChatList = (data,operator,category) => {
-    // console.log(data?.id);
+    console.log(data[0]);
     createCategories(category,categories)
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
       .ref('/chatlist/' + userData.id + '/' + data?.id)
@@ -49,7 +49,7 @@ const Kategori = ({navigation}) => {
             .update(myData)
             .then(() => console.log('Data updated.'));
 
-          delete data['password'];
+          delete data.password;
           data.lastMsg = '';
           data.roomId = roomId;
           firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
@@ -106,6 +106,15 @@ const Kategori = ({navigation}) => {
     firebaseConfig(currentYear,currentMonth,category,values)
   }
 
+  const handlingPidana = allUser.map((item,index,arr)=>{
+    return item.handle==='pidana' ? arr[index] : null
+  })
+  const handlingPerdata = allUser.map((item,index,arr)=>{
+    return item.handle==='perdata' ? arr[index] : null
+  })
+
+  // console.log(handlingPerdata[1]);
+
   useEffect(()=>{
     getOperator()
     getCategories()
@@ -118,7 +127,7 @@ const Kategori = ({navigation}) => {
      <View style={styles.perdata}>
       <Text style={{fontWeight:'600',fontSize:17}}>Hukum Perdata</Text>
       <View style={{flexDirection:'row'}}>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","Perkawinan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"Perkawinan")}>
           <View style={styles.kategori}>
             <Perkawinan/>
             <View style={{paddingTop:8}}>
@@ -126,19 +135,19 @@ const Kategori = ({navigation}) => {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","Waris")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"Waris")}>
         <View style={styles.kategori}>
         <Waris/>
         <Text>   Waris</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","Kekeluargaan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"Kekeluargaan")}>
         <View style={styles.kategori}>
         <Kekeluargaan/>
         <Text>Kekeluargaan</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","Perikatan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"Perikatan")}>
         <View style={styles.kategori}>
         <Perikatan/>
         <Text>Perikatan</Text>
@@ -146,25 +155,25 @@ const Kategori = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={{flexDirection:'row'}}>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","Kekayaan")}>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"Kekayaan")}>
         <View style={styles.kategori}>
         <Kekayaan/>
         <Text>Kekayaan</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","Perceraian")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"Perceraian")}>
         <View style={styles.kategori}>
         <Perceraian/>
         <Text>Perceraian</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","PNamaBaik")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"PNamaBaik")}>
         <View style={styles.kategori}>
         <PNamaBaik/>
         <Text>Pencemaran {'\n'} Nama Baik</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[0],"operatorOne","Lainnya")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPerdata[1],handlingPerdata[1].fullame,"Lainnya")}>
         <View style={styles.kategori}>
         <Lainnya/>
         <Text>Lainnya</Text>
@@ -175,25 +184,25 @@ const Kategori = ({navigation}) => {
      <View style={styles.pidana}>
      <Text style={{fontWeight:'600',fontSize:17}}>Hukum Pidana</Text>
       <View style={{flexDirection:'row'}}>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","Pencurian")}>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"Pencurian")}>
         <View style={styles.kategori}>
         <Pencurian/>
         <Text>Pencurian</Text>
         </View >
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","Penganiayaan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"Penganiayaan")}>
         <View style={styles.kategori}>
         <Penganiayaan/>
         <Text>Penganiayaan</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","Pembunuhan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"Pembunuhan")}>
         <View style={styles.kategori}>
         <Pembunuhan/>
         <Text>Pembunuhan</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","Perusakan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"Perusakan")}>
         <View style={styles.kategori}>
         <PerusakanBarang/>
         <Text>Perusakan{'\n'}   Barang</Text>
@@ -201,25 +210,25 @@ const Kategori = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={{flexDirection:'row'}}>
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","ITE")}>
+      <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"ITE")}>
         <View style={styles.kategori}>
         <Ite/>
         <Text>      ITE</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","Perselingkuhan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"Perselingkuhan")}>
         <View style={styles.kategori}>
         <Perselingkuhan/>
         <Text>Perselingkuhan</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","Pemerasan")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"Pemerasan")}>
         <View style={styles.kategori}>
         <Pemerasan/>
         <Text>Pemerasan</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(allUser[1],"operatorTwo","Lainnya")}>
+        <TouchableOpacity activeOpacity={0.7} onPress={()=>createChatList(handlingPidana[0],handlingPidana[0].fullame,"Lainnya")}>
         <View style={styles.kategori}>
         <Lainnya/>
         <Text>Lainnya</Text>
