@@ -66,7 +66,7 @@ const Chat = ({navigation,route}) => {
   });
 
   useEffect(()=>{
-      onChildAdd()
+    onChildAdd()
     // Stop listening for updates when no longer required
     return () => firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/").ref('/messages'+ route.params.receiverData.roomId).off('child_added', onChildAdd);
   },[route.params.receiverData.roomId])
