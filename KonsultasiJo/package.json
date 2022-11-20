@@ -20,6 +20,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.38",
     "native-base": "^3.4.18",
+    "qs": "^6.11.0",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-chart-kit": "^6.12.0",
