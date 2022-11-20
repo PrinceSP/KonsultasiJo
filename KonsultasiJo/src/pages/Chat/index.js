@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, ImageBackground, FlatList } from 'react-native'
 import { Header, Gap, ReplyOperator, Button } from '../../components';
-import { Send } from '../../assets';
+import { Send,IconBack } from '../../assets';
 import {firebase} from '@react-native-firebase/database'
 import moment from 'moment';
 import {useSelector} from 'react-redux'
@@ -12,7 +12,7 @@ const Chat = ({navigation,route}) => {
   const {userData} = useSelector(state=>state.User)
   const [disabled, setdisabled] = useState(false);
 
-  // console.log(route.params.receiverData);
+  // console.log(route.params.categoryData);
 
   const msgvalid = txt => txt && txt.replace(/\s/g, '').length;
 
@@ -76,9 +76,15 @@ const Chat = ({navigation,route}) => {
       <ImageBackground
         source = {require('../../assets/images/backgroundChat.jpeg')}
         style={{flex: 1}}>
-        <Header title="Konsultasi" onBack={() => navigation.goBack()} />
+        <View style={styles.container2}>
+          <IconBack onPress={() => navigation.goBack()}/>
+          <View>
+            <Text style={styles.text2}>{route.params.receiverData.name || route.params.receiverData.username}</Text>
+            <Text style={{fontSize:16,color:"#aaa"}}>kategori: {route.params.categoryData}</Text>
+          </View>
+        </View>
         <View style={{marginLeft:300,marginRight:8}}>
-        <Button title={'Selesai'}/>
+          <Button title={'Selesai'}/>
         </View>
         <FlatList
           data={allChat}
@@ -138,8 +144,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         flex: 1,
     },
+    container2: {
+      backgroundColor:'#fff',
+      paddingVertical: 16,
+      // marginBottom: 24,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
     text:{
         fontSize: 50,
+    },
+    text2: {
+      fontSize: 21,
+      color: '#000',
     },
     TypingText: {
         padding: 10,
