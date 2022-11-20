@@ -32,8 +32,10 @@ import TopIllustration from "./topIllustration.svg"
 import People from "./people.svg"
 import Download from "./download.svg"
 import Bitung from "./Bitung.svg"
+import EyeTrue from "./eyeTrue.svg"
+import EyeFalse from "./eyeFalse.svg"
 
-export {Ite,Kekayaan,Download,LambangKota,Waris,Kekeluargaan,Lainnya,
+export {EyeTrue,EyeFalse,Ite,Kekayaan,Download,LambangKota,Waris,Kekeluargaan,Lainnya,
   PerusakanBarang, PNamaBaik,Pembunuhan,Pemerasan,Pencurian,
   Penganiayaan,Perceraian, Perikatan, Perselingkuhan,Fitur_chat,Chat,Mata,
   User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram,
