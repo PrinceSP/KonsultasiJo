@@ -29,7 +29,7 @@ const SignInOperator = ({navigation}) => {
          Toast.show({
            type: 'error',
            text1: 'Nope!',
-           text2: 'Invalid Name!'
+           text2: 'Salah masukkan nama!'
          });
          return false;
       }
@@ -39,7 +39,7 @@ const SignInOperator = ({navigation}) => {
          Toast.show({
            type: 'error',
            text1: 'Nope!',
-           text2: 'Invalid Password!'
+           text2: 'Kata sandi salah!'
          });
          return false;
       }
@@ -47,8 +47,8 @@ const SignInOperator = ({navigation}) => {
         console.log("Not an operator!");
         Toast.show({
           type: 'error',
-          text1: 'Nope!',
-          text2: 'Not an operator!'
+          text1: 'Anda bukan operator!',
+          text2: 'Masuk sebagai operator untuk melanjutkan!'
         });
         return false;
       }
@@ -59,7 +59,7 @@ const SignInOperator = ({navigation}) => {
       Toast.show({
         type: 'success',
         text1: 'Yeay 👋!',
-        text2: 'Login Successfully!'
+        text2: 'Berhasil masuk!'
       });
       setnik('')
       setpassword('')
@@ -96,7 +96,7 @@ const SignInOperator = ({navigation}) => {
             setIsSecureEntry((prev) => !prev)
             }} >
             <Mata style={{marginTop:6}}/>
-          </TouchableOpacity> 
+          </TouchableOpacity>
      </View>
       <Gap height={116}/>
       <Button title={'MASUK'} onPress={loginUser}/>

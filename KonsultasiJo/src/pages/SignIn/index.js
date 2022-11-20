@@ -27,11 +27,11 @@ const SignIn = ({navigation}) => {
       .once('value')
       .then( async snapshot => {
         if (snapshot.val() == null) {
-           console.log("Invalid NIK!");
+           // console.log("Invalid NIK!");
            Toast.show({
              type: 'error',
-             text1: 'Nope!',
-             text2: 'Invalid NIK!'
+             text1: 'Kesalahan!',
+             text2: 'NIK anda salah!'
            });
            return false;
         }
@@ -41,7 +41,7 @@ const SignIn = ({navigation}) => {
            Toast.show({
              type: 'error',
              text1: 'Nope!',
-             text2: 'Invalid Password!'
+             text2: 'Kata sandi anda salah!'
            });
            return false;
         }
@@ -50,7 +50,7 @@ const SignIn = ({navigation}) => {
           Toast.show({
             type: 'error',
             text1: 'Nope!',
-            text2: 'Not a customer!'
+            text2: 'anda bukan pengguna!'
           });
           return false;
         }
@@ -61,7 +61,7 @@ const SignIn = ({navigation}) => {
         Toast.show({
           type: 'success',
           text1: 'Yeay 👋!',
-          text2: 'Login Successfully!'
+          text2: 'Berhasil Masuk!'
         });
         setTimeout(()=>{
           navigation.navigate("Menu")
@@ -105,7 +105,7 @@ const SignIn = ({navigation}) => {
       <Mata style={{marginTop:3}}/>
       </TouchableOpacity>
     </View>
-    
+
      <Gap height={18}/>
      <TouchableOpacity onPress={()=>navigation.navigate('ForgotPassword')}>
        <Text style={{color:"#000",textAlign:'right'}}>Lupa sandi?</Text>

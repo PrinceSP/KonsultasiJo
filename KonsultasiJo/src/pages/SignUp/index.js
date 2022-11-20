@@ -10,15 +10,17 @@ const SignUp = ({navigation}) => {
 
   // visibility
   const [isSecureEntry,setIsSecureEntry] = useState(true);
+  const [isSecureEntryConfirm,setIsSecureEntryConfirm] = useState(true);
 
   const [userInfos,setUserInfos] = useState({
     nik:'',
     email:'',
     password:'',
     name:'',
+    confirmPassword:''
   })
 
-  const {nik,email,password,name} = userInfos
+  const {nik,email,password,name,confirmPassword} = userInfos
 
   const niks = [
     "1050245708900001",
@@ -69,8 +71,16 @@ const SignUp = ({navigation}) => {
       // console.log(filteredItems[0]===nik);
       Toast.show({
         type: 'error',
-        text1: 'Nayy!',
-        text2: 'Your NIK is not registered!'
+        text1: 'Terjadi kesalahan!',
+        text2: 'NIK tidak terdaftar!'
+      });
+      return false
+    }
+    if (confirmPassword!==password) {
+      Toast.show({
+        type: 'error',
+        text1: 'Terjadi kesalahan!',
+        text2: 'Sandi tidak sama!'
       });
       return false
     }
@@ -81,7 +91,7 @@ const SignUp = ({navigation}) => {
       Toast.show({
         type: 'success',
         text1: 'Yeay!',
-        text2: 'Your account is registered!'
+        text2: 'Akun berhasil di daftarkan!'
       });
       setUserInfos({...userInfos,nik:'',email:'',password:'',name:''})
       setTimeout(()=>{
@@ -118,12 +128,21 @@ const SignUp = ({navigation}) => {
          </View>
          <Gap height={42}/>
          <View style={{flexDirection:'row',borderBottomWidth:1}}>
-         <Input defaultValue={password} onChangeText={(value)=>setUserInfos({...userInfos,password:value})} placeholder={'Password'} secureTextEntry={isSecureEntry}/>         
-         <TouchableOpacity onPress={() => {
-            setIsSecureEntry((prev) => !prev)
-            }} >
-            <Mata style={{marginTop:6}}/>
-          </TouchableOpacity>         
+           <Input defaultValue={password} onChangeText={(value)=>setUserInfos({...userInfos,password:value})} placeholder={'Password'} secureTextEntry={isSecureEntry}/>
+           <TouchableOpacity onPress={() => {
+              setIsSecureEntry((prev) => !prev)
+              }} >
+              <Mata style={{marginTop:6}}/>
+            </TouchableOpacity>
+         </View>
+         <Gap height={42}/>
+         <View style={{flexDirection:'row',borderBottomWidth:1}}>
+           <Input defaultValue={confirmPassword} onChangeText={(value)=>setUserInfos({...userInfos,confirmPassword:value})} placeholder={'Confirm Password'} secureTextEntry={isSecureEntryConfirm}/>
+           <TouchableOpacity onPress={() => {
+              setIsSecureEntryConfirm((prev) => !prev)
+              }} >
+              <Mata style={{marginTop:6}}/>
+            </TouchableOpacity>
          </View>
          <Gap height={116}/>
          <Button title={'Lanjut'} onPress={registerUser}/>
