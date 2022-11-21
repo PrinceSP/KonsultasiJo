@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View,Image,FlatList } from 'react-native'
-import { Fitur_chat, Foto,TopIllustration } from '../../assets'
+import { Fitur_chat, Foto,TopIllustration ,EyeTrue,EyeFalse} from '../../assets'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Berita, Gap, Header } from '../../components';
 import { useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import database from '@react-native-firebase/database'
 const Menu = ({navigation}) => {
   const [news,setNews] = useState([])
   const [emptyState,setEmptyState] = useState('')
+  const [hide,setHide] = useState(true)
 
   const { userData } = useSelector(state => state.User);
 
@@ -51,7 +52,10 @@ const Menu = ({navigation}) => {
           <View>
             <Text style={styles.tWelcome}>SELAMAT DATANG, </Text>
             <Text style={styles.tNama}>{userData.name}</Text>
-            <Text style={styles.tNik}>{userData.nik}</Text>
+            <View style={{flexDirection:'row'}}>
+              <Text style={styles.tNama}>{hide===true ? "************" : userData.nik}</Text>
+              {hide===false ? <EyeTrue height={15} onPress={()=>setHide(true)}/> : <EyeFalse height={15} onPress={()=>setHide(false)}/>}
+            </View>
           </View>
         </View >
       </TouchableOpacity>
