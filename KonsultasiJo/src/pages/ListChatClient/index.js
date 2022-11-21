@@ -33,7 +33,7 @@ const ListChatClients = ({navigation}) => {
               <Text style={styles.Nama}>{item.name}</Text>
               <Text style={styles.Topic}>{item.lastMsg}</Text>
             </View>
-            <Text style={styles.Topic}>{moment(item.sendTime).format('HH:mm')}</Text>
+            <Text style={styles.Topic}>{moment(item.sendTime).fromNow()}</Text>
           </View>
         </View>
       </TouchableOpacity>
