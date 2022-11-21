@@ -1,22 +1,24 @@
 import React,{useState,useEffect} from 'react'
 import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, ImageBackground, FlatList } from 'react-native'
 import { Header, Gap, ReplyOperator, Button } from '../../components';
-import { Send,IconBack } from '../../assets';
+import { Send,IconBack,ImageIcon } from '../../assets';
 import {firebase} from '@react-native-firebase/database'
 import moment from 'moment';
 import {useSelector} from 'react-redux'
+import {launchImageLibrary} from 'react-native-image-picker'
 
 const Chat = ({navigation,route}) => {
   const [messages, setMessages] = useState('')
   const [allChat, setallChat] = useState([]);
   const {userData} = useSelector(state=>state.User)
   const [disabled, setdisabled] = useState(false);
-
+  const [photo,setPhoto] = useState('')
+  const [hasPhoto, setHasPhoto] = useState(false)
   // console.log(route.params.categoryData);
 
   const msgvalid = txt => txt && txt.replace(/\s/g, '').length;
 
-  const sendMsg = () => {
+  const sendMsg = (photo) => {
     if (messages == '' || msgvalid(messages) == 0) {
       console.log('Enter something....');
       return false;
@@ -65,6 +67,50 @@ const Chat = ({navigation,route}) => {
     setallChat((state) => [snapshot.val(),...state]);
   });
 
+  const imageGallery = ()=>{
+    const options={
+      maxHeight:400,
+      maxWidth:400,
+      includeBase64:true,
+    }
+    launchImageLibrary(options,res=>{
+      if(res.didCancel){
+        setHasPhoto(false)
+        setPhoto('');
+      }else{
+        let msgData = {
+          roomId: route.params.receiverData.roomId,
+          photo: res.assets[0].uri,
+          from: userData?.id,
+          to: route.params.receiverData.id,
+          sendTime: moment().format(''),
+          msgType: 'image',
+        };
+        const newReference = firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+          .ref('/messages/' + route.params.receiverData.roomId)
+          .push();
+
+        msgData.id = newReference.key;
+        newReference.set(msgData).then(() => {
+          let chatListupdate = {
+            lastMsg: 'photo',
+            sendTime: msgData.sendTime,
+          };
+          firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+            .ref('/chatlist/' + route.params.receiverData?.id + '/' + userData?.id)
+            .update(chatListupdate)
+            .then(() => console.log('Data updated.'));
+
+          firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+            .ref('/chatlist/' + userData?.id + '/' + route.params.receiverData?.id)
+            .update(chatListupdate)
+            .then(() => console.log('Data updated.'));
+        });
+        setHasPhoto(true);
+      }
+    })
+  }
+
   useEffect(()=>{
     onChildAdd()
     // Stop listening for updates when no longer required
@@ -76,16 +122,17 @@ const Chat = ({navigation,route}) => {
       <ImageBackground
         source = {require('../../assets/images/backgroundChat.jpeg')}
         style={{flex: 1}}>
-        <View style={styles.container2}>
-          <IconBack onPress={() => navigation.goBack()}/>
-          <View>
-            <Text style={styles.text2}>{route.params.receiverData.name || route.params.receiverData.username}</Text>
-            <Text style={{fontSize:16,color:"#aaa"}}>kategori: {route.params.categoryData}</Text>
+        <View style={{width:"100%",backgroundColor:"#fff",flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:5}}>
+          <View style={styles.container2}>
+            <IconBack onPress={() => navigation.goBack()}/>
+            <View>
+              <Text style={styles.text2}>{route.params.receiverData.name || route.params.receiverData.username}</Text>
+              <Text style={{fontSize:16,color:"#aaa"}}>kategori: {route.params.categoryData}</Text>
+            </View>
           </View>
+          <Button width={70} title={'Selesai'}/>
         </View>
-        <View style={{marginLeft:300,marginRight:8}}>
-          <Button title={'Selesai'}/>
-        </View>
+
         <FlatList
           data={allChat}
           showsVerticalScrollIndicator={false}
@@ -106,13 +153,14 @@ const Chat = ({navigation,route}) => {
             flexDirection:'row',
             alignItems:'center',
             paddingVertical:7,
-            justifyContent:'space-evenly'
+            paddingHorizontal:7,
+            justifyContent:'space-between'
         }}>
 
         <TextInput
             style={{
                 backgroundColor: "#fff",
-                width:'80%',
+                width:'60%',
                 borderRadius:10,
                 borderWidth:0.5,
                 borderColor: "#fff",
@@ -125,13 +173,14 @@ const Chat = ({navigation,route}) => {
             defaultValue={messages}
             onChangeText={(val)=>setMessages(val)}
         />
-
-      <TouchableOpacity disabled={disabled} onPress={sendMsg}>
+      <View style={{flexDirection:'row',alignItems:'center'}}>
+        <ImageIcon height={30} onPress={imageGallery}/>
+        <TouchableOpacity disabled={disabled} onPress={sendMsg}>
           <View style={styles.SendIcon}>
-          <Send height={30} width={30}/>
+            <Send height={30} width={30}/>
           </View>
         </TouchableOpacity>
-
+       </View>
       </View>
     </View>
   )
@@ -145,7 +194,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     container2: {
-      backgroundColor:'#fff',
       paddingVertical: 16,
       // marginBottom: 24,
       flexDirection: 'row',
