@@ -7,14 +7,26 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/reducer/user';
 import Auth from '../../configs/auth';
 import Toast from 'react-native-toast-message'
+import { sendEmail } from '../../configs/sendEmail';
+import { useSelector } from 'react-redux';
+import uuid from 'react-native-uuid'
+
+const generateOTP=()=>{
+  let otp = ''
+  for (let i = 0; i <=3; i++) {
+    const randomOTP = Math.round(Math.random()*9)
+    otp +=randomOTP
+  }
+  return otp
+}
 
 const ForgotPassword = ({navigation}) => {
-
-  const dispatch = useDispatch();
+  const { userData } = useSelector(state => state.User);
 
   const [nik, setnik] = useState('');
   const [pass, setpass] = useState('');
   const [confirmpass, setconfirmpass] = useState('');
+  const [otp, setotp] = useState('');
   const [show,setshow] = useState(false)
   const [isUser,setIsUser] = useState([])
 
@@ -22,7 +34,7 @@ const ForgotPassword = ({navigation}) => {
     try {
       firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
       .ref('/users/')
-      .orderByChild("nik")
+      .orderByChild("email")
       .equalTo(nik)
       .once('value')
       .then( async snapshot => {
@@ -30,8 +42,8 @@ const ForgotPassword = ({navigation}) => {
            console.log("Invalid NIK!");
            Toast.show({
              type: 'error',
-             text1: 'Nope!',
-             text2: 'Invalid NIK!'
+             text1: 'Terjadi kesalahan!',
+             text2: 'NIK anda salah!'
            });
            return false;
         }
@@ -41,17 +53,38 @@ const ForgotPassword = ({navigation}) => {
           Toast.show({
             type: 'error',
             text1: 'Nope!',
-            text2: 'Not a customer!'
+            text2: 'Anda bukan pengguna!'
           });
           return false;
         }
         Toast.show({
           type: 'success',
           text1: 'Yeay!',
-          text2: 'account found!'
+          text2: 'Akun telah ditemukan!'
         });
-        setIsUser(userData)
-        setshow(true)
+        setTimeout(()=>{
+          setIsUser(userData)
+          setshow(true)
+          const OTP = generateOTP()
+          sendEmail(
+              nik,
+                 'Your OTP Code',
+              OTP
+          ).then(() => {
+              console.log('Your message was successfully sent!');
+          });
+          const id = uuid.v4()
+          firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+          .ref('/verifyToken/'+id)
+          .set({otpCode:OTP})
+          .then(()=>{
+            Toast.show({
+              type: 'success',
+              text1: 'Yeay!',
+              text2: 'Kode otp anda sedang dikirim, periksa email anda!'
+            });
+          })
+        },1500)
       })
     } catch (e) {
       console.log(e);
@@ -59,6 +92,7 @@ const ForgotPassword = ({navigation}) => {
     setnik('')
     setpass('')
     setconfirmpass('')
+    setotp('')
   }
 
   const updatePassword = ()=>{
@@ -72,7 +106,7 @@ const ForgotPassword = ({navigation}) => {
         Toast.show({
           type: 'success',
           text1: 'Yeay!',
-          text2: 'Your password is updated!'
+          text2: 'Sandi anda berhasil diperbarui!'
         });
         setTimeout(()=>{
           navigation.navigate('SignIn')
@@ -82,13 +116,23 @@ const ForgotPassword = ({navigation}) => {
       Toast.show({
         type: 'error',
         text1: 'Nayye!',
-        text2: 'password must be the same!'
+        text2: 'Kata sandi harus sama!'
       });
     }
   }
 
   // console.log(isUser);
-
+  // <View>
+  //   <View style={{flexDirection:'row',borderBottomWidth:1}}>
+  //     <Input placeholder={'New Password'} secureTextEntry={true} defaultValue={pass} onChangeText={(value)=>setpass(value)}/>
+  //     <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
+  //   </View>
+  //   <Gap height={43}/>
+  //   <View style={{flexDirection:'row',borderBottomWidth:1}}>
+  //     <Input placeholder='Confirm New Password' secureTextEntry={true} defaultValue={confirmpass} onChangeText={(value)=>setconfirmpass(value)}/>
+  //     <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
+  //   </View>
+  // </View>
   return (
     <View style={{backgroundColor:'white',flex:1}}>
       <Gap height={61}/>
@@ -97,22 +141,15 @@ const ForgotPassword = ({navigation}) => {
       <Gap height={102}/>
      </View>
      <View style={styles.contentWrapper}>
-     {show === true ? null : <View style={{flexDirection:'row'}}>
-       <Input placeholder={'NIK'} defaultValue={nik} onChangeText={(value)=>setnik(value)}/>
+     {show === true ? null : <View style={{flexDirection:'row',borderBottomWidth:1}}>
+       <Input placeholder={'Email'} defaultValue={nik} onChangeText={(value)=>setnik(value)}/>
        <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
      </View>}
      <Gap height={43}/>
       {show === true ?
-      <View>
-        <View style={{flexDirection:'row'}}>
-          <Input placeholder={'New Password'} secureTextEntry={true} defaultValue={pass} onChangeText={(value)=>setpass(value)}/>
-          <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
-        </View>
-        <Gap height={43}/>
-        <View style={{flexDirection:'row'}}>
-          <Input placeholder='Confirm New Password' secureTextEntry={true} defaultValue={confirmpass} onChangeText={(value)=>setconfirmpass(value)}/>
-          <View style={{justifyContent:'center',alignItems:'flex-end',}}><Mata/></View>
-        </View>
+      <View style={{flexDirection:'row',borderBottomWidth:1}}>
+        <Input placeholder={'OTP'} defaultValue={otp} onChangeText={(value)=>setotp(value)}/>
+        <View style={{justifyContent:'center',alignItems:'flex-end',}}><User/></View>
       </View> : null}
       <Gap height={80}/>
       <Button title="SELESAI" onPress={show===false ? loginUser : updatePassword}/>
