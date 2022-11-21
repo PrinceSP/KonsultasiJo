@@ -27,7 +27,7 @@ const Kategori = ({navigation}) => {
   }
   // console.log(userData);
   const createChatList = (data,operator,category) => {
-    console.log(data[0]);
+    // console.log(data[0]);
     createCategories(category,categories)
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
       .ref('/chatlist/' + userData.id + '/' + data?.id)
@@ -56,9 +56,9 @@ const Kategori = ({navigation}) => {
             .ref('/chatlist/' + userData.id + '/' + data?.id)
             .update(data)
             .then(() => console.log('Data updated.'));
-          navigation.navigate('Chat',{receiverData:data})
+          navigation.navigate('Chat',{receiverData:data,categoryData:category})
         } else {
-          navigation.navigate('Chat', {receiverData: snapshot.val()});
+          navigation.navigate('Chat', {receiverData: snapshot.val(),categoryData:category});
         }
       });
   };
