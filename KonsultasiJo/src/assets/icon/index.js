@@ -9,6 +9,7 @@ import CancelSearchMap from './CancelSearchMap.svg';
 import Wa from './Wa.svg';
 import Telegram from './Telegram.svg';
 import Operator from './Operator.svg';
+import ImageIcon from './imageIcon.svg';
 import Send from './Send.svg';
 import Perkawinan from './Perkawinan.svg';
 import Fitur_chat from './Fitur_chat.svg';
@@ -35,7 +36,7 @@ import Bitung from "./Bitung.svg"
 import EyeTrue from "./eyeTrue.svg"
 import EyeFalse from "./eyeFalse.svg"
 
-export {EyeTrue,EyeFalse,Ite,Kekayaan,Download,LambangKota,Waris,Kekeluargaan,Lainnya,
+export {ImageIcon,EyeTrue,EyeFalse,Ite,Kekayaan,Download,LambangKota,Waris,Kekeluargaan,Lainnya,
   PerusakanBarang, PNamaBaik,Pembunuhan,Pemerasan,Pencurian,
   Penganiayaan,Perceraian, Perikatan, Perselingkuhan,Fitur_chat,Chat,Mata,
   User,Logo,IconBack,ProfilePicture,ContohMaps,CancelSearchMap, Wa, Telegram,
