@@ -1,41 +1,37 @@
 import React from 'react'
-import { StyleSheet, Text, View, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Pressable,Image } from 'react-native'
 import TimeDelivery from '../Time'
 
 const ReplyOperator = ({sender, item}) => {
   // console.log(item);
   return (
-    <Pressable
-        style={{ marginVertical: 0 }}
-    >
-        <View
-            style={[styles.TriangleShapeCSS,
-            sender ?
-                styles.right
-                :
-                [styles.left]
-            ]}
-        />
-        <View
-            style={[styles.masBox, {
-                alignSelf: sender ? 'flex-end' : 'flex-start',
-                // borderWidth:1,
-                backgroundColor: sender ? "#27AE60" : "#EAEAEA",
-                elevation:4
-            }]}
-        >
-
-            <Text style={{ paddingLeft: 5, color:  sender ? "#fff" : "#000",fontFamily:"Poppins-Regular",fontSize:15.5 }}>
-              {item.message}
-            </Text>
-
+    <View>
+      {item.msgType ==="image" ?
+        <View style={{alignSelf: 'flex-end',marginHorizontal:10,marginVertical:15}}>
+          <Image source={{uri:item.photo}} style={{height:177,width:177}}/>
+          <View style={{backgroundColor:'#000',alignItems:'center',justifyContent:'center',paddingVertical:5}}>
             <TimeDelivery
-                sender={sender}
-                item={item}
-            />
-
+              sender={sender}
+              item={item}
+              />
+          </View>
         </View>
-    </Pressable>
+      : <View style={{ marginVertical: 0 }}>
+          <View style={[styles.TriangleShapeCSS,sender ? styles.right : [styles.left] ]}/>
+            <View style={[styles.masBox, {alignSelf: sender ? 'flex-end' : 'flex-start',
+              backgroundColor: sender ? "#27AE60" : "#EAEAEA",
+              elevation:4}]}>
+             <Text style={{ paddingLeft: 5, color:  sender ? "#fff" : "#000",fontFamily:"Poppins-Regular",fontSize:15.5 }}>
+               {item.message}
+             </Text>
+             <TimeDelivery
+               sender={sender}
+               item={item}
+               />
+            </View>
+          </View>
+        }
+    </View>
   )
 }
 
