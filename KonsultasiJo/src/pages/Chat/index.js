@@ -111,6 +111,13 @@ const Chat = ({navigation,route}) => {
     })
   }
 
+  const finishingChat = async()=>{
+    const refer = firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+    await refer.ref('/messages/' + route.params.receiverData?.roomId).remove();
+    await refer.ref('/chatlist/' + userData?.id + '/' + route.params.receiverData?.id).remove();
+    await refer.ref('/chatlist/' + route.params.receiverData?.id + '/' + userData?.id).remove();
+  }
+
   useEffect(()=>{
     onChildAdd()
     // Stop listening for updates when no longer required
@@ -130,7 +137,7 @@ const Chat = ({navigation,route}) => {
               <Text style={{fontSize:16,color:"#aaa"}}>kategori: {route.params.categoryData}</Text>
             </View>
           </View>
-          <Button width={70} title={'Selesai'}/>
+          <Button width={70} title={'Selesai'} onPress={finishingChat}/>
         </View>
 
         <FlatList

@@ -1,7 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-const Button = ({title,width=0,backgroundColor='#000',color="#fff",...rest}) => {
+const Button = ({title,width,backgroundColor='#000',color="#fff",...rest}) => {
   const styles = StyleSheet.create({
 
     text:{
