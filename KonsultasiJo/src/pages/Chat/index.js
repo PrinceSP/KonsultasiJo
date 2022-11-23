@@ -40,7 +40,7 @@ const Chat = ({navigation,route}) => {
     msgData.id = newReference.key;
     newReference.set(msgData).then(() => {
       let chatListupdate = {
-        lastMsg: messages,
+        lastMsg: messages||'hello',
         sendTime: msgData.sendTime,
       };
       firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
@@ -116,6 +116,7 @@ const Chat = ({navigation,route}) => {
     await refer.ref('/messages/' + route.params.receiverData?.roomId).remove();
     await refer.ref('/chatlist/' + userData?.id + '/' + route.params.receiverData?.id).remove();
     await refer.ref('/chatlist/' + route.params.receiverData?.id + '/' + userData?.id).remove();
+    navigation.goBack()
   }
 
   useEffect(()=>{
@@ -134,7 +135,7 @@ const Chat = ({navigation,route}) => {
             <IconBack onPress={() => navigation.goBack()}/>
             <View>
               <Text style={styles.text2}>{route.params.receiverData.name || route.params.receiverData.username}</Text>
-              <Text style={{fontSize:16,color:"#aaa"}}>kategori: {route.params.categoryData}</Text>
+              <Text style={{fontSize:16,color:"#aaa"}}>Kategori: {route.params.categoryData}</Text>
             </View>
           </View>
           <Button width={70} title={'Selesai'} onPress={finishingChat}/>

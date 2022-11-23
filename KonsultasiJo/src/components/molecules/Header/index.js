@@ -1,25 +1,19 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import {IconBack} from '../../../assets'
-import { Gap } from '../../atoms';
 
-const Header = ({title, onBack}) => {
+const Header = ({title, onPress}) => {
   return (
 
     <View style={styles.container}>
-        <View >
-        {onBack && (
-          <TouchableOpacity onPress={onBack}>
-            <View style={styles.back}>
-              <IconBack/>
-            </View>
-          </TouchableOpacity>
-        )}
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.back}>
+          <IconBack/>
         </View>
-        
-        <View style={{alignItems:'center',flex:1, marginRight:35}}>
+      </TouchableOpacity>
+      <View style={{alignItems:'center', marginRight:35}} >
         <Text style={styles.text}>{title}</Text>
-        </View>
+      </View>
     </View>
   );
 };
@@ -29,12 +23,12 @@ export default Header;
 const styles = StyleSheet.create({
 
   container: {
-    backgroundColor:'white',   
+    backgroundColor:'white',
     paddingVertical: 16,
     // marginBottom: 24,
     flexDirection: 'row',
     alignItems: 'center',
-    
+
   },
   back: {
     paddingVertical: 10,

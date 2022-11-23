@@ -18,7 +18,6 @@ const Kategori = ({navigation}) => {
     .once('value')
     .then(snapshot=>{
       const operator = Object.values(snapshot.val()).filter(user=>user.id!=userData.id && user.role=="operator")
-      // console.log(operator);
       if (operator) {
         setAllUser(operator);
       }
@@ -50,13 +49,14 @@ const Kategori = ({navigation}) => {
             .then(() => console.log('Data updated.'));
 
           delete data.password;
-          data.lastMsg = '';
-          data.roomId = roomId;
+          let copyA = {...data}
+          copyA.lastMsg = '';
+          copyA.roomId = roomId;
           firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
-            .ref('/chatlist/' + userData.id + '/' + data?.id)
-            .update(data)
+            .ref('/chatlist/' + userData.id + '/' + copyA?.id)
+            .update(copyA)
             .then(() => console.log('Data updated.'));
-          navigation.navigate('Chat',{receiverData:data,categoryData:category})
+          navigation.navigate('Chat',{receiverData:copyA,categoryData:category})
         } else {
           navigation.navigate('Chat', {receiverData: snapshot.val(),categoryData:category});
         }
@@ -122,7 +122,7 @@ const Kategori = ({navigation}) => {
 
   return (
     <View style={{flex:1,backgroundColor:'white'}}>
-      <Header title="Konsultasi" onBack={() => navigation.goBack()}/>
+      <Header title="Konsultasi" onPress={() => navigation.goBack()}/>
       <View style={{paddingHorizontal:15}}>
      <View style={styles.perdata}>
       <Text style={{fontWeight:'600',fontSize:17}}>Hukum Perdata</Text>

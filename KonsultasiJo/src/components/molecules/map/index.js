@@ -68,6 +68,67 @@ const MapFinder = ({index})=>{
 				: null
 			}
 			</MapView>
+			<View style={style.placesContainer}>
+				<GooglePlacesAutocomplete
+					ref={queryRef}
+					placeholder={desc?desc:"Search your location here...."}
+					returnKeyType={'search'}
+					autoFocus={true}
+					listViewDisplayed='auto'
+					fetchDetails={true}
+					renderDescription={row=>row.description}
+					GooglePlacesSearchQuery={{
+						rankby: "distance"
+					}}
+					GooglePlacesDetailsQuery={{
+						fields:['formatted_address','geometry']
+					}}
+					enablePoweredByContainer={false}
+					onPress={(data, details = null) => {
+						// 'details' is provided when fetchDetails = true
+						// update the region by its latitude and longitude
+						setRegion({...region,
+							latitude: details.geometry.location.lat,
+							longitude: details.geometry.location.lng,
+						})
+						setDetails(data?.description)
+						// getGeometrics(datas)
+						// console.log(details.geometry.location);
+						// console.log('data from query: '+data?.description);
+					}}
+					renderRightButton={() => (
+            (desc!=null ?
+                 <TouchableOpacity onPress={clearing}>
+                           <Text style={{color:"#000"}}>x</Text>
+								 </TouchableOpacity>
+               :
+                null )	)}
+					query={{
+						key: "AIzaSyB-lpOPCdsdF7SluzBjETaOIfT-ZDgX2ZA",
+						language: "en",
+						components: "country:id",
+						types: "establishment",
+						radius: 3000,
+						location: `${region.latitude}, ${region.longitude}`
+					}}
+					textInputProps={{
+						placeholderTextColor: '#899',
+						InputComp: TextInput
+					}}
+					styles={{
+						listView:style.listView,
+						textInputContainer: {
+							alignItems:'center',
+							justifyContent:'space-between'
+						},
+						textInput:{color:'#000',borderColor:"#888",borderWidth:1},
+						description:{
+							fontWeight:'bold',
+							color:'#000',
+						}
+					}}
+				/>
+			</View>
 		</View>
 	)
 }

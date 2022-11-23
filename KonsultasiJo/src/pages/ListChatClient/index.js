@@ -1,6 +1,6 @@
 import React, {useState,useEffect } from 'react'
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, StatusBar,FlatList } from 'react-native'
-import { Header, Gap } from '../../components';
+import { Header, Gap,Button } from '../../components';
 import { Operator,People } from '../../assets';
 import { firebase } from '@react-native-firebase/database';
 import moment from 'moment-timezone';
@@ -10,6 +10,7 @@ const ListChatClients = ({navigation}) => {
   const {userData} = useSelector(state => state.User);
 
   const [chatList, setchatList] = useState([]);
+  const [showDialogBox, setShowDialogBox] = useState(false);
 
   useEffect(() => {
     firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
@@ -23,9 +24,14 @@ const ListChatClients = ({navigation}) => {
     });
   }, []);
 
+  // <View key={item.id} style={{backgroundColor:"#777",height:100,width:120,flexDirection:"column",alignItems:'center',justifyContent:'space-evenly',position:'absolute',right:0,zIndex:1}}>
+  //   <Button title="Delete" backgroundColor="transparent" onPress={()=>alert(item.id)}/>
+  //   <Button title="Archive" backgroundColor="transparent" onPress={()=>alert('archive')}/>
+  // </View>
+
   const ListChat = ({item})=>{
     return(
-      <TouchableOpacity activeOpacity={0.7} onPress={()=>navigation.navigate('Chat',{receiverData:item})}>
+      <TouchableOpacity style={{position:"relative"}} activeOpacity={0.7} onPress={()=>navigation.navigate('Chat',{receiverData:item})}>
         <View style={styles.Wrapper}>
           <Operator style={styles.operator}/>
           <View style={styles.chatwrapper}>
@@ -34,6 +40,15 @@ const ListChatClients = ({navigation}) => {
               <Text style={styles.Topic}>{item.lastMsg}</Text>
             </View>
             <Text style={styles.Topic}>{moment(item.sendTime).fromNow()}</Text>
+            <TouchableOpacity style={{flexDirection:"column",justifyContent:'space-between'}} onPress={()=>setShowDialogBox(previousState => !previousState)}>
+              <View style={{height:6,width:6,borderRadius:6,backgroundColor:"#aaa"}}/>
+              <View style={{height:6,width:6,borderRadius:6,backgroundColor:"#aaa"}}/>
+              <View style={{height:6,width:6,borderRadius:6,backgroundColor:"#aaa"}}/>
+            </TouchableOpacity>
+            {showDialogBox===true ? <View style={{backgroundColor:"#777",height:100,width:120,flexDirection:"column",alignItems:'center',justifyContent:'space-evenly'}}>
+              <Button title="Delete" backgroundColor="transparent" onPress={()=>alert('delete')}/>
+              <Button title="Archive" backgroundColor="transparent" onPress={()=>alert('archive')}/>
+            </View> : null}
           </View>
         </View>
       </TouchableOpacity>
@@ -42,8 +57,9 @@ const ListChatClients = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      {showDialogBox===true ? <TouchableOpacity style={{height:"100%",width:"100%",zIndex:2,position:'absolute'}} onPress={()=>setShowDialogBox(false)}/> : null}
       <StatusBar barStyle="dark-content" backgroundColor='#fff' />
-      <Header title="Pesan" onBack={() => navigation.goBack()} />
+      <Header title="Pesan" onPress={() => navigation.goBack()} />
       <FlatList
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
