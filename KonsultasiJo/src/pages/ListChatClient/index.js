@@ -40,15 +40,6 @@ const ListChatClients = ({navigation}) => {
               <Text style={styles.Topic}>{item.lastMsg}</Text>
             </View>
             <Text style={styles.Topic}>{moment(item.sendTime).fromNow()}</Text>
-            <TouchableOpacity style={{flexDirection:"column",justifyContent:'space-between'}} onPress={()=>setShowDialogBox(previousState => !previousState)}>
-              <View style={{height:6,width:6,borderRadius:6,backgroundColor:"#aaa"}}/>
-              <View style={{height:6,width:6,borderRadius:6,backgroundColor:"#aaa"}}/>
-              <View style={{height:6,width:6,borderRadius:6,backgroundColor:"#aaa"}}/>
-            </TouchableOpacity>
-            {showDialogBox===true ? <View style={{backgroundColor:"#777",height:100,width:120,flexDirection:"column",alignItems:'center',justifyContent:'space-evenly'}}>
-              <Button title="Delete" backgroundColor="transparent" onPress={()=>alert('delete')}/>
-              <Button title="Archive" backgroundColor="transparent" onPress={()=>alert('archive')}/>
-            </View> : null}
           </View>
         </View>
       </TouchableOpacity>

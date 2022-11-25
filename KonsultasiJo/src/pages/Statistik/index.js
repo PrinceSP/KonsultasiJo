@@ -15,7 +15,7 @@ const Statistik = ({navigation}) => {
   return (
 
     <View style={{flex: 1,backgroundColor:"#fff"}}>
-     <Header title="Statistik" onBack={() => navigation.goBack()}/>
+     <Header title="Statistik" onPress={() => navigation.goBack()}/>
      <Gap height={10}/>
       <ScrollView contentContainerStyle={{alignItems:'center'}}>
         <View style={styles.page}>
