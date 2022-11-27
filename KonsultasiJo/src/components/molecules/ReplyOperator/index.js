@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Pressable,Image } from 'react-native'
 import TimeDelivery from '../Time'
+import {ReadReceipt} from '../../../assets'
 
 const ReplyOperator = ({sender, item}) => {
   // console.log(item);
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
       maxWidth: '80%',
       paddingHorizontal: 10,
       marginVertical: 5,
-      paddingTop: 5,
+      paddingVertical: 5,
       borderRadius: 8
   },
   timeText: {

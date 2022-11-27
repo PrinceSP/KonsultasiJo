@@ -28,7 +28,7 @@ const ListChatClients = ({navigation}) => {
 
   const ListChat = ({item})=>{
     const setUpdateRead=()=>{
-      // console.log();
+      console.log(item);
       firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
       .ref('/chatlist/'+"/"+userData?.id+"/"+item.id)
       .update({read:item?.role !== "operator" ? true : false})

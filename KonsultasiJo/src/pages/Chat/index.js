@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, ImageBackground, FlatList } from 'react-native'
 import { Header, Gap, ReplyOperator, Button } from '../../components';
-import { Send,IconBack,ImageIcon } from '../../assets';
+import { Send,IconBack,ImageIcon,ReadReceipt } from '../../assets';
 import {firebase} from '@react-native-firebase/database'
 import moment from 'moment';
 import {useSelector} from 'react-redux'
@@ -14,7 +14,7 @@ const Chat = ({navigation,route}) => {
   const [disabled, setdisabled] = useState(false);
   const [photo,setPhoto] = useState('')
   const [hasPhoto, setHasPhoto] = useState(false)
-  // console.log(route.params.receiverData.role);
+  // console.log(route.params.datas);
 
   const msgvalid = txt => txt && txt.replace(/\s/g, '').length;
 
@@ -31,6 +31,7 @@ const Chat = ({navigation,route}) => {
       to: route.params.receiverData.id,
       sendTime: moment().format(''),
       msgType: 'text',
+      // read:userData?.role !== "operator" ? false : null
     };
 
     const newReference = firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
