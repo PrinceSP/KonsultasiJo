@@ -14,13 +14,13 @@ const Chat = ({navigation,route}) => {
   const [disabled, setdisabled] = useState(false);
   const [photo,setPhoto] = useState('')
   const [hasPhoto, setHasPhoto] = useState(false)
-  // console.log(route.params.categoryData);
+  // console.log(route.params.receiverData.role);
 
   const msgvalid = txt => txt && txt.replace(/\s/g, '').length;
 
   const sendMsg = (photo) => {
     if (messages == '' || msgvalid(messages) == 0) {
-      console.log('Enter something....');
+      alert('Please enter something....');
       return false;
     }
     setdisabled(true);
@@ -42,6 +42,7 @@ const Chat = ({navigation,route}) => {
       let chatListupdate = {
         lastMsg: messages||'hello',
         sendTime: msgData.sendTime,
+        read:userData?.role !== "operator" ? false : null
       };
       firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
         .ref('/chatlist/' + route.params.receiverData?.id + '/' + userData?.id)

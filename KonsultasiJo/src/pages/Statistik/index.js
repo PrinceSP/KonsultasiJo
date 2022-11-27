@@ -1,17 +1,48 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native'
 import {BarChart} from "react-native-chart-kit";
 import { Gap, Header } from '../../components';
+import {firebase} from '@react-native-firebase/database'
 
 const Statistik = ({navigation}) => {
+  const [stats,setStats] = useState([])
+  // setTimeout(()=>{
+  //   const key = Object.keys(stats[0]['2022'].months)
+  //   const month = stats[0]['2022'].months
+  //   for (var vari in month) {
+  //     console.log(month[vari]);
+  //   }
+  // },4000)
+
+  console.log(stats);
+
   const datas = {
-  labels: ["Jan", "Feb", "Mar", "Apr"],
-  datasets: [
-    {
-      data: [20, 45, 28, 80]
+    labels: ['nov'],
+    datasets: [
+      {
+        data: [20, 45, 28, 80]
+      }
+    ]
+  }
+const getDatas=()=>{
+ firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+  .ref('/categoriesDatas')
+  .on('value', snapshot => {
+    if (snapshot.val() === (null||undefined||[])) {
+      setEmptyState('no data')
+      return false
+    } else{
+      const data = Object.values(snapshot.val()!== null ? snapshot.val() : '')
+      setStats(data)
     }
-  ]
-};
+  });
+}
+
+useEffect(()=>{
+  getDatas()
+},[])
+
+
   return (
 
     <View style={{flex: 1,backgroundColor:"#fff"}}>

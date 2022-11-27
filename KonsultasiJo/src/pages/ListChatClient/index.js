@@ -22,16 +22,24 @@ const ListChatClients = ({navigation}) => {
         setchatList(data.sort((a,b)=> b.sendTime < a.sendTime ? -1 : 1))
       }
     });
-  }, []);
+  }, [])
 
-  // <View key={item.id} style={{backgroundColor:"#777",height:100,width:120,flexDirection:"column",alignItems:'center',justifyContent:'space-evenly',position:'absolute',right:0,zIndex:1}}>
-  //   <Button title="Delete" backgroundColor="transparent" onPress={()=>alert(item.id)}/>
-  //   <Button title="Archive" backgroundColor="transparent" onPress={()=>alert('archive')}/>
-  // </View>
+  // console.log(chatList);
 
   const ListChat = ({item})=>{
+    const setUpdateRead=()=>{
+      // console.log();
+      firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+      .ref('/chatlist/'+"/"+userData?.id+"/"+item.id)
+      .update({read:item?.role !== "operator" ? true : false})
+      .then(()=>navigation.navigate('Chat',{receiverData:item}))
+      // firebase.app().database("https://konsultasijo-d274e-default-rtdb.firebaseio.com/")
+      // .ref('/chatlist/'+"/"+item.id+"/"+userData?.id)
+      // .update({read:true})
+      // .then(()=>)
+    }
     return(
-      <TouchableOpacity style={{position:"relative"}} activeOpacity={0.7} onPress={()=>navigation.navigate('Chat',{receiverData:item})}>
+      <TouchableOpacity style={{position:"relative"}} activeOpacity={0.7} onPress={setUpdateRead}>
         <View style={styles.Wrapper}>
           <Operator style={styles.operator}/>
           <View style={styles.chatwrapper}>
@@ -40,6 +48,7 @@ const ListChatClients = ({navigation}) => {
               <Text style={styles.Topic}>{item.lastMsg}</Text>
             </View>
             <Text style={styles.Topic}>{moment(item.sendTime).fromNow()}</Text>
+            {item.read===false ? <View style={{height:13,width:13,backgroundColor:"#aaf",borderRadius:13}}/> : null}
           </View>
         </View>
       </TouchableOpacity>
